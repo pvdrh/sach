@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
-use App\Models\UserInfo;
 use App\Models\Order;
 use Database\Seeders\CategoriesTableSeeder;
 use Illuminate\Http\Request;

@@ -64,13 +64,13 @@
                         <li class="nav-item">
                             <a href="{{ route('backend.category.index') }}" class="nav-link">
                                 <i class="far fa-list-alt nav-icon"></i>
-                                <p> Tất cả thể loại</p>
+                                <p> Tất cả danh mục</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('backend.category.create') }}" class="nav-link">
                                 <i class="fa fa-plus-circle nav-icon"></i>
-                                <p> Tạo thể loại mới</p>
+                                <p>Thêm mới danh mục</p>
                             </a>
                         </li>
                     </ul>

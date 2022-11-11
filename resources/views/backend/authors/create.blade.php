@@ -7,8 +7,8 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Quản lí tác giả</li>
+                    <li class="breadcrumb-item"><a href="{{ route('backend.dashboard') }}">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Thêm mới</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -22,9 +22,6 @@
             <div class="col-md-12">
                 <!-- general form elements -->
                 <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Thêm mới tác giả</h3>
-                    </div>
                     <!-- /.card-header -->
                     <!-- form start -->
                     <form role="form" method="POST" action="{{ route('backend.authors.store') }}" enctype="multipart/form-data">
@@ -32,7 +29,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Tên tác giả</label>
-                                <input type="text" class="form-control" id="" placeholder="Điền tên tác giả " name="name">
+                                <input type="text" class="form-control" id="" placeholder="Tên" name="name">
                                 @error('name')
                                 <p style="color: red">*{{ $message }}</p>
                                 @enderror
@@ -41,8 +38,8 @@
                         <!-- /.card-body -->
 
                         <div class="card-footer">
+                            <button type="submit" class="btn btn-success">Thêm mới</button>
                             <button type="reset" class="btn btn-danger">Huỷ bỏ</button>
-                            <button type="submit" class="btn btn-success">Tạo mới</button>
                         </div>
                     </form>
                 </div>

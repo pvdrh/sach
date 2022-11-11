@@ -26,8 +26,8 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Trang trủ</a></li>
-                    <li class="breadcrumb-item active">Danh sách tác giả</li>
+                    <li class="breadcrumb-item"><a href="{{ route('backend.dashboard') }}">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Danh sách</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -43,20 +43,21 @@
                         <table id="" class="table table-bordered table-striped" style="width: 100%">
                             <thead>
                             <tr>
-                                <th>ID</th>
+                                <th style="text-align: center">ID</th>
                                 <th>Tên Tác giả</th>
                                 <th>Số sản phẩm</th>
-                                <th>#</th>
+                                <th style="text-align: center">Hành động</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($authors as $author)
                                 <tr>
-                                    <td>{{ $author->id }}</td>
+                                    <td style="text-align: center">{{ $author->id }}</td>
                                     <td>{{ $author->name }}</td>
                                     <td>{{ count($author->products) }}</td>
-                                    <td>
-                                        <form action="{{ route('backend.authors.destroy', $author->id) }}" method="POST">
+                                    <td style="text-align: center">
+                                        <form action="{{ route('backend.authors.destroy', $author->id) }}"
+                                              method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                             <button class="btn btn-danger">Xóa</button>

@@ -7,9 +7,8 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Sản phẩm</a></li>
-                    <li class="breadcrumb-item active">Tạo sản phẩm</li>
+                    <li class="breadcrumb-item"><a href="{{ route('backend.dashboard') }}">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Thêm mới</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -23,18 +22,11 @@
             <div class="col-md-12">
                 <!-- general form elements -->
                 <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Tạo danh mục</h3>
-                    </div>
                     <!-- /.card-header -->
                     <!-- form start -->
                     <form role="form" method="POST" action="{{ route('backend.category.store') }}">
                         @csrf
                         <div class="card-body">
-                            <div class="form-group">
-                                <label for="name">Tên danh mục</label>
-                                <input type="text" class="form-control" id="" placeholder="Điền tên danh mục" name="name">
-                            </div>
                             <div class="form-group">
                                 <label for="parent_id">Danh mục cha</label>
                                 <select class="form-control select2" style="width: 100%;" name="category_id">
@@ -45,12 +37,16 @@
                                     @endforeach
                                 </select>
                             </div>
-                        <!-- /.card-body -->
-
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-danger">Huỷ bỏ</button>
-                            <button type="submit" class="btn btn-success">Tạo mới</button>
-                        </div>
+                            <div class="form-group">
+                                <label for="name">Tên danh mục</label>
+                                <input type="text" class="form-control" id="" placeholder="Điền tên danh mục"
+                                       name="name">
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-success">Tạo mới</button>
+                                <button type="submit" class="btn btn-danger">Huỷ bỏ</button>
+                            </div>
                     </form>
                 </div>
             </div>

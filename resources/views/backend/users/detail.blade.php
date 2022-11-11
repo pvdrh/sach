@@ -24,31 +24,6 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-3">
-
-                    <!-- Profile Image -->
-                    <div class="card card-primary card-outline">
-                        <div class="card-body box-profile">
-                            <div class="text-center">
-                                <img class="profile-user-img img-fluid img-circle"
-                                     src="/storage/{{ \Illuminate\Support\Facades\Auth::user()->avatar }}"
-                                     alt="User profile picture">
-                            </div>
-
-                            <h3 class="profile-username text-center">{{ \Illuminate\Support\Facades\Auth::user()->name }}</h3>
-
-                            <p class="text-muted text-center">
-                                @if( \Illuminate\Support\Facades\Auth::user()->role == 0)
-                                    Administrator
-                                @elseif(\Illuminate\Support\Facades\Auth::user()->role == 1)
-                                    Quản lí
-                                @endif
-                            </p>
-                            <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                </div>
                 <!-- /.col -->
                 <div class="col-md-9">
                     <div class="card">
@@ -59,28 +34,20 @@
                                     <thead>
                                     <tr>
                                         <td>
+                                            <label for="email">Email:</label>
+                                            <input readonly type="email" name="email" value="{{ $user->email }}">
+                                        </td>
+                                        <td>
                                             <label for="name">Họ tên:</label>
                                             <input type="text" name="name" value="{{ $user->name }}">
                                         </td>
                                         <td>
-                                            <label for="email">Email:</label>
-                                            <input type="email" name="email" value="{{ $user->email }}">
-                                        </td>
-                                        <td>
                                             <label for="phone">Số điện thoại:</label>
-                                            <input type="text" name="phone" value="{{ $user->phone }}">
+                                            <input type="text" max="10" name="phone" value="{{ $user->phone }}">
                                         </td>
                                         <td>
                                             <label for="address">Địa chỉ:</label>
                                             <input type="text" name="address" value="{{ $user->address }}">
-                                        </td>
-                                        <td>
-                                            <label for="name">Vị trí:</label>
-                                            @if($user->role == 0)
-                                                <p>Administrator</p>
-                                            @elseif($user->role == 1)
-                                                <p>Quản lí</p>
-                                            @endif
                                         </td>
                                     </tr>
                                     </thead>
