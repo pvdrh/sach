@@ -16,12 +16,12 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->truncate();
             DB::table('users')->insert([
-                'name' => 'Nguyễn Quang Thành',
-                'email' => 'tquangds@gmail.com',
-                'phone' => '0342956209',
+                'name' => 'Admin',
+                'email' => 'admin@gmail.com',
+                'phone' => '0342956205',
                 'address' => 'Hoài Đức, Hà Nội',
                 'role' => 0,
-                'password' => bcrypt('12345678')
+                'password' => bcrypt('123456')
             ]);
 
     }
