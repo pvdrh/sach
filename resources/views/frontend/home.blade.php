@@ -237,47 +237,6 @@
             </div>
             <!-- /row -->
 
-            <!-- row -->
-            <div class="row">
-                <!-- section title -->
-                <div class="col-md-12">
-                    <div class="section-title">
-                        <h2 class="title">Gợi ý cho bạn</h2>
-                    </div>
-                </div>
-                <!-- section title -->
-
-                <!-- Product Single -->
-                @foreach($products_rb as $product)
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="product product-single">
-                            <div class="product-thumb">
-                                <div class="product-label">
-                                    @if($product->discount_percent)
-                                        <span class="sale">-{{ $product->discount_percent }}%</span>
-                                    @endif
-                                </div>
-                                <a href="{{ route('frontend.product-page.index', $product->slug) }}" class="main-btn quick-view"><i class="fa fa-search-plus"></i> Xem</a>
-                                <img src="/{{ $product->image }}" alt="">
-                            </div>
-                            <div class="product-body">
-                                <h2 class="product-name"><a href="#">{{ $product->name }}</a></h2>
-                                <h4 class="product-price" style="color: #F8694A">{{ number_format($product->sale_price) }}đ</h4>
-                                <p>@if($product->discount_percent != 0) <del class="">{{ number_format($product->origin_price) }}đ</del>@endif</p>
-                                <span>Đã bán: {{ $product->sold }}</span>
-                                {{--                                <div class="product-rating">--}}
-                                {{--                                    <i class="fa fa-star"></i>--}}
-                                {{--                                    <i class="fa fa-star"></i>--}}
-                                {{--                                    <i class="fa fa-star"></i>--}}
-                                {{--                                    <i class="fa fa-star"></i>--}}
-                                {{--                                    <i class="fa fa-star-o empty"></i>--}}
-                                {{--                                </div>--}}
-                            </div>
-                        </div>
-                    </div>
-            @endforeach
-                <!-- /Product Single -->
-            </div>
             <!-- /row -->
         </div>
         <!-- /container -->

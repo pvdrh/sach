@@ -14,7 +14,7 @@
                     </div>
                     <!-- /footer logo -->
 
-                    <p>Nơi tập hợp của vô vàn sách trên thế giới</p>
+{{--                    <p>Nơi tập hợp của vô vàn sách trên thế giới</p>--}}
 
                     <!-- footer social -->
                     <ul class="footer-social">
@@ -31,7 +31,7 @@
             <!-- footer widget -->
             <div class="col-md-3 col-sm-6 col-xs-6">
                 <div class="footer">
-                    <h3 class="footer-header">Hỗ chợ</h3>
+                    <h3 class="footer-header">Hỗ trợ</h3>
                     <ul class="list-links">
                         <li><a href="#">Tư vẫn 24/7</a></li>
                         <li><a href="#">Chính sách đổi trả</a></li>
@@ -50,8 +50,6 @@
                     <h3 class="footer-header">Liên hệ</h3>
                     <ul class="list-links">
                         <li><a>bookcloudshop@gmail.com</a></li>
-                        <li><a>+84 342956209</a></li>
-                        <li><a>Đắc Sở, Hoài Đức, Hà Nội</a></li>
                     </ul>
                 </div>
             </div>
@@ -66,7 +64,7 @@
                 <!-- footer copyright -->
                 <div class="footer-copyright">
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://www.facebook.com/thanh.quang.200100" target="_blank">Nguyễn Quang Thành</a>
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved <i class="fa fa-heart-o" aria-hidden="true"></i>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </div>
                 <!-- /footer copyright -->

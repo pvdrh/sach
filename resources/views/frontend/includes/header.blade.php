@@ -28,33 +28,33 @@
             <div class="pull-right">
                 <ul class="header-btns">
                     <!-- Account -->
-                    <li class="header-account dropdown default-dropdown header-drop">
-                        <div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
-                            <div class="header-btns-icon">
-                                <i class="fa fa-user-o"></i>
-                            </div>
-                            <strong class="text-uppercase">Tài khoản  <i class="fa fa-caret-down"></i></strong>
-                        </div>
-                        @if(\Illuminate\Support\Facades\Auth::user())
-                            <a href="#" class="text-uppercase">{{ \Illuminate\Support\Facades\Auth::user()->name }}</a>
-                        @else
-                            <a href="{{ route('login.form') }}" class="text-uppercase">Đăng nhập</a>
-                        @endif
-                        <ul class="custom-menu">
-                            <li><a href="#"><i class="fa fa-user-o"></i> Cài đặt tài khoản</a></li>
-                            <li><a href="#"><i class="fa fa-heart-o"></i> Yêu thích</a></li>
-                            @if(\Illuminate\Support\Facades\Auth::user())
-                                <li>
-                                    <form action="{{ route('logout') }}" method="POST">
-                                        @csrf
-                                        <a><button class="dropdown-item"><i class="btn fa fa-sign-out" aria-hidden="true"></i> Đăng xuất</button></a>
-                                    </form>
-                                </li>
-                            @else
-                                <li><a href="{{ route('login.form') }}"><i class="fa fa-unlock-alt"></i> Đăng nhập</a></li>
-                            @endif
-                        </ul>
-                    </li>
+{{--                    <li class="header-account dropdown default-dropdown header-drop">--}}
+{{--                        <div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">--}}
+{{--                            <div class="header-btns-icon">--}}
+{{--                                <i class="fa fa-user-o"></i>--}}
+{{--                            </div>--}}
+{{--                            <strong class="text-uppercase">Tài khoản  <i class="fa fa-caret-down"></i></strong>--}}
+{{--                        </div>--}}
+{{--                        @if(\Illuminate\Support\Facades\Auth::user())--}}
+{{--                            <a href="#" class="text-uppercase">{{ \Illuminate\Support\Facades\Auth::user()->name }}</a>--}}
+{{--                        @else--}}
+{{--                            <a href="{{ route('login.form') }}" class="text-uppercase">Đăng nhập</a>--}}
+{{--                        @endif--}}
+{{--                        <ul class="custom-menu">--}}
+{{--                            <li><a href="#"><i class="fa fa-user-o"></i> Cài đặt tài khoản</a></li>--}}
+{{--                            <li><a href="#"><i class="fa fa-heart-o"></i> Yêu thích</a></li>--}}
+{{--                            @if(\Illuminate\Support\Facades\Auth::user())--}}
+{{--                                <li>--}}
+{{--                                    <form action="{{ route('logout') }}" method="POST">--}}
+{{--                                        @csrf--}}
+{{--                                        <a><button class="dropdown-item"><i class="btn fa fa-sign-out" aria-hidden="true"></i> Đăng xuất</button></a>--}}
+{{--                                    </form>--}}
+{{--                                </li>--}}
+{{--                            @else--}}
+{{--                                <li><a href="{{ route('login.form') }}"><i class="fa fa-unlock-alt"></i> Đăng nhập</a></li>--}}
+{{--                            @endif--}}
+{{--                        </ul>--}}
+{{--                    </li>--}}
                     <!-- /Account -->
 
                     <!-- Cart -->
