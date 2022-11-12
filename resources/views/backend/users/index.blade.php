@@ -8,8 +8,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Người dùng</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('backend.dashboard') }}">Trang chủ</a></li>
                     <li class="breadcrumb-item active">Danh sách</li>
                 </ol>
             </div><!-- /.col -->
@@ -22,41 +21,36 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Danh sách người dùng</h3>
-                    </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table id="" class="table table-bordered table-striped" style="width: 100%">
                             <thead>
                             <tr>
-                                <th>ID</th>
+                                <th style="text-align: center">ID</th>
                                 <th>Tên </th>
                                 <th>Email</th>
                                 <th>Số điện thoại</th>
                                 <th>Địa chỉ</th>
-                                <th>Vị trí</th>
-                                <th>#</th>
+                                <th style="text-align: center">Vị trí</th>
+                                <th style="text-align: center">Hành động</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($users as $user)
                                 <tr>
-                                    <td>{{ $user->id }}</td>
+                                    <td style="text-align: center">{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->phone }}</td>
                                     <td>{{ $user->address }}</td>
-                                    <td>
+                                    <td style="text-align: center">
                                         @if($user->role == 0)
-                                            Administrator
+                                            Admin
                                         @elseif($user->role == 1)
-                                            Quản lí
-                                        @elseif($user->role == 2)
-                                            Khách hàng
+                                            Nhân viên
                                         @endif
                                     </td>
-                                    <td>
+                                    <td style="text-align: center">
                                         <form action="{{ route('backend.user.show', $user->id) }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}

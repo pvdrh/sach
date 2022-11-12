@@ -8,7 +8,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('backend.dashboard') }}">Trang chủ</a></li>
                     <li class="breadcrumb-item active">Đơn hàng chưa xác nhận</li>
                 </ol>
             </div><!-- /.col -->
@@ -79,7 +79,7 @@
                         <table id="ordersNonAcceptTable" class="table table-bordered table-striped" style="width: 100%">
                             <thead>
                             <tr>
-                                <th>ID</th>
+                                <th style="text-align: center">ID</th>
                                 <th>Tên người nhận</th>
                                 <th>Email</th>
                                 <th>Số điện thoại</th>
@@ -87,7 +87,7 @@
                                 <th>Số sản phẩm</th>
                                 <th>Giao hàng</th>
                                 <th>Hóa đơn</th>
-                                <th>#</th>
+                                <th style="text-align: center">Hành động</th>
                             </tr>
                             </thead>
                         </table>

@@ -7,7 +7,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Trang trủ</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('backend.dashboard') }}">Trang chủ</a></li>
                     <li class="breadcrumb-item active">Chi tiết</li>
                 </ol>
             </div><!-- /.col -->
@@ -27,7 +27,7 @@
                             </div>
                             <div class="col-5">
                                 <form action="">
-                                    <table style="cell">
+                                    <table>
                                         <tr>
                                             <th>Tên sản phẩm: </th>
                                             <td>{{ $product->name }}</td>
