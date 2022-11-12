@@ -27,7 +27,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
-                            Quản lí sản phẩm
+                            Quản lý sản phẩm
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -56,7 +56,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
-                            Quản lí danh mục
+                            Quản lý danh mục
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -79,7 +79,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
-                            Quản lí tác giả
+                            Quản lý tác giả
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -102,7 +102,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
-                            Quản lí NXB
+                            Quản lý NXB
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -125,7 +125,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
-                            Quản lí đơn hàng
+                            Quản lý đơn hàng
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -155,7 +155,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
-                            Quản lí thành viên
+                            Quản lý nhân viên
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -163,7 +163,7 @@
                         <li class="nav-item">
                             <a href="{{ route('backend.user.index') }}" class="nav-link">
                                 <i class="fa fa-user nav-icon" aria-hidden="true"></i>
-                                <p> Tất cả thành viên</p>
+                                <p> Tất cả nhân viên</p>
                             </a>
                         </li>
                     </ul>

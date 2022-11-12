@@ -51,7 +51,7 @@ Route::group([
             Route::get('/{id}/show', 'UserController@show')->name('backend.user.show');
             Route::post('/{id}/update', 'UserController@update')->name('backend.user.update');
         });
-        //Quản lí thể loại
+        //Quản lý thể loại
         Route::group(['prefix' => 'categories'], function(){
             Route::get('/', 'CategoryController@index')->name('backend.category.index');
             Route::get('/create', 'CategoryController@create')->name('backend.category.create');
@@ -61,7 +61,7 @@ Route::group([
             Route::delete('/{id}/delete', 'CategoryController@destroy')->name('backend.category.destroy');
             Route::get('/{id}/show', 'CategoryController@show')->name('backend.category.show');
         });
-        //Quản lí tác giả
+        //Quản lý tác giả
         Route::group(['prefix' => 'authors'], function(){
             Route::get('/', 'AuthorController@index')->name('backend.authors.index');
             Route::get('/create', 'AuthorController@create')->name('backend.authors.create');
