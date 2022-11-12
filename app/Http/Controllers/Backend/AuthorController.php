@@ -74,7 +74,10 @@ class AuthorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $author = Author::find($id);
+        return view('backend.authors.edit')->with([
+            'author' => $author
+        ]);
     }
 
     /**

@@ -37,9 +37,12 @@
                                     <td>{{ $publishing->name }}</td>
                                     <td>{{ count($publishing->products) }}</td>
                                     <td style="text-align: center">
-                                        <form action="{{ route('backend.publishings.destroy', $publishing->id) }}" method="POST">
+                                        <form action="{{ route('backend.publishings.destroy', $publishing->id) }}"
+                                              method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
+                                            <a href="{{ route('backend.publishings.edit',  $publishing->id) }}"
+                                               class="btn btn-primary">Cập nhật</a>
                                             <button class="btn btn-danger">Xóa</button>
                                         </form>
                                     </td>

@@ -60,6 +60,8 @@
                                               method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
+                                            <a href="{{ route('backend.authors.edit', $author->id) }}"
+                                               class="btn btn-primary">Cập nhật</a>
                                             <button class="btn btn-danger">Xóa</button>
                                         </form>
                                     </td>

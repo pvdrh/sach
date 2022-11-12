@@ -67,6 +67,8 @@ Route::group([
             Route::get('/create', 'AuthorController@create')->name('backend.authors.create');
             Route::post('/store', 'AuthorController@store')->name('backend.authors.store');
             Route::delete('/{author}/delete', 'AuthorController@destroy')->name('backend.authors.destroy');
+            Route::get('/{id}/edit', 'AuthorController@edit')->name('backend.authors.edit');
+            Route::post('/{id}/update', 'AuthorController@update')->name('backend.authors.update');
         });
         //NXB
         Route::group(['prefix' => 'publishings'], function(){
@@ -74,6 +76,8 @@ Route::group([
             Route::get('/create', 'PublishingController@create')->name('backend.publishings.create');
             Route::post('/store', 'PublishingController@store')->name('backend.publishings.store');
             Route::delete('/{id}/delete', 'PublishingController@destroy')->name('backend.publishings.destroy');
+            Route::get('/{id}/edit', 'PublishingController@edit')->name('backend.publishings.edit');
+            Route::post('/{id}/update', 'PublishingController@update')->name('backend.publishings.update');
         });
     });
 });
