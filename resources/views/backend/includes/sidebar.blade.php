@@ -10,9 +10,9 @@
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-{{--            <div class="image">--}}
-{{--                <img src="/storage{{ Illuminate\Support\Facades\Auth::user()->avatar }}" class="img-circle elevation-2" alt="User Image">--}}
-{{--            </div>--}}
+            {{--            <div class="image">--}}
+            {{--                <img src="/storage{{ Illuminate\Support\Facades\Auth::user()->avatar }}" class="img-circle elevation-2" alt="User Image">--}}
+            {{--            </div>--}}
             <div style="text-align: center; width: 100%" class="info">
                 <a href="#" class="d-block">Xin chào {{ Illuminate\Support\Facades\Auth::user()->name }}</a>
             </div>
@@ -56,75 +56,6 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
-                            Quản lý danh mục
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('backend.category.index') }}" class="nav-link">
-                                <i class="far fa-list-alt nav-icon"></i>
-                                <p> Tất cả danh mục</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('backend.category.create') }}" class="nav-link">
-                                <i class="fa fa-plus-circle nav-icon"></i>
-                                <p>Thêm mới danh mục</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>
-                            Quản lý tác giả
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('backend.authors.index') }}" class="nav-link">
-                                <i class="far fa-list-alt nav-icon"></i>
-                                <p> Danh sách tác giả</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('backend.authors.create') }}" class="nav-link">
-                                <i class="fa fa-plus-circle nav-icon"></i>
-                                <p>Thêm mới tác giả</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>
-                            Quản lý NXB
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('backend.publishings.index') }}" class="nav-link">
-                                <i class="far fa-list-alt nav-icon"></i>
-                                <p> Danh sách NXB</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('backend.publishings.create') }}" class="nav-link">
-                                <i class="fa fa-plus-circle nav-icon"></i>
-                                <p>Thêm mới NXB</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>
                             Quản lý đơn hàng
                             <i class="right fas fa-angle-left"></i>
                         </p>
@@ -150,24 +81,39 @@
                         </li>
                     </ul>
                 </li>
-                @if(\Illuminate\Support\Facades\Auth::user()->role == 0)
                 <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('backend.category.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
-                            Quản lý nhân viên
-                            <i class="right fas fa-angle-left"></i>
+                            Quản lý danh mục
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('backend.user.index') }}" class="nav-link">
-                                <i class="fa fa-user nav-icon" aria-hidden="true"></i>
-                                <p> Tất cả nhân viên</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
+                <li class="nav-item has-treeview menu-open">
+                    <a href="{{ route('backend.authors.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Quản lý tác giả
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview menu-open">
+                    <a href="{{ route('backend.publishings.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Quản lý NXB
+                        </p>
+                    </a>
+                </li>
+                @if(\Illuminate\Support\Facades\Auth::user()->role == 0)
+                    <li class="nav-item has-treeview menu-open">
+                        <a href="{{ route('backend.user.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                Quản lý nhân viên
+                            </p>
+                        </a>
+                    </li>
                 @endif
             </ul>
         </nav>

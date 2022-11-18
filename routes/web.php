@@ -50,6 +50,7 @@ Route::group([
             Route::get('/create', 'UserController@create')->name('backend.user.create');
             Route::get('/{id}/show', 'UserController@show')->name('backend.user.show');
             Route::post('/{id}/update', 'UserController@update')->name('backend.user.update');
+            Route::post('/store', 'UserController@store')->name('backend.user.store');
         });
         //Quản lý thể loại
         Route::group(['prefix' => 'categories'], function(){

@@ -3,17 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Product;
 use App\Models\User;
-use App\Models\Order;
-use Database\Seeders\CategoriesTableSeeder;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\Facades\Gate;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -40,7 +34,7 @@ class UserController extends Controller
      */
     public function create()
     {
-
+        return view('backend.users.create');
     }
 
     /**
@@ -51,7 +45,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $user = new User();
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        $user->password =  Hash::make($request->get('password'));
+        $user->role = $request->get('role');
 
+        $user->save();
+        return redirect()->route('backend.user.index');
     }
 
     /**

@@ -26,34 +26,42 @@
                 <div class="card">
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form role="form">
+                    <form method="post" role="form" action="{{ route('backend.user.store') }}">
+                        @csrf
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Tên</label>
-                                <input type="text" class="form-control" id="" placeholder="Tên người dùng">
+                                <input name="name" type="text" class="form-control" id="" placeholder="Tên người dùng">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email</label>
-                                <input type="email" class="form-control" id="" placeholder="Email">
+                                <input name="email" type="email" class="form-control" id="" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Số điện thoại</label>
+                                <input name="phone" type="text" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Mật khẩu</label>
-                                <input type="password" class="form-control" id="">
+                                <input name="password" type="password" class="form-control" id="">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Địa chỉ</label>
+                                <input name="address" type="text" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Quyền</label>
-                                <select class="form-control select2" style="width: 100%;">
-                                    <option>--- Chọn quyền ---</option>
-                                    <option>Admin</option>
-                                    <option>User</option>
+                                <select name="role" class="form-control select2" style="width: 100%;">
+                                    <option value="0">Admin</option>
+                                    <option value="1">User</option>
                                 </select>
                             </div>
                         </div>
                         <!-- /.card-body -->
 
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-sucess">Thêm mới</button>
-                            <button type="submit" class="btn btn-default">Huỷ bỏ</button>
+                            <button type="submit" class="btn btn-success">Thêm mới</button>
+                            <a href="{{route('backend.user.index')}}" class="btn btn-danger">Huỷ bỏ</a>
                         </div>
                     </form>
                 </div>

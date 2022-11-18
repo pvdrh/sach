@@ -813,9 +813,9 @@ textarea.input {
 	05 -> HOME SLIDER
 ===========================================================*/
 
-#home .home-wrap {
-  margin-left: 270px;
-}
+/*#home .home-wrap {*/
+/*  margin-left: 270px;*/
+/*}*/
 
 #home-slick .banner {
   margin: 0px;

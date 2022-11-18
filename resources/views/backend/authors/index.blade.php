@@ -39,6 +39,9 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
+                    <div style="padding: 20px 0px 0px 20px">
+                        <a class="btn btn-success" href="{{ route('backend.authors.create') }}"> Thêm mới</a>
+                    </div>
                     <div class="card-body">
                         <table id="" class="table table-bordered table-striped" style="width: 100%">
                             <thead>
