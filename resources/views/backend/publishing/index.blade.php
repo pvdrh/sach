@@ -46,7 +46,7 @@
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                             <a href="{{ route('backend.publishings.edit',  $publishing->id) }}"
-                                               class="btn btn-primary"><i style="height: 20px; width: 20px" class="fa fa-btn fa-edit"></i> Cập nhật</a>
+                                               class="btn btn-primary"><i class="fa fa-btn fa-edit"></i> Cập nhật</a>
                                             <button class="btn btn-danger"> <i class="fa fa-btn fa-trash"></i> Xóa</button>
                                         </form>
                                     </td>
