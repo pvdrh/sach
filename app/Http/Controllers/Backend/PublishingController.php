@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePublishingRequest;
+use App\Http\Requests\UpdatePublishingRequest;
 use App\Models\Publishing;
 use Illuminate\Http\Request;
 
@@ -80,7 +81,7 @@ class PublishingController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePublishingRequest $request, $id)
     {
         $pub = Publishing::find($id);
         $pub->name = $request->name;

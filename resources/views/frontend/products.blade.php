@@ -21,43 +21,21 @@
                 <!-- ASIDE -->
                 <div id="aside" class="col-md-3">
                     <!-- aside widget -->
-                    <div class="aside">
-                        <h3 class="aside-title">Nhà xuất bản:</h3>
-                        <ul class="list-links">
-                            <li><a href="{{ route('frontend.product.publishing', 1) }}">Kim Đồng</a></li>
-                            <li><a href="{{ route('frontend.product.publishing', 2) }}">Nhã Nam</a></li>
-                            <li><a href="{{ route('frontend.product.publishing', 3) }}">Đại học sư phạm</a></li>
-                        </ul>
-                    </div>
-                    <!-- /aside widget -->
 
-                    <!-- aside widget -->
                     <div class="aside">
-                        <h3 class="aside-title">Giá</h3>
-                        <ul class="list-links">
-                            <li><a href="#">Cao -> thấp</a></li>
-                            <li><a href="#">Thấp -> cao</a></li>
-                            <li><a href="#">< 100,000đ</a></li>
-                            <li><a href="#">< 100,000đ</a></li>
-                        </ul>
+                        <h3 class="aside-title">Sắp xếp</h3>
+                        <div class="sort-filter">
+                            <select class="input" id="order-select">
+                                <option value="0">HOT</option>
+                                <option value="0">Giá cao -> thấp</option>
+                                <option value="0">Giá thấp -> cao</option>
+                            </select>
+                            <a href="#" class="main-btn icon-btn"><i class="fa fa-arrow-down"></i></a>
+                        </div>
                     </div>
-                    <!-- aside widget -->
 
-                    <!-- aside widget -->
                     <div class="aside">
-                        <h3 class="aside-title">Top tác giả</h3>
-                        <ul class="list-links">
-                            <li><a href="{{ route('frontend.product.author', 2) }}">Oda Eiichiro</a></li>
-                            <li><a href="{{ route('frontend.product.author', 1) }}">Aoyama Ghoso</a></li>
-                            <li><a href="{{ route('frontend.product.author', 3) }}">Nguyễn Nhật Ánh</a></li>
-                            <li><a href="{{ route('frontend.product.author', 4) }}">Lê Bích</a></li>
-                        </ul>
-                    </div>
-                    <!-- /aside widget -->
-
-                    <!-- aside widget -->
-                    <div class="aside">
-                        <h3 class="aside-title">Thể loại bán chạy</h3>
+                        <h3 class="aside-title">Thể loại</h3>
                         <ul class="list-links">
                             <li><a href="{{ route('frontend.product.category', 2) }}">Truyện tranh</a></li>
                             <li><a href="{{ route('frontend.product.category', 1) }}">Trinh thám</a></li>
@@ -68,32 +46,8 @@
                     <!-- /aside widget -->
                 </div>
                 <!-- /ASIDE -->
-
                 <!-- MAIN -->
                 <div id="main" class="col-md-9">
-                    <!-- store top filter -->
-                    <div class="store-filter clearfix">
-                        <div class="pull-left">
-                            <div class="row-filter">
-                                <a href="#"><i class="fa fa-th-large"></i></a>
-                                <a href="#" class="active"><i class="fa fa-bars"></i></a>
-                            </div>
-                            <div class="sort-filter">
-                                <span class="text-uppercase">Sắp xếp theo:</span>
-                                <select class="input" id="order-select">
-                                    <option value="0">HOT</option>
-                                    <option value="0">Giá cao -> thấp</option>
-                                    <option value="0">Giá thấp -> cao</option>
-                                </select>
-                                <a href="#" class="main-btn icon-btn"><i class="fa fa-arrow-down"></i></a>
-                            </div>
-                        </div>
-                        <div class="pull-right">
-                            {!! $products->links() !!}
-                        </div>
-                    </div>
-                    <!-- /store top filter -->
-
                     <!-- STORE -->
                     <div id="store">
                         <!-- row -->
@@ -139,29 +93,6 @@
                         <!-- /row -->
                     </div>
                     <!-- /STORE -->
-
-                    <!-- store bottom filter -->
-                    <div class="store-filter clearfix">
-                        <div class="pull-left">
-                            <div class="row-filter">
-                                <a href="#"><i class="fa fa-th-large"></i></a>
-                                <a href="#" class="active"><i class="fa fa-bars"></i></a>
-                            </div>
-                            <div class="sort-filter">
-                                <span class="text-uppercase">Sắp xếp theo:</span>
-                                <select class="input">
-                                    <option value="0">HOT</option>
-                                    <option value="0">Giá cao -> thấp</option>
-                                    <option value="0">Giá thấp -> cao</option>
-                                </select>
-                                <a href="#" class="main-btn icon-btn"><i class="fa fa-arrow-down"></i></a>
-                            </div>
-                        </div>
-                        <div class="pull-right">
-                            {!! $products->links() !!}
-                        </div>
-                    </div>
-                    <!-- /store bottom filter -->
                 </div>
                 <!-- /MAIN -->
             </div>

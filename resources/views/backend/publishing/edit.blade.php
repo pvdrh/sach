@@ -29,10 +29,12 @@
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Tên nhà xuất bản</label>
-                                <input type="text" class="form-control" value="{{$publish->name}}" placeholder="Tên" name="name">
+                                <label for="exampleInputEmail1">Tên nhà xuất bản <span
+                                        style="color: red"> *</span></label>
+                                <input type="text" class="form-control" value="{{$publish->name}}"
+                                       placeholder="Nhập tên nhà xuất bản" name="name">
                                 @error('name')
-                                <p style="color: red">*{{ $message }}</p>
+                                <p style="color: red">{{ $message }}</p>
                                 @enderror
                             </div>
                         </div>
