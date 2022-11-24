@@ -109,6 +109,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="/backend/dist/js/backend.js"></script>
+<script src="//cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
 {{--<script src="/backend/dist/js/backend2.js"></script>--}}
 @yield('script')
 </body>

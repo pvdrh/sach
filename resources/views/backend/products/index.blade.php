@@ -41,21 +41,63 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
+                    <div style="padding: 20px 0px 0px 20px">
+                        <a class="btn btn-success" href="{{route('backend.product.create')}}"><i
+                                class="fa fa-btn fa-plus"></i> Thêm mới</a>
+                    </div>
                     <div class="card-body">
-                        <table id="productsTable" class="table table-bordered table-striped" style="width: 100%">
+                        <table class="table table-bordered table-striped" style="width: 100%">
                             <thead>
                             <tr>
                                 <th style="text-align: center">ID</th>
                                 <th>Tên sản phẩm</th>
-                                <th>Thể loại</th>
+                                <th style="text-align: center">Thể loại</th>
                                 <th>Ảnh</th>
                                 <th>Giá gốc</th>
                                 <th>Giá bán</th>
                                 <th>Giảm giá(%)</th>
                                 <th>Mô tả</th>
+                                <th>Tác giả</th>
                                 <th style="text-align: center">Hành động</th>
                             </tr>
                             </thead>
+                            <tbody>
+                            @foreach($products as $product)
+                                <tr>
+                                    <td style="text-align: center">{{ $product->id }}</td>
+                                    <td>{{ $product->name }}</td>
+                                    <td style="text-align: center">{{ $product->category->name }}</td>
+                                    <td style="text-align: center">Ảnh</td>
+                                    <td>{{ $product->origin_price }} VND</td>
+                                    <td>Giá bán VND</td>
+                                    <td>{{ $product->origin_price }} VND</td>
+                                    <td>{{ $product->content }} </td>
+                                    <td>{{ $product->author->name }} </td>
+{{--                                    <td>{{ $user->email }}</td>--}}
+{{--                                    <td>{{ $user->phone ?: 'Đang cập nhật' }}</td>--}}
+{{--                                    <td>{{ $user->address ?: 'Đang cập nhật'}}</td>--}}
+{{--                                    <td style="text-align: center">--}}
+{{--                                        @if($user->role == 0)--}}
+{{--                                            <b>Quản trị viên</b>--}}
+{{--                                        @elseif($user->role == 1)--}}
+{{--                                            Nhân viên--}}
+{{--                                        @endif--}}
+{{--                                    </td>--}}
+                                    <td style="text-align: center">
+                                        <form action="{{ route('backend.product.destroy', $product->id) }}" method="POST">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <a href="{{ route('backend.product.show', $product->id) }}"
+                                               class="btn btn-primary"><i class="fa fa-btn fa-edit"></i> Cập
+                                                nhật</a>
+                                                <button class="btn btn-danger"><i class="fa fa-btn fa-trash"></i> Xóa
+                                                </button>
+                                        </form>
+
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
                         </table>
                         <br>
                     </div>
