@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAuthorRequest;
+use App\Http\Requests\UpdatePublishingRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Author;
@@ -87,9 +88,13 @@ class AuthorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePublishingRequest $request, $id)
     {
-        //
+        $author = Author::find($id);
+        $author->name = $request->name;
+        $author->save();
+
+        return redirect()->route('backend.authors.index');
     }
 
     /**
