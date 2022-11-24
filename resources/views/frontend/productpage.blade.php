@@ -4,7 +4,7 @@
     <div id="breadcrumb">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="{{route('frontend.home.index')}}">Trang trủ</a></li>
+                <li><a href="{{route('frontend.home.index')}}">Trang chủ</a></li>
                 <li class="active">{{ $product->name }}</li>
             </ul>
         </div>

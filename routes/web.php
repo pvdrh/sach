@@ -48,7 +48,7 @@ Route::group([
         Route::group(['prefix' => 'users'], function(){
             Route::get('/', 'UserController@index')->name('backend.user.index');
             Route::get('/create', 'UserController@create')->name('backend.user.create');
-            Route::get('/{id}/show', 'UserController@show')->name('backend.user.show');
+            Route::get('/show/{id}', 'UserController@show')->name('backend.user.show');
             Route::post('/{id}/update', 'UserController@update')->name('backend.user.update');
             Route::delete('/{id}/delete', 'UserController@destroy')->name('backend.user.destroy');
             Route::post('/store', 'UserController@store')->name('backend.user.store');
@@ -69,7 +69,7 @@ Route::group([
             Route::get('/create', 'AuthorController@create')->name('backend.authors.create');
             Route::post('/store', 'AuthorController@store')->name('backend.authors.store');
             Route::delete('/{author}/delete', 'AuthorController@destroy')->name('backend.authors.destroy');
-            Route::get('/{id}/edit', 'AuthorController@edit')->name('backend.authors.edit');
+            Route::get('/edit/{id}', 'AuthorController@edit')->name('backend.authors.edit');
             Route::post('/{id}/update', 'AuthorController@update')->name('backend.authors.update');
         });
         //NXB
@@ -78,7 +78,7 @@ Route::group([
             Route::get('/create', 'PublishingController@create')->name('backend.publishings.create');
             Route::post('/store', 'PublishingController@store')->name('backend.publishings.store');
             Route::delete('/{id}/delete', 'PublishingController@destroy')->name('backend.publishings.destroy');
-            Route::get('/{id}/edit', 'PublishingController@edit')->name('backend.publishings.edit');
+            Route::get('/edit/{id}', 'PublishingController@edit')->name('backend.publishings.edit');
             Route::post('/{id}/update', 'PublishingController@update')->name('backend.publishings.update');
         });
     });
