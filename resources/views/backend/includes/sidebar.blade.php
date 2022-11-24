@@ -23,7 +23,8 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-                <li class="nav-item has-treeview menu-open">
+                <li class="nav-item has-treeview">
+{{--                <li class="nav-item has-treeview menu-open">--}}
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
@@ -38,21 +39,21 @@
                                 <p> Danh sách sản phẩm</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('backend.product.create') }}" class="nav-link">
-                                <i class="fa fa-plus-circle nav-icon"></i>
-                                <p>Thêm mới sản phẩm</p>
-                            </a>
-                        </li>
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="{{ route('backend.product.create') }}" class="nav-link">--}}
+{{--                                <i class="fa fa-plus-circle nav-icon"></i>--}}
+{{--                                <p>Thêm mới sản phẩm</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
                         <li class="nav-item">
                             <a href="{{ route('backend.product.only-trashed') }}" class="nav-link">
-                                <i class="far fa-trash-restore nav-icon"></i>
+                                <i class="far fa-list-alt nav-icon"></i>
                                 <p>Danh sách đã gỡ</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item has-treeview menu-open">
+                <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
@@ -62,15 +63,15 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('order.index') }}" class="nav-link">
-                                <i class="fa fa-check-circle-o nav-icon" aria-hidden="true"></i>
-                                <p> Đơn đã xác nhận</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="{{ route('order.nonAccept') }}" class="nav-link">
                                 <i class="fa fa-clock-o nav-icon" aria-hidden="true"></i>
                                 <p>Đơn chờ phê duyệt</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('order.index') }}" class="nav-link">
+                                <i class="fa fa-check-circle-o nav-icon" aria-hidden="true"></i>
+                                <p> Đơn đã xác nhận</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -81,7 +82,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item has-treeview menu-open">
+                <li class="nav-item has-treeview">
                     <a href="{{ route('backend.category.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
@@ -89,7 +90,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item has-treeview menu-open">
+                <li class="nav-item has-treeview">
                     <a href="{{ route('backend.authors.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
@@ -97,7 +98,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item has-treeview menu-open">
+                <li class="nav-item has-treeview">
                     <a href="{{ route('backend.publishings.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
@@ -106,7 +107,7 @@
                     </a>
                 </li>
                 @if(\Illuminate\Support\Facades\Auth::user()->role == 0)
-                    <li class="nav-item has-treeview menu-open">
+                    <li class="nav-item has-treeview">
                         <a href="{{ route('backend.user.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
                             <p>
