@@ -19,12 +19,19 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if (Gate::allows('show-users-list')){
-            $users = User::paginate(15);
+            $query = User::query();
+            $search = '';
+            if ($request->has('q') && strlen($request->input('q')) > 0) {
+                $query->where('email', 'LIKE', "%" . $request->input('q') . "%");
+                $search = $request->input('q');
+            }
+            $users = $query->paginate(10);
             return view('backend.users.index')->with([
-                'users' => $users
+                'users' => $users,
+                'search' => $search
             ]);
         }
 
@@ -58,6 +65,7 @@ class UserController extends Controller
         $user->is_protected = 0;
 
         $user->save();
+        Alert::success('Thành công!','Cập nhật thông tin thành công');
         return redirect()->route('backend.user.index');
     }
 

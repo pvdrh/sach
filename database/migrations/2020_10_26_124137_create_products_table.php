@@ -17,11 +17,11 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->nullable();
-            $table->integer('origin_price');
-            $table->integer('sale_price');
+            $table->integer('origin_price')->nullable();;
+            $table->integer('sale_price')->nullable();;
             $table->integer('discount_percent')->nullable();
             $table->string('content')->nullable();
-            $table->integer('author_id');
+            $table->integer('author_id')->nullable();;
             $table->integer('publishing_company_id');
             $table->integer('pages_count');
             $table->integer('category_id');

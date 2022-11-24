@@ -17,7 +17,7 @@ class PublishingController extends Controller
      */
     public function index()
     {
-        $publishings = Publishing::simplePaginate(15);
+        $publishings = Publishing::paginate(1);
         return view('backend.publishing.index')->with([
             'publishings' => $publishings
         ]);
