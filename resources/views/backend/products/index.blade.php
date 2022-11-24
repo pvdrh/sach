@@ -66,13 +66,13 @@
                                 <tr>
                                     <td style="text-align: center">{{ $product->id }}</td>
                                     <td>{{ $product->name }}</td>
-                                    <td style="text-align: center">{{ $product->category->name }}</td>
+                                    <td style="text-align: center">{{ $product->category ? $product->category->name : 'Đang cập nhật' }}</td>
                                     <td style="text-align: center">Ảnh</td>
-                                    <td>{{ $product->origin_price }} VND</td>
-                                    <td>Giá bán VND</td>
-                                    <td>{{ $product->origin_price }} VND</td>
+                                    <td>{{ number_format($product->origin_price) }} VND</td>
+                                    <td>{{ number_format($product->sale_price) }} VND</td>
+                                    <td>{{ $product->discount_percent }} </td>
                                     <td>{{ $product->content }} </td>
-                                    <td>{{ $product->author->name }} </td>
+                                    <td>{{ $product->author ? $product->author->name : 'Đang cập nhật' }} </td>
 {{--                                    <td>{{ $user->email }}</td>--}}
 {{--                                    <td>{{ $user->phone ?: 'Đang cập nhật' }}</td>--}}
 {{--                                    <td>{{ $user->address ?: 'Đang cập nhật'}}</td>--}}

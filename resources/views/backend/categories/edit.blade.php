@@ -34,7 +34,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Tên danh mục</label>
-                                <input type="text" class="form-control" id="" placeholder="Điền tên sản phẩm " name="name" value="{{ $category_edit->name }}">
+                                <input type="text" class="form-control" id="" placeholder="Nhập tên sản phẩm " name="name" value="{{ $category_edit->name }}">
                                 @error('name')
                                 <p style="color: #ff0000">*{{ $message }}</p>
                                 @enderror

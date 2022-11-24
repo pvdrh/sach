@@ -65,8 +65,12 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = Category::find($id);
-        dd($category);
+        $category_edit = Category::find($id);
+        $categories = Category::get();
+        return view('backend.categories.edit')->with([
+            'categories' => $categories,
+            'category_edit' => $category_edit
+        ]);
     }
 
     /**
@@ -100,6 +104,7 @@ class CategoryController extends Controller
         $category->parent_id = $request->get('parent_id');
         $category->depth = 1;
         $category->save();
+
         Alert::success('Thành công!', 'Cập nhật thông tin thành công!');
         return redirect()->route('backend.category.index');
     }

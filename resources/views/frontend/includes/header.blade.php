@@ -84,8 +84,8 @@
                                     @endforeach
                                 </div>
                                 @if(Gloudemans\Shoppingcart\Facades\Cart::count() == 0)
-                                    <div class="alert alert-info" role="alert">
-                                        Giỏ hàng của bạn đang rỗng! Hãy quay lại và mua hàng nào!!
+                                    <div style="text-align: center" class="alert alert-info" role="alert">
+                                        Chưa có sản phẩm nào trong giỏ hàng. Hãy tiếp tục mua sắm nào!
                                     </div>
                                 @else
                                     <div class="shopping-cart-btns">

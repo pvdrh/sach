@@ -4,9 +4,7 @@
     <div id="breadcrumb">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="#">Trang trủ</a></li>
-                <li><a href="#">Sản phảm</a></li>
-                <li><a href="#">Danh mục</a></li>
+                <li><a href="{{route('frontend.home.index')}}">Trang trủ</a></li>
                 <li class="active">{{ $product->name }}</li>
             </ul>
         </div>
@@ -38,7 +36,7 @@
                                 @endif
                             </div>
                             <h2 class="product-name">{{ $product->name }}</h2>
-                            <h3 class="product-price">{{ $product->sale_price }}@if($product->discount_percent != 0) <del class="product-old-price">{{ $product->origin_price }}</del>@endif</h3>
+                            <h3 class="product-price">{{ number_format($product->sale_price) }} VND @if($product->discount_percent != 0) <del class="product-old-price">{{ number_format($product->origin_price) }} VND</del>@endif</h3>
                             <div>
                                 <div class="product-rating">
                                     <i class="fa fa-star"></i>
@@ -49,14 +47,14 @@
                                 </div>
                             </div>
                             <p>
-                                <strong>Trang thái:</strong>
+                                <strong>Trạng thái:</strong>
                                 @if($product->status == 0) Tạm khóa
                                 @elseif($product->status == 1) Còn hàng
                                 @elseif($product->status == 2) Hết hàng
                                 @endif
                             </p>
-                            <p><strong>Tác giả:</strong> {{ $product->author->name }}</p>
-{{--                            <p><strong>Nhà xuất bản:</strong> {{ $product->publishing_company->name }}</p>--}}
+                            <p><strong>Tác giả:</strong> {{ $product->author ? $product->author->name : 'Đang cập nhật' }}</p>
+                            <p><strong>Nhà xuất bản:</strong> {{ $product->publishing_company ? $product->publishing_company->name : 'Đang cập nhật' }}</p>
                             <p>{{ $product->content }}</p>
                             <div class="product-options">
                             </div>
@@ -68,9 +66,6 @@
                                     Thêm vào giỏ
                                 </a>
                                 @endif
-                                <div class="pull-right">
-                                    <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                                </div>
                             </div>
                         </div>
                     </div>

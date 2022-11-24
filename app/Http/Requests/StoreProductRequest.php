@@ -25,13 +25,9 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'name' => 'required|min:1|max:255',
-            'category_id' => 'required',
-            'author_id' => 'required',
-            'publishing_company_id' => 'required',
-            'sale_price' => 'required|min:0',
-            'origin_price' => 'required|min:sale_price',
-            'discount_percent' => '',
-            'content' => 'required|min:5|max:255',
+            'sale_price' => 'min:origin_price',
+            'origin_price' => 'required|min:1',
+            'content' => 'max:2000',
             'image' => 'image|mimes:jpg,png,jpeg,gif,svg|required|max:10000',
             'images[]' => 'image|mimes:jpg,png,jpeg,gif,svg|max:10000',
             'status' => 'required'

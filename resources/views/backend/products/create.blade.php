@@ -7,9 +7,13 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{ route('backend.dashboard') }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-                                <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
-                            </svg> Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('backend.dashboard') }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-house" viewBox="0 0 16 16">
+                                <path
+                                    d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
+                            </svg>
+                            Trang chủ</a></li>
                     <li class="breadcrumb-item active">Thêm mới</li>
                 </ol>
             </div><!-- /.col -->
@@ -31,11 +35,12 @@
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Tên sản phẩm</label>
-                                <input value="{{old('name')}}" type="text" class="form-control" id="" placeholder="Nhập tên sản phẩm "
+                                <label for="exampleInputEmail1">Tên sản phẩm <span style="color: red"> *</span></label>
+                                <input value="{{old('name')}}" type="text" class="form-control" id=""
+                                       placeholder="Nhập tên sản phẩm "
                                        name="name">
                                 @error('name')
-                                <p style="color: red">*{{ $message }}</p>
+                                <p style="color: red">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="form-group">
@@ -47,7 +52,7 @@
                                     @endforeach
                                 </select>
                                 @error('category_id')
-                                <p style="color: red">*{{ $message }}</p>
+                                <p style="color: red">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="form-group">
@@ -59,7 +64,7 @@
                                     @endforeach
                                 </select>
                                 @error('author_id')
-                                <p style="color: red">*{{ $message }}</p>
+                                <p style="color: red">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="form-group">
@@ -71,36 +76,35 @@
                                     @endforeach
                                 </select>
                                 @error('publishing_company_id')
-                                <p style="color: red">*{{ $message }}</p>
+                                <p style="color: red">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-6">
                                     <div class="form-group">
-                                        <label>Giá khuyến mại</label>
-                                        <input value="{{old('sale_price')}}" type="text" class="form-control" placeholder="Điền giá khuyến mại"
-                                               name="sale_price">
-                                        @error('sale_price')
-                                        <p style="color: red">*{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label>Giá bán</label>
-                                        <input value="{{old('origin_price')}}" type="text" class="form-control" placeholder="Điền giá gốc"
+                                        <label>Giá bán <span style="color:red;"> *</span></label>
+                                        <input value="{{old('origin_price')}}" type="text"
+                                               class="form-control input-element"
+                                               placeholder="Nhập giá bán"
                                                name="origin_price">
                                         @error('origin_price')
-                                        <p style="color: red">*{{ $message }}</p>
+                                        <p style="color: red">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-6">
                                     <div class="form-group">
-                                        <label>Giảm giá</label>
-                                        <input type="text" class="form-control" placeholder="%" name="discount_percent">
+                                        <label>Giá khuyến mại <span style="color:red;"> *</span></label>
+                                        <input value="{{old('sale_price')}}" type="text"
+                                               class=" form-control input-element2"
+                                               placeholder="Nhập giá khuyến mại"
+                                               name="sale_price">
+                                        @error('sale_price')
+                                        <p style="color: red">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
+
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Mô tả sản phẩm</label>
@@ -108,42 +112,35 @@
                                           style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"
                                           name="content"></textarea>
                                 @error('content')
-                                <p style="color: red">*{{ $message }}</p>
+                                <p style="color: red">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputFile">Hình ảnh sản phẩm</label>
                                 <div class="input-group">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="exampleInputFile" name="image">
-                                        <label class="custom-file-label" for="exampleInputFile">Chọn tệp</label>
-                                    </div>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text" id="">Upload</span>
+                                        <input type="file" id="img" name="image" accept="image/*">
+                                        {{--                                        <input type="file" class="custom-file-input" id="exampleInputFile" name="image">--}}
+                                        {{--                                        <label class="custom-file-label" for="exampleInputFile">Chọn tệp</label>--}}
                                     </div>
                                 </div>
                                 @error('image')
-                                <p style="color: red">*{{ $message }}</p>
+                                <p style="color: red">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputFile">Hình ảnh liên quan</label>
                                 <div class="input-group">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="exampleInputFile"
-                                               name="images[]" multiple>
-                                        <label class="custom-file-label" for="exampleInputFile">Chọn tệp</label>
-                                    </div>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text" id="">Upload</span>
+                                        <input type="file" id="img" name="images[]" accept="image/*" multiple>
                                     </div>
                                 </div>
                                 @error('images')
-                                <p style="color: red">*{{ $message }}</p>
+                                <p style="color: red">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Trạng thái sản phẩm</label>
+                                <label>Trạng thái sản phẩm <span style="color: red"> *</span></label>
                                 <select class="form-control select2" style="width: 100%;" name="status">
                                     <option value="">--- Chọn trạng thái ---</option>
                                     <option value="0">Đang nhập</option>
@@ -151,7 +148,7 @@
                                     <option value="2">Hết hàng</option>
                                 </select>
                                 @error('status')
-                                <p style="color: red">*{{ $message }}</p>
+                                <p style="color: red">{{ $message }}</p>
                                 @enderror
                             </div>
                         </div>
@@ -168,11 +165,13 @@
                                 </svg>
                                 Lưu
                             </button>
-                            <button type="reset" class="btn btn-danger"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                                              fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                            <a href="{{route('backend.product.index')}}" class="btn btn-danger">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                     fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
                                           d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
-                                </svg> Huỷ bỏ</button>
+                                </svg>
+                                Huỷ bỏ</a>
                         </div>
                     </form>
                 </div>
@@ -180,4 +179,15 @@
         </div>
         <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->
+    <script>
+        var cleave = new Cleave('.input-element', {
+            numeral: true,
+            numeralThousandsGroupStyle: 'thousand',
+        });
+        var cleave2 = new Cleave('.input-element2', {
+            numeral: true,
+            numeralThousandsGroupStyle: 'thousand',
+        });
+
+    </script>
 @endsection

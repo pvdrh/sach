@@ -30,8 +30,7 @@
                             <tr>
                                 <th style="text-align: center">ID</th>
                                 <th>Tên danh mục</th>
-                                <th>Số sản phẩm</th>
-                                <th>Mô tả</th>
+                                <th style="text-align: center">Số sản phẩm</th>
                                 <th style="text-align: center">Hành động</th>
                             </tr>
                             </thead>
@@ -40,13 +39,12 @@
                                 <tr>
                                     <td style="text-align: center">{{ $category->id }}</td>
                                     <td>{{ $category->name }}</td>
-                                    <td>{{ count($category->products) }}</td>
-                                    <td></td>
+                                    <td style="text-align: center">{{ count($category->products) }}</td>
                                     <td style="text-align: center">
                                         <form action="{{ route('backend.category.destroy', $category->id) }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-                                            <a href="{{ route('backend.category.show', $category->id) }}" class="btn btn-primary"><i class="fa fa-btn fa-edit"></i> Cập nhật</a>
+                                            <a href="{{ route('backend.category.show', $category->id) }}" class="btn btn-default"><i class="fa fa-btn fa-edit"></i> Chi tiết</a>
                                             <button class="btn btn-danger"><i class="fa fa-btn fa-trash"></i> Xóa</button>
                                         </form>
                                     </td>

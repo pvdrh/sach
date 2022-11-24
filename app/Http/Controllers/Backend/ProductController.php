@@ -59,23 +59,29 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+        $origin_price = str_replace(',', '', $request->get('origin_price'));
+        $sale_price = str_replace(',', '', $request->get('sale_price'));
         $product = new Product();
         $product->name = $request->get('name');
         $product->slug = \Illuminate\Support\Str::slug($request->get('name'));
         $product->category_id = $request->get('category_id');
         $product->author_id = $request->get('author_id');
         $product->publishing_company_id = $request->get('publishing_company_id');
-        $product->origin_price = $request->get('origin_price');
-        $product->sale_price = $request->get('sale_price');
-        if ($request->get('discount_percent')) $product->discount_percent = $request->get('discount_percent');
-        else $product->discount_percent = 0;
+        $product->origin_price = (int)$origin_price;
+        $product->sale_price = (int)$sale_price;
+        if (!empty($sale_price)) {
+            $percent = ($sale_price / $origin_price) * 100;
+            $product->discount_percent = 100 - ceil($percent);
+        } else {
+            $product->discount_percent = 0;
+        }
         $product->content = $request->get('content');
-        if ($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $image = $request->file('image');
             $path = Storage::disk('public')->putFileAs('images', $image, $image->getClientOriginalName());
             $product->image = $path;
@@ -85,7 +91,7 @@ class ProductController extends Controller
         $product->status = $request->get('status');
         $product->user_id = Auth::user()->id;
         $product->save();
-        if ($request->hasFile('images')){
+        if ($request->hasFile('images')) {
             $files = $request->file('images');
             foreach ($files as $file) {
                 $path = Storage::disk('public')
@@ -97,14 +103,15 @@ class ProductController extends Controller
                 $image->save();
             }
         }
-        Alert::success('Tạo mới thành công!', 'Sản phẩm đã được thêm vào hệ thống!');
-        return redirect()->route('backend.product.create');
+        Alert::success('Thêm mới thành công.', 'Sản phẩm đã được thêm vào hệ thống!');
+
+        return redirect()->route('backend.product.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -123,7 +130,7 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -148,12 +155,13 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(StoreProductRequest $request, $id)
     {
+
         $product = Product::find($id);
         $product->name = $request->get('name');
         $product->slug = \Illuminate\Support\Str::slug($request->get('name'));
@@ -170,7 +178,6 @@ class ProductController extends Controller
         $product->save();
         $publishing = Publishing::find($request->get('publishing_company_id'));
         $publishing->products_count += 1;
-        dd($publishing);
         $publishing->save();
         $author = Author::find($request->get('author_id'));
         $author->products_count += 1;
@@ -182,7 +189,7 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -194,15 +201,15 @@ class ProductController extends Controller
                 $success = $product->delete();
                 if ($success) {
                     return response()->json([
-                        'error'=>false,
-                        'message'=>"Gỡ sản phẩm thành công!",
+                        'error' => false,
+                        'message' => "Gỡ sản phẩm thành công!",
                     ]);
                 }
             } catch (\Exception $exception) {
                 $message = "Không thành công!";
                 return response()->json([
-                    'error'=>true,
-                    'message'=>$exception->getMessage(),
+                    'error' => true,
+                    'message' => $exception->getMessage(),
                 ]);
             }
         } else {
@@ -246,15 +253,15 @@ class ProductController extends Controller
                 return $product->category->name;
             })
             ->editColumn('image', function ($product) {
-                return '<center><img src="/' .  $product->image . '" style="width: 150px"></center>';
+                return '<center><img src="/' . $product->image . '" style="width: 150px"></center>';
             })
             ->editColumn('name', function ($product) {
                 return '<a href="http://thanhdev.com:8080/product-page/' . $product->slug . '">' . $product->name . '</a>';
             })
             ->addColumn('action', function ($product) {
-                return '<a href="http://thanhdev.com:8080/admin/products/'. $product->id .'/show" class="btn btn-primary">Chi tiêt</a>
-                        <a href="http://thanhdev.com:8080/admin/products/'. $product->id .'/edit" class="btn btn-warning">Sửa</a>
-                        <button class="btn btn-danger btn-delete" data-id="'. $product->id . '">Gỡ</button>';
+                return '<a href="http://thanhdev.com:8080/admin/products/' . $product->id . '/show" class="btn btn-primary">Chi tiêt</a>
+                        <a href="http://thanhdev.com:8080/admin/products/' . $product->id . '/edit" class="btn btn-warning">Sửa</a>
+                        <button class="btn btn-danger btn-delete" data-id="' . $product->id . '">Gỡ</button>';
             })
 //            ->addIndexColumn()
             ->rawColumns(['action', 'image', 'category_id', 'name'])

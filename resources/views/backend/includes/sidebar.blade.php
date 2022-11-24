@@ -23,7 +23,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-                <li class="nav-item has-treeview">
+                <li class="nav-item has-treeview {{ request()->is('admin/products') || request()->is('admin/products/only-trashed') ? 'menu-open' : '' }}">
 {{--                <li class="nav-item has-treeview menu-open">--}}
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
@@ -32,19 +32,13 @@
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
+                    <ul class="nav nav-treeview ">
                         <li class="nav-item">
                             <a href="{{ route('backend.product.index') }}" class="nav-link">
                                 <i class="far fa-list-alt nav-icon"></i>
                                 <p> Danh sách sản phẩm</p>
                             </a>
                         </li>
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="{{ route('backend.product.create') }}" class="nav-link">--}}
-{{--                                <i class="fa fa-plus-circle nav-icon"></i>--}}
-{{--                                <p>Thêm mới sản phẩm</p>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
                         <li class="nav-item">
                             <a href="{{ route('backend.product.only-trashed') }}" class="nav-link">
                                 <i class="far fa-list-alt nav-icon"></i>
@@ -53,7 +47,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item has-treeview">
+                <li class="nav-item has-treeview {{ request()->is('orders') || request()->is('orders/non-accept') || request()->is('orders/success') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
@@ -61,7 +55,7 @@
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
+                    <ul class="nav nav-treeview ">
                         <li class="nav-item">
                             <a href="{{ route('order.nonAccept') }}" class="nav-link">
                                 <i class="fa fa-clock-o nav-icon" aria-hidden="true"></i>
@@ -82,7 +76,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item has-treeview">
+                <li class="nav-item has-treeview {{ request()->is('admin/categories') || request()->is('admin/categories/*') ? 'menu-open' : '' }}">
                     <a href="{{ route('backend.category.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
@@ -90,7 +84,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item has-treeview">
+                <li class="nav-item has-treeview {{ request()->is('admin/authors') || request()->is('admin/authors/*') ? 'menu-open' : '' }}">
                     <a href="{{ route('backend.authors.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
@@ -98,7 +92,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item has-treeview">
+                <li class="nav-item has-treeview {{ request()->is('admin/publishings') || request()->is('admin/publishings/*') ? 'menu-open' : '' }}">
                     <a href="{{ route('backend.publishings.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
@@ -107,7 +101,7 @@
                     </a>
                 </li>
                 @if(\Illuminate\Support\Facades\Auth::user()->role == 0)
-                    <li class="nav-item has-treeview">
+                    <li class="nav-item has-treeview @if(request()->is('admin/users/*') || request()->is('admin/users')) menu-open @endif">
                         <a href="{{ route('backend.user.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
                             <p>
