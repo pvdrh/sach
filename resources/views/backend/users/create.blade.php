@@ -37,14 +37,14 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Họ và tên<span style="color: red"> *</span></label>
-                                <input name="name" type="text" class="form-control" id="" placeholder="Tên người dùng">
+                                <input value="{{old('name')}}" name="name" type="text" class="form-control" id="" placeholder="Tên người dùng">
                                 @error('name')
                                 <p style="color: red">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email<span style="color: red"> *</span></label>
-                                <input name="email" type="email" class="form-control" id="" placeholder="Email">
+                                <input value="{{old('email')}}" name="email" type="email" class="form-control" id="" placeholder="Email">
                                 @error('email')
                                 <p style="color: red">{{ $message }}</p>
                                 @enderror
@@ -58,14 +58,14 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Số điện thoại</label>
-                                <input name="phone" type="text" placeholder="Nhập số điện thoại" class="form-control">
+                                <input value="{{old('phone')}}" name="phone" type="text" placeholder="Nhập số điện thoại" class="form-control">
                                 @error('phone')
                                 <p style="color: red">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Địa chỉ</label>
-                                <input name="address" type="text" placeholder="Nhập địa chỉ" class="form-control">
+                                <input value="{{old('address')}}" name="address" type="text" placeholder="Nhập địa chỉ" class="form-control">
                                 @error('address')
                                 <p style="color: red">{{ $message }}</p>
                                 @enderror

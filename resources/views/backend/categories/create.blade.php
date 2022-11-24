@@ -41,7 +41,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="name">Tên danh mục <span style="color: red"> *</span></label>
-                                <input type="text" class="form-control" id="" placeholder="Nhập tên danh mục"
+                                <input value="{{old('name')}}" type="text" class="form-control" id="" placeholder="Nhập tên danh mục"
                                        name="name">
                             </div>
                             <!-- /.card-body -->

@@ -32,7 +32,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Tên sản phẩm</label>
-                                <input type="text" class="form-control" id="" placeholder="Nhập tên sản phẩm "
+                                <input value="{{old('name')}}" type="text" class="form-control" id="" placeholder="Nhập tên sản phẩm "
                                        name="name">
                                 @error('name')
                                 <p style="color: red">*{{ $message }}</p>
@@ -78,7 +78,7 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Giá khuyến mại</label>
-                                        <input type="text" class="form-control" placeholder="Điền giá khuyến mại"
+                                        <input value="{{old('sale_price')}}" type="text" class="form-control" placeholder="Điền giá khuyến mại"
                                                name="sale_price">
                                         @error('sale_price')
                                         <p style="color: red">*{{ $message }}</p>
@@ -88,7 +88,7 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Giá bán</label>
-                                        <input type="text" class="form-control" placeholder="Điền giá gốc"
+                                        <input value="{{old('origin_price')}}" type="text" class="form-control" placeholder="Điền giá gốc"
                                                name="origin_price">
                                         @error('origin_price')
                                         <p style="color: red">*{{ $message }}</p>

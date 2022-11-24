@@ -31,7 +31,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Tên tác giả <span style="color: red"> *</span></label>
-                                <input type="text" class="form-control" id="" placeholder="Nhập tên tác giả" name="name">
+                                <input value="{{old('name')}}" type="text" class="form-control" id="" placeholder="Nhập tên tác giả" name="name">
                                 @error('name')
                                 <p style="color: red">{{ $message }}</p>
                                 @enderror

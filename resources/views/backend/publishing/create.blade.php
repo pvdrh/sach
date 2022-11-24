@@ -33,7 +33,7 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Tên nhà xuất bản <span
                                         style="color: red"> *</span></label>
-                                <input type="text" class="form-control" id="" placeholder="Nhập tên nhà xuất bản"
+                                <input value="{{old('name')}}" type="text" class="form-control" id="" placeholder="Nhập tên nhà xuất bản"
                                        name="name">
                                 @error('name')
                                 <p style="color: red;">{{ $message }}</p>
