@@ -22,9 +22,9 @@ class CreateProductsTable extends Migration
             $table->integer('discount_percent')->nullable();
             $table->string('content')->nullable();
             $table->integer('author_id')->nullable();;
-            $table->integer('publishing_company_id');
+            $table->integer('publishing_company_id')->nullable();;
             $table->integer('pages_count');
-            $table->integer('category_id');
+            $table->integer('category_id')->nullable();;
             $table->integer('status');
             $table->integer('rate')->nullable();
             $table->timestamps();

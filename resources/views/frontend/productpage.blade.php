@@ -56,7 +56,7 @@
                                 @endif
                             </p>
                             <p><strong>Tác giả:</strong> {{ $product->author->name }}</p>
-                            <p><strong>Nhà xuất bản:</strong> {{ $product->publishing_company->name }}</p>
+{{--                            <p><strong>Nhà xuất bản:</strong> {{ $product->publishing_company->name }}</p>--}}
                             <p>{{ $product->content }}</p>
                             <div class="product-options">
                             </div>
