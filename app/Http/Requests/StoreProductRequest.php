@@ -41,7 +41,7 @@ class StoreProductRequest extends FormRequest
     public function messages()
     {
         return [
-            'required' => ':attribute không được bỏ trống!',
+            'required' => ':attribute không được để trống!',
             'min' => ':attribute không được nhỏ hơn :min',
             'max' => ':attribute không được lớn hơn :max',
             'image' => 'File không hợp lệ'

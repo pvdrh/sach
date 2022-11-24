@@ -20,6 +20,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'admin@gmail.com',
                 'phone' => '0342956205',
                 'address' => 'Hà Nội',
+                'is_protected' => 1,
                 'role' => 0,
                 'password' => bcrypt('123456')
             ]);

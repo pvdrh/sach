@@ -38,22 +38,37 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Họ và tên<span style="color: red"> *</span></label>
                                 <input name="name" type="text" class="form-control" id="" placeholder="Tên người dùng">
+                                @error('name')
+                                <p style="color: red">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email<span style="color: red"> *</span></label>
                                 <input name="email" type="email" class="form-control" id="" placeholder="Email">
+                                @error('email')
+                                <p style="color: red">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Mật khẩu <span style="color: red"> *</span></label>
-                                <input name="password" type="password" class="form-control" id="">
+                                <input name="password" placeholder="Nhập mật khẩu" type="password" class="form-control" id="">
+                                @error('password')
+                                <p style="color: red">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Số điện thoại</label>
                                 <input name="phone" type="text" placeholder="Nhập số điện thoại" class="form-control">
+                                @error('phone')
+                                <p style="color: red">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Địa chỉ</label>
                                 <input name="address" type="text" placeholder="Nhập địa chỉ" class="form-control">
+                                @error('address')
+                                <p style="color: red">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label>Quyền <span style="color: red"> *</span></label>
@@ -61,6 +76,9 @@
                                     <option value="0">Admin</option>
                                     <option value="1">User</option>
                                 </select>
+                                @error('role')
+                                <p style="color: red">{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
                         <!-- /.card-body -->
