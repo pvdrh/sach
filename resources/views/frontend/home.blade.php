@@ -128,16 +128,6 @@
                                         <h4 class="product-price" style="color: #F8694A">{{ number_format($product->sale_price) }}đ</h4>
                                         <p>@if($product->discount_percent != 0) <del class="">{{ number_format($product->origin_price) }}đ</del>@endif</p>
                                         <span>Đã bán: {{ $product->sold }}</span>
-                                        <div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o empty"></i>
-                                        </div>
-                                        <div class="product-btns">
-                                            <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                                        </div>
                                     </div>
                                 </div>
                             @endforeach

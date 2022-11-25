@@ -5,7 +5,7 @@
         <div class="container">
             <ul class="breadcrumb">
                 <li><a href="#">Trang trủ</a></li>
-                <li class="active">Checkout</li>
+                <li class="active">Thanh toán</li>
             </ul>
         </div>
     </div>
@@ -29,29 +29,26 @@
                                 <input class="input" type="text" name="name" placeholder="Tên người nhận">
                             </div>
                             @error('name')
-                            <p style="color: red">*{{ $message }}</p>
+                            <p style="color: red">{{ $message }}</p>
                             @enderror
                             <div class="form-group">
                                 <input class="input" type="email" name="email" placeholder="Email">
                             </div>
                             @error('email')
-                            <p style="color: red">*{{ $message }}</p>
+                            <p style="color: red">{{ $message }}</p>
                             @enderror
                             <div class="form-group">
-                                <input class="input" type="text" name="phone" placeholder="Số điện thoại">
+                                <input class="input" max="12" type="text" name="phone" placeholder="Số điện thoại">
                             </div>
                             @error('phone')
-                            <p style="color: red">*{{ $message }}</p>
+                            <p style="color: red">{{ $message }}</p>
                             @enderror
                             <div class="form-group">
-                                <input class="input" type="text" name="address" placeholder="Địa chỉ">
+                                <input class="input" max="255" type="text" name="address" placeholder="Địa chỉ">
                             </div>
                             @error('address')
-                            <p style="color: red">*{{ $message }}</p>
+                            <p style="color: red">{{ $message }}</p>
                             @enderror
-                            <div class="form-group">
-                                <input class="input" type="text" name="code" placeholder="Mã giảm giá">
-                            </div>
                         </div>
                     </div>
 
@@ -62,7 +59,7 @@
                             </div>
                             <div class="input-checkbox">
                                 <input type="radio" name="shipping" id="shipping-1" value="shipping1" checked>
-                                <label for="shipping-1">Free Shiping -  0.00đ</label>
+                                <label for="shipping-1">Free Shiping - 0.00đ</label>
                                 <div class="caption">
                                     <p>
                                         Hàng sẽ được giao trong thời gian 3 đến 4 ngày
@@ -114,17 +111,25 @@
                                 <tbody>
                                 @foreach($items as $item)
                                     <tr>
-                                        <td class="thumb"><img src="{{ $item->options->image }}" alt="" style="width: 200px"></td>
+                                        <td class="thumb">
+                                            @if($item->options->image)
+                                                <img src="{{ $item->options->image }}" alt="" style="width: 200px"></td>
+                                        @else
+                                            <img src="/frontend/img/product-default.jpg" alt=""
+                                                 style="width: 200px"></td>
+                                        @endif
                                         <td class="details">
                                             <a href="#">{{ $item->name }}</a>
                                         </td>
                                         <td class="price text-center"><strong>{{ $item->price }}đ</strong><br>
                                             @if($item->options->discount_percent != 0)
-                                                <del class="font-weak"><small>{{ $item->options->origin_price }}đ</small></del>
+                                                <del class="font-weak"><small>{{ $item->options->origin_price }}
+                                                        đ</small></del>
                                             @endif
                                         </td>
                                         <td class="qty text-center">{{ $item->qty }}</td>
-                                        <td class="total text-center"><strong class="primary-color">{{ $item->price * $item->qty }}đ</strong></td>
+                                        <td class="total text-center"><strong
+                                                class="primary-color">{{ $item->price * $item->qty }}đ</strong></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -137,7 +142,9 @@
                                 <tr>
                                     <th class="empty" colspan="3"></th>
                                     <th>Tổng tiền</th>
-                                    <th colspan="2" class="total">{{ Gloudemans\Shoppingcart\Facades\Cart::total() }} VNĐ</th>
+                                    <th colspan="2" class="total">{{ Gloudemans\Shoppingcart\Facades\Cart::total() }}
+                                        VNĐ
+                                    </th>
                                 </tr>
                                 </tfoot>
                             </table>

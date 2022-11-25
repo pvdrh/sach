@@ -54,7 +54,9 @@
                         <div class="row">
                             <!-- Product Single -->
                             @if(count($products) == 0)
-                                <center>Không có sản phẩm</center>
+                                <div style="text-align: center">
+                                    <center>Không có sản phẩm</center>
+                                </div>
                             @else
                                 @foreach($products as $product)
                                     <!-- Product Single -->
@@ -66,11 +68,22 @@
                                                         <span class="sale">-{{ $product->discount_percent }}%</span>
                                                     @endif
                                                 </div>
-                                                <a href="{{ route('frontend.product-page.index', $product->slug) }}"><button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Xem</button></a>
-                                                <img src="/{{ $product->image }}" alt="">
+                                                <a href="{{ route('frontend.product-page.index', $product->slug) }}">
+                                                    <button class="main-btn quick-view"><i
+                                                            class="fa fa-search-plus"></i> Xem
+                                                    </button>
+                                                </a>
+                                                @if($product->image)
+                                                    <img src="/{{ $product->image }}" alt="">
+                                                @else
+                                                    <img src="/frontend/img/product-default.jpg"></img>
+                                                @endif
                                             </div>
                                             <div class="product-body">
-                                                <h3 class="product-price">{{ $product->sale_price }} @if($product->discount_percent != 0) <del class="product-old-price">{{ $product->origin_price }}</del>@endif</h3>
+                                                <h3 class="product-price">{{ $product->sale_price }} @if($product->discount_percent != 0)
+                                                        <del
+                                                            class="product-old-price">{{ $product->origin_price }}</del>
+                                                    @endif</h3>
                                                 <div class="product-rating">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
@@ -81,7 +94,8 @@
                                                 <h2 class="product-name"><a href="#">{{ $product->name }}</a></h2>
                                                 <span>Đã bán: {{ $product->sold }}</span>
                                                 <div class="product-btns">
-                                                    <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                                    <button class="main-btn icon-btn"><i class="fa fa-heart"></i>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>

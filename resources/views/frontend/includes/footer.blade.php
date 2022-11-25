@@ -14,15 +14,12 @@
                     </div>
                     <!-- /footer logo -->
 
-{{--                    <p>Nơi tập hợp của vô vàn sách trên thế giới</p>--}}
+                    <p style="font-size: 14px;
+    font-family: system-ui;margin-top: -20px">Bookcloud nhận đặt hàng trực tuyến và giao hàng tận nơi. KHÔNG hỗ trợ đặt mua và nhận hàng
+                        trực tiếp tại văn phòng cũng như tất cả Hệ Thống Bookcloud trên toàn quốc.</p>
 
                     <!-- footer social -->
-                    <ul class="footer-social">
-                        <li><a href="https://www.facebook.com/thanh.quang.200100" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="https://twitter.com/thanhnqcloud" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="https://www.instagram.com/thanhnqcloud/" target="_blank"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="https://www.youtube.com/channel/UCjo3kSGA-6Vmtd3eOCYyBVA" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
-                    </ul>
+
                     <!-- /footer social -->
                 </div>
             </div>
@@ -64,7 +61,8 @@
                 <!-- footer copyright -->
                 <div class="footer-copyright">
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved <i class="fa fa-heart-o" aria-hidden="true"></i>
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                    All rights reserved <i class="fa fa-heart-o" aria-hidden="true"></i>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </div>
                 <!-- /footer copyright -->

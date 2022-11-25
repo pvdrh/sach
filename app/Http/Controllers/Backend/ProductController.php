@@ -62,7 +62,7 @@ class ProductController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
         $origin_price = str_replace(',', '', $request->get('origin_price'));
         $sale_price = str_replace(',', '', $request->get('sale_price'));
