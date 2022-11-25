@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Exports\ExportFile;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Models\Author;
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Gate;
 use mysql_xdevapi\Exception;
 use Yajra\DataTables\DataTables;
 use RealRashid\SweetAlert\Facades\Alert;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class ProductController extends Controller
@@ -267,5 +269,12 @@ class ProductController extends Controller
 //            ->addIndexColumn()
             ->rawColumns(['action', 'image', 'category_id', 'name'])
             ->make(true);
+    }
+
+    public function export()
+    {
+        $products = Product::all();
+
+        return Excel::download(new ExportFile($products), 'Danh sách sản phẩm.xlsx');
     }
 }

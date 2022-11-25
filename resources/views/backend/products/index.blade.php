@@ -48,6 +48,7 @@
                     <div style="padding: 20px 0px 0px 20px">
                         <a class="btn btn-success" href="{{route('backend.product.create')}}"><i
                                 class="fa fa-btn fa-plus"></i> Thêm mới</a>
+                        <a class="btn btn-primary" href="{{route('backend.product.export')}}"><i class="fa fa-btn fa-file-excel"></i> Xuất Excel</a>
                     </div>
                     <div class="card-body">
                         <table class="table table-bordered table-striped" style="width: 100%">

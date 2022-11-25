@@ -35,6 +35,7 @@ Route::group([
             Route::get('/', 'ProductController@index')->name('backend.product.index');
             Route::get('/get-data', 'ProductController@getData');
             Route::get('/create', [\App\Http\Controllers\Backend\ProductController::class, 'create'])->name('backend.product.create');
+            Route::any('/export', [\App\Http\Controllers\Backend\ProductController::class, 'export'])->name('backend.product.export');
             Route::post('/store', [\App\Http\Controllers\Backend\ProductController::class, 'store'])->name('backend.product.store');
             Route::get('/{id?}/edit', 'ProductController@edit')->name('backend.product.edit');
             Route::post('/{id?}/update', 'ProductController@update')->name('backend.product.update');
