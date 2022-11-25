@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Models\Author;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
+
 //use phpDocumentor\Reflection\DocBlock\Tags\Author;
 
 class AuthorController extends Controller
@@ -53,6 +55,8 @@ class AuthorController extends Controller
         $author->slug = \Illuminate\Support\Str::slug($request->get('name'));
         $author->products_count = 0;
         $author->save();
+
+        Alert::success('Thành công', 'Thêm mới thành công!');
         return redirect()->route('backend.authors.index');
     }
 
@@ -94,6 +98,7 @@ class AuthorController extends Controller
         $author->name = $request->name;
         $author->save();
 
+        Alert::success('Thành công', 'Cập nhật thành công!');
         return redirect()->route('backend.authors.index');
     }
 

@@ -103,7 +103,7 @@ class ProductController extends Controller
                 $image->save();
             }
         }
-        Alert::success('Thêm mới thành công.', 'Sản phẩm đã được thêm vào hệ thống!');
+        Alert::success('Thành công', 'Cập nhật thành công!');
 
         return redirect()->route('backend.product.index');
     }
@@ -182,7 +182,8 @@ class ProductController extends Controller
         $author = Author::find($request->get('author_id'));
         $author->products_count += 1;
         $author->save();
-        Alert::success('Thành công!', 'Sản phẩm đã được cập nhật');
+
+        Alert::success('Thành công', 'Cập nhật thành công!');
         return redirect()->route('backend.product.index');
     }
 

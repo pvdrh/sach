@@ -12,6 +12,7 @@ class PusblishTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('publishing_companies')->truncate();
         DB::table('publishing_companies')->insert([
             'name' => 'Kim Dồng',
             'slug' => \Illuminate\Support\Str::slug('Kim Đồng'),

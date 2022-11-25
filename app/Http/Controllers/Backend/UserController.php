@@ -21,7 +21,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        if (Gate::allows('show-users-list')){
+        if (Gate::allows('show-users-list')) {
             $query = User::query();
             $search = '';
             if ($request->has('q') && strlen($request->input('q')) > 0) {
@@ -50,7 +50,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreUserRequest $request)
@@ -60,19 +60,19 @@ class UserController extends Controller
         $user->email = $request->get('email');
         $user->address = $request->get('address');
         $user->phone = $request->get('phone');
-        $user->password =  Hash::make($request->get('password'));
+        $user->password = Hash::make($request->get('password'));
         $user->role = (int)$request->get('role');
         $user->is_protected = 0;
 
         $user->save();
-        Alert::success('Thành công!','Cập nhật thông tin thành công');
+        Alert::success('Thành công', 'Thêm mới thành công!');
         return redirect()->route('backend.user.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -86,7 +86,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -97,8 +97,8 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateUserRequest $request, $id)
@@ -110,14 +110,14 @@ class UserController extends Controller
         $user->role = $request->role;
         $user->save();
 
-        Alert::success('Thành công!','Cập nhật thông tin thành công');
+        Alert::success('Thành công!', 'Cập nhật thông tin thành công');
         return redirect()->route('backend.user.index', $id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -126,11 +126,11 @@ class UserController extends Controller
         if ($user->is_protected == 0 && $id != Auth::user()->id) {
             $user->delete();
 
-            Alert::success('Thành công!','Xóa thành công!');
+            Alert::success('Thành công!', 'Xóa thành công!');
             return redirect()->route('backend.user.index');
         }
 
-        Alert::error('Thất bại!','Xóa không thành công!');
+        Alert::error('Thất bại!', 'Xóa không thành công!');
         return redirect()->route('backend.user.index');
     }
 

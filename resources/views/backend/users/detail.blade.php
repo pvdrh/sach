@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Thêm mới người dùng</h1>
+                <h1 class="m-0 text-dark">Chi tiết người dùng</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -37,42 +37,48 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Họ và tên<span style="color: red"> *</span></label>
-                                <input name="name" value="{{$user->name}}" type="text" class="form-control" id="" placeholder="Tên người dùng">
+                                <input name="name" value="{{$user->name}}" type="text" class="form-control" id=""
+                                       placeholder="Tên người dùng">
                                 @error('name')
                                 <p style="color: red">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email<span style="color: red"> *</span></label>
-                                <input name="email" readonly value="{{$user->email}}" type="email" class="form-control" id="" placeholder="Email">
+                                <input name="email" readonly value="{{$user->email}}" type="email" class="form-control"
+                                       id="" placeholder="Email">
                                 @error('email')
                                 <p style="color: red">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Số điện thoại</label>
-                                <input name="phone" value="{{$user->phone}}" type="text" placeholder="Nhập số điện thoại" class="form-control">
+                                <input name="phone" value="{{$user->phone}}" type="text"
+                                       placeholder="Nhập số điện thoại" class="form-control">
                                 @error('phone')
                                 <p style="color: red">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Địa chỉ</label>
-                                <input value="{{$user->address}}" name="address" type="text" placeholder="Nhập địa chỉ" class="form-control">
+                                <input value="{{$user->address}}" name="address" type="text" placeholder="Nhập địa chỉ"
+                                       class="form-control">
                                 @error('address')
                                 <p style="color: red">{{ $message }}</p>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label>Quyền <span style="color: red"> *</span></label>
-                                <select name="role" class="form-control select2" style="width: 100%;">
-                                    <option @if($user->role == 0) selected @endif value="0">Quản trị viên</option>
-                                    <option @if($user->role == 1) selected @endif value="1">Nhân viên</option>
-                                </select>
-                                @error('role')
-                                <p style="color: red">{{ $message }}</p>
-                                @enderror
-                            </div>
+                            @if (Auth::user()->role == 0)
+                                <div class="form-group">
+                                    <label>Quyền <span style="color: red"> *</span></label>
+                                    <select name="role" class="form-control select2" style="width: 100%;">
+                                        <option @if($user->role == 0) selected @endif value="0">Quản trị viên</option>
+                                        <option @if($user->role == 1) selected @endif value="1">Nhân viên</option>
+                                    </select>
+                                    @error('role')
+                                    <p style="color: red">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                            @endif
                         </div>
                         <!-- /.card-body -->
 
@@ -87,9 +93,15 @@
                                 </svg>
                                 Lưu
                             </button>
-                            <a href="{{route('backend.user.index')}}" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
-                                </svg> Huỷ bỏ</a>
+                            @if (Auth::user()->role == 0)
+                                <a href="{{route('backend.user.index')}}" class="btn btn-danger">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                         class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                              d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+                                    </svg>
+                                    Huỷ bỏ</a>
+                            @endif
                         </div>
                     </form>
                 </div>

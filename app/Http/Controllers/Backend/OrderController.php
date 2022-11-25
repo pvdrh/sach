@@ -63,7 +63,8 @@ class OrderController extends Controller
             $product->save();
         }
         Cart::destroy();
-        alert()->success('Đặt hàng thành công!', 'Đơn hàng của bạn sẽ được giao trong thời gian sớm nhất');
+        alert()->success('Đặt hàng thành công!', 'Đơn hàng của bạn sẽ được giao trong thời gian sớm nhất!');
+
         return redirect()->route('frontend.home.index');
     }
 

@@ -7,6 +7,7 @@ use App\Http\Requests\StorePublishingRequest;
 use App\Http\Requests\UpdatePublishingRequest;
 use App\Models\Publishing;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PublishingController extends Controller
 {
@@ -46,6 +47,8 @@ class PublishingController extends Controller
         $publishing->slug = \Illuminate\Support\Str::slug($request->get('name'));
         $publishing->products_count = 0;
         $publishing->save();
+
+        Alert::success('Thành công', 'Thêm mới thành công!');
         return redirect()->route('backend.publishings.index');
     }
 
@@ -87,6 +90,7 @@ class PublishingController extends Controller
         $pub->name = $request->name;
         $pub->save();
 
+        Alert::success('Thành công', 'Cập nhật thành công!');
         return redirect()->route('backend.publishings.index');
     }
 

@@ -53,7 +53,7 @@ class CategoryController extends Controller
         $category->parent_id = $request->get('parent_id');
         $category->depth = 1;
         $category->save();
-        Alert::success('Thành công!', 'Thể loại mới đã được thêm');
+        Alert::success('Thành công', 'Thêm mới thành công!');
         return redirect()->route('backend.category.index');
     }
 
@@ -105,7 +105,7 @@ class CategoryController extends Controller
         $category->depth = 1;
         $category->save();
 
-        Alert::success('Thành công!', 'Cập nhật thông tin thành công!');
+        Alert::success('Thành công', 'Cập nhật thành công!');
         return redirect()->route('backend.category.index');
     }
 
