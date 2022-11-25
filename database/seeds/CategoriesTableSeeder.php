@@ -28,20 +28,26 @@ class CategoriesTableSeeder extends Seeder
         ]);
 
         DB::table('categories')->insert([
-            'name' => 'Trinh thám',
-            'slug' => 'trinh-tham',
+            'name' => 'Sách thiếu nhi',
+            'slug' => 'sach-thieu-nhi',
             'depth' => 1
         ]);
 
         DB::table('categories')->insert([
-            'name' => 'Truyện tranh',
-            'slug' => 'truyen-tranh',
+            'name' => 'Tâm lý - Kĩ năng sống',
+            'slug' => 'tam-ly-ky-nang-song',
             'depth' => 1
         ]);
 
         DB::table('categories')->insert([
-            'name' => 'Tiểu thuyết',
-            'slug' => 'tieu-thuyet',
+            'name' => 'Sách học ngoại ngữ',
+            'slug' => 'sach-hoc-ngoai-ngu',
+            'depth' => 1
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Văn phòng phẩm',
+            'slug' => 'van-phong-pham',
             'depth' => 1
         ]);
     }

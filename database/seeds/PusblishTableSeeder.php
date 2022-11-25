@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class PublishingTableSeeder extends Seeder
+class PusblishTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +12,6 @@ class PublishingTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('publishing_companies')->truncate();
         DB::table('publishing_companies')->insert([
             'name' => 'Kim Dồng',
             'slug' => \Illuminate\Support\Str::slug('Kim Đồng'),
