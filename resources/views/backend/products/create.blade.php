@@ -128,17 +128,17 @@
                                 <p style="color: red">{{ $message }}</p>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputFile">Hình ảnh liên quan</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" id="img" name="images[]" accept="image/*" multiple>
-                                    </div>
-                                </div>
-                                @error('images')
-                                <p style="color: red">{{ $message }}</p>
-                                @enderror
-                            </div>
+{{--                            <div class="form-group">--}}
+{{--                                <label for="exampleInputFile">Hình ảnh liên quan</label>--}}
+{{--                                <div class="input-group">--}}
+{{--                                    <div class="custom-file">--}}
+{{--                                        <input type="file" id="img" name="images[]" accept="image/*" multiple>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                @error('images')--}}
+{{--                                <p style="color: red">{{ $message }}</p>--}}
+{{--                                @enderror--}}
+{{--                            </div>--}}
                             <div class="form-group">
                                 <label>Trạng thái sản phẩm <span style="color: red"> *</span></label>
                                 <select class="form-control select2" style="width: 100%;" name="status">

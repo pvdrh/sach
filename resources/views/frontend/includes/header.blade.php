@@ -66,7 +66,7 @@
                             </div>
                             <strong class="text-uppercase">Giỏ hàng</strong>
                             <br>
-                            <span>{{ Gloudemans\Shoppingcart\Facades\Cart::total() }}đ</span>
+                            <span>{{ Gloudemans\Shoppingcart\Facades\Cart::total() }} VND</span>
                         </a>
                         <div class="custom-menu">
                             <div id="shopping-cart">

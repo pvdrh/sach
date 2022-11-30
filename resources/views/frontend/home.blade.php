@@ -125,8 +125,8 @@
                                     </div>
                                     <div class="product-body">
                                         <h2 class="product-name"><a href="#">{{ $product->name }}</a></h2>
-                                        <h4 class="product-price" style="color: #F8694A">{{ number_format($product->sale_price) }}đ</h4>
-                                        <p>@if($product->discount_percent != 0) <del class="">{{ number_format($product->origin_price) }}đ</del>@endif</p>
+                                        <h4 class="product-price" style="color: #F8694A">{{ number_format($product->sale_price) }} VND</h4>
+                                        <p>@if($product->discount_percent != 0) <del class="">{{ number_format($product->origin_price) }} VND</del>@endif</p>
                                         <span>Đã bán: {{ $product->sold }}</span>
                                     </div>
                                 </div>
@@ -171,8 +171,8 @@
                             </div>
                             <div class="product-body">
                                 <h2 class="product-name"><a href="#">{{ $product->name }}</a></h2>
-                                <h4 class="product-price" style="color: #F8694A">{{ number_format($product->sale_price) }}đ</h4>
-                                <p>@if($product->discount_percent != 0) <del class="">{{ number_format($product->origin_price) }}đ</del>@endif</p>
+                                <h4 class="product-price" style="color: #F8694A">{{ number_format($product->sale_price) }} VND</h4>
+                                <p>@if($product->discount_percent != 0) <del class="">{{ number_format($product->origin_price) }}VND</del>@endif</p>
                                 <span>Đã bán: {{ $product->sold }}</span>
                             </div>
                         </div>
