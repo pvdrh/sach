@@ -43,7 +43,7 @@ Route::group([
             Route::delete('/{id}/force-delete', 'ProductController@hardDelete')->name('backend.product.force-delete');
             Route::get('/only-trashed', 'ProductController@onlyTrashed')->name('backend.product.only-trashed');
             Route::get('/{id}/restore', 'ProductController@restore')->name('backend.product.restore');
-            Route::get('/{id?}/show', 'ProductController@show')->name('backend.product.show');
+            Route::get('/show/{id?}', 'ProductController@show')->name('backend.product.show');
         });
         //Quản lý người dùng
         Route::group(['prefix' => 'users'], function(){

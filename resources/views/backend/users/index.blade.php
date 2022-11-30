@@ -27,18 +27,18 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div style="padding: 20px 0px 0px 20px; display: flex">
+                    <div class="col-lg-3" style="padding: 20px 0px 0px 20px; display: flex">
                         <a class="btn btn-success" href="{{route('backend.user.create')}}"><i
                                 class="fa fa-btn fa-plus"></i> Thêm mới</a>
-                        <div style="padding: 5px">
-                            <form role="search" method="get" action="{{route('backend.user.index')}}">
-                                <input value="{{$search}}" type="text" name="q">
-                                <button style="margin-left: 5px" type="submit" class="btn btn-default">
-                                    <i
-                                        class="fas fa-search"></i>
-                                </button>
-                            </form>
-                        </div>
+                        <form style="margin-top: 3px; margin-left: 20px" role="search" method="get"
+                              action="{{route('backend.user.index')}}">
+                            <input placeholder="Nhập email" style="height: 35px" value="{{$search}}" type="text"
+                                   name="q">
+                            <button style="margin-left: 5px" type="submit" class="btn btn-default">
+                                <i
+                                    class="fas fa-search"></i>
+                            </button>
+                        </form>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -81,7 +81,6 @@
                                                 </button>
                                             @endif
                                         </form>
-
                                     </td>
                                 </tr>
                             @endforeach

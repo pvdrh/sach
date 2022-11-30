@@ -27,17 +27,17 @@
                 <div class="card">
                     <div class="form-group">
                         <div style="padding: 20px 0px 0px 20px; display: flex">
-                            <a style="padding: -5px" class="btn btn-success" href="{{ route('backend.publishings.create') }}"><i
+                            <a style="padding: -5px" class="btn btn-success"
+                               href="{{ route('backend.publishings.create') }}"><i
                                     class="fa fa-btn fa-plus"></i> Thêm mới</a>
-                            <div style="padding: 5px">
-                                <form role="search" method="get" action="{{route('backend.publishings.index')}}">
-                                    <input type="text" name="q">
-                                    <button style="margin-left: 5px" type="submit" class="btn btn-default">
-                                        <i
-                                            class="fas fa-search"></i>
-                                    </button>
-                                </form>
-                            </div>
+                            <form style="margin-top: 3px; margin-left: 20px" role="search" method="get"
+                                  action="{{route('backend.publishings.index')}}">
+                                <input placeholder="Nhập tên nhà xuất bản" value="{{$search}}" style="height: 35px" type="text" name="q">
+                                <button style="margin-left: 5px" type="submit" class="btn btn-default">
+                                    <i
+                                        class="fas fa-search"></i>
+                                </button>
+                            </form>
                         </div>
                     </div>
 

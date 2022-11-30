@@ -19,7 +19,7 @@
                 <div class="header-search" style="">
                     <form method="POST" action="{{ route('frontend.product.search') }}">
                         @csrf
-                        <input class="input " type="text" placeholder="Tìm kiếm sản phẩm" name="search">
+                        <input class="input " type="text" placeholder="Nhập tên sản phẩm" name="search">
                         <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
                     </form>
                 </div>

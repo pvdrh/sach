@@ -16,11 +16,18 @@ class PublishingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $publishings = Publishing::paginate(1);
+        $query = Publishing::query();
+        $search = '';
+        if ($request->has('q') && strlen($request->input('q')) > 0) {
+            $query->where('name', 'LIKE', "%" . $request->input('q') . "%");
+            $search = $request->input('q');
+        }
+        $publishings = $query->paginate(15);
         return view('backend.publishing.index')->with([
-            'publishings' => $publishings
+            'publishings' => $publishings,
+            'search' => $search
         ]);
     }
 

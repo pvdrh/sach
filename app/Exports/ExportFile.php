@@ -3,9 +3,12 @@
 namespace App\Exports;
 
 use App\Models\Product;
+use Maatwebsite\Excel\Concerns\WithColumnWidths;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
-class ExportFile implements FromCollection
+class ExportFile implements FromCollection, WithMapping, WithHeadings, WithColumnWidths
 {
     private $products;
 
@@ -50,11 +53,11 @@ class ExportFile implements FromCollection
     {
         return [
             'A' => 30,
-            'B' => 30,
-            'C' => 25,
-            'D' => 20,
+            'B' => 25,
+            'C' => 15,
+            'D' => 15,
             'E' => 20,
-            'F' => 10,
+            'F' => 15,
         ];
     }
 }

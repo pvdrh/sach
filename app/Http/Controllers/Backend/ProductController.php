@@ -27,11 +27,18 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::orderBy('created_at', 'DESC')->get();
+        $query = Product::query();
+        $search = '';
+        if ($request->has('q') && strlen($request->input('q')) > 0) {
+            $query->where('name', 'LIKE', "%" . $request->input('q') . "%");
+            $search = $request->input('q');
+        }
+        $products = $query->orderBy('created_at', 'DESC')->paginate(15);
         return view('backend.products.index')->with([
-            'products' => $products
+            'products' => $products,
+            'search' => $search
         ]);
     }
 
@@ -235,7 +242,7 @@ class ProductController extends Controller
 
     public function onlyTrashed()
     {
-        $products = Product::onlyTrashed()->get();
+        $products = Product::onlyTrashed()->paginate(15);
         return view('backend.products.onlyTrashed')->with([
             'products' => $products
         ]);

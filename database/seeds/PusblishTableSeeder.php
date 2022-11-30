@@ -14,7 +14,7 @@ class PusblishTableSeeder extends Seeder
     {
         DB::table('publishing_companies')->truncate();
         DB::table('publishing_companies')->insert([
-            'name' => 'Kim Dồng',
+            'name' => 'Kim đồng',
             'slug' => \Illuminate\Support\Str::slug('Kim Đồng'),
             'products_count' => 0
         ]);

@@ -45,10 +45,20 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div style="padding: 20px 0px 0px 20px">
+                    <div style="padding: 20px 0px 0px 20px; display: flex">
                         <a class="btn btn-success" href="{{route('backend.product.create')}}"><i
                                 class="fa fa-btn fa-plus"></i> Thêm mới</a>
-                        <a class="btn btn-primary" href="{{route('backend.product.export')}}"><i class="fa fa-btn fa-file-excel"></i> Xuất Excel</a>
+                        <a style="margin-left: 10px" class="btn btn-primary" href="{{route('backend.product.export')}}"><i
+                                class="fa fa-btn fa-file-excel"></i> Xuất Excel</a>
+                        <form style="margin-top: 3px; margin-left: 20px" role="search" method="get"
+                              action="{{route('backend.product.index')}}">
+                            <input placeholder="Nhập tên sản phẩm" value="{{$search}}" style="height: 35px" type="text"
+                                   name="q">
+                            <button style="margin-left: 5px" type="submit" class="btn btn-default">
+                                <i
+                                    class="fas fa-search"></i>
+                            </button>
+                        </form>
                     </div>
                     <div class="card-body">
                         <table class="table table-bordered table-striped" style="width: 100%">
@@ -76,12 +86,13 @@
                                     <td style="text-align: center">{{ $product->category ? $product->category->name : 'Đang cập nhật' }}</td>
                                     <td style="text-align: center;">
                                         @if ($product->image)
-                                        <img
-                                            style="width: 160px;height: 200px;object-fit: cover;"
-                                            src="/{{$product->image}}">
+                                            <img
+                                                style="width: 160px;height: 200px;object-fit: cover;"
+                                                src="/{{$product->image}}">
                                         @else
-                                            <img style="width: 160px;height: 200px;object-fit: cover;" src="/frontend/img/product-default.jpg"></img>
-                                    @endif</td>
+                                            <img style="width: 160px;height: 200px;object-fit: cover;"
+                                                 src="/frontend/img/product-default.jpg"></img>
+                                        @endif</td>
                                     <td>{{ number_format($product->origin_price) }} VND</td>
                                     <td>{{ number_format($product->sale_price) }} VND</td>
                                     <td style="text-align: center">{{ $product->discount_percent }} </td>
@@ -112,6 +123,7 @@
                             </tbody>
                         </table>
                         <br>
+                        <div style="float: right">{!! $products->links() !!}</div>
                     </div>
                     <!-- /.card-body -->
                 </div>

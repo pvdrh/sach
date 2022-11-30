@@ -28,7 +28,7 @@ class UserController extends Controller
                 $query->where('email', 'LIKE', "%" . $request->input('q') . "%");
                 $search = $request->input('q');
             }
-            $users = $query->paginate(10);
+            $users = $query->paginate(15);
             return view('backend.users.index')->with([
                 'users' => $users,
                 'search' => $search

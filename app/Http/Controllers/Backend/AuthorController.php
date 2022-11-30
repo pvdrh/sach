@@ -21,11 +21,18 @@ class AuthorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $authors = Author::simplePaginate(15);
+        $query = Author::query();
+        $search = '';
+        if ($request->has('q') && strlen($request->input('q')) > 0) {
+            $query->where('email', 'LIKE', "%" . $request->input('q') . "%");
+            $search = $request->input('q');
+        }
+        $authors = $query->paginate(15);
         return view('backend.authors.index')->with([
-           'authors' => $authors
+            'authors' => $authors,
+            'search' => $search
         ]);
     }
 
@@ -45,7 +52,7 @@ class AuthorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreAuthorRequest $request)
@@ -63,7 +70,7 @@ class AuthorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -74,7 +81,7 @@ class AuthorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -88,8 +95,8 @@ class AuthorController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(UpdatePublishingRequest $request, $id)
@@ -105,7 +112,7 @@ class AuthorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
