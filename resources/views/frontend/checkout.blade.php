@@ -4,7 +4,7 @@
     <div id="breadcrumb">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="#">Trang trủ</a></li>
+                <li><a href="#">Trang chủ</a></li>
                 <li class="active">Thanh toán</li>
             </ul>
         </div>
@@ -66,15 +66,15 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="input-checkbox">
-                                <input type="radio" name="shipping" id="shipping-2" value="shipping2">
-                                <label for="shipping-2">Giao hàng nhanh - 30.000đ</label>
-                                <div class="caption">
-                                    <p>
-                                        Hàng sẽ được giao trong 36h kể từ khi đặt hàng
-                                    </p>
-                                </div>
-                            </div>
+{{--                            <div class="input-checkbox">--}}
+{{--                                <input type="radio" name="shipping" id="shipping-2" value="shipping2">--}}
+{{--                                <label for="shipping-2">Giao hàng nhanh - 30.000đ</label>--}}
+{{--                                <div class="caption">--}}
+{{--                                    <p>--}}
+{{--                                        Hàng sẽ được giao trong 36h kể từ khi đặt hàng--}}
+{{--                                    </p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                         </div>
 
                         <div class="payments-methods">
@@ -85,10 +85,10 @@
                                 <input type="radio" name="payments" id="payments-1" value="pay1" checked>
                                 <label for="payments-1">Thanh toán khi nhận hàng</label>
                             </div>
-                            <div class="input-checkbox">
-                                <input type="radio" name="payments" id="payments-2" value="pay2">
-                                <label for="payments-2">Chuyển khoản ngân hàng</label>
-                            </div>
+{{--                            <div class="input-checkbox">--}}
+{{--                                <input type="radio" name="payments" id="payments-2" value="pay2">--}}
+{{--                                <label for="payments-2">Chuyển khoản ngân hàng</label>--}}
+{{--                            </div>--}}
                         </div>
                     </div>
 
@@ -121,24 +121,24 @@
                                         <td class="details">
                                             <a href="#">{{ $item->name }}</a>
                                         </td>
-                                        <td class="price text-center"><strong>{{ $item->price }}đ</strong><br>
+                                        <td class="price text-center"><strong>{{ number_format($item->price) }} VND</strong><br>
                                             @if($item->options->discount_percent != 0)
-                                                <del class="font-weak"><small>{{ $item->options->origin_price }}
-                                                        đ</small></del>
+                                                <del class="font-weak"><small>{{ number_format($item->options->origin_price) }}
+                                                         VND</small></del>
                                             @endif
                                         </td>
                                         <td class="qty text-center">{{ $item->qty }}</td>
                                         <td class="total text-center"><strong
-                                                class="primary-color">{{ $item->price * $item->qty }}đ</strong></td>
+                                                class="primary-color">{{ number_format($item->price * $item->qty) }} VND</strong></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                                 <tfoot>
-                                <tr>
-                                    <th class="empty" colspan="3"></th>
-                                    <th>Phí ship</th>
-                                    <th colspan="2" class="total"> VNĐ</th>
-                                </tr>
+{{--                                <tr>--}}
+{{--                                    <th class="empty" colspan="3"></th>--}}
+{{--                                    <th>Phí ship</th>--}}
+{{--                                    <th colspan="2" class="total"> VNĐ</th>--}}
+{{--                                </tr>--}}
                                 <tr>
                                     <th class="empty" colspan="3"></th>
                                     <th>Tổng tiền</th>

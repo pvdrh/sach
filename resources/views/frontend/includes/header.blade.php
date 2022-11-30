@@ -77,7 +77,7 @@
                                                 <img src="/{{ $item->options->image }}" alt="">
                                             </div>
                                             <div class="product-body">
-                                                <h3 class="product-price">{{ $item->price }}đ <span class="qty">x{{ $item->qty }}</span></h3>
+                                                <h3 class="product-price">{{ number_format($item->price) }} VND <span class="qty">x{{ $item->qty }}</span></h3>
                                                 <h2 class="product-name"><a href="#">{{ $item->name }}</a></h2>
                                             </div>
                                         </div>

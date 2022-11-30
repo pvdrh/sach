@@ -88,7 +88,7 @@ Route::group([
 Route::group([
     'namespace' => 'Frontend',
 ], function (){
-    //Trang trủ website
+    //Trang chủ website
     Route::get('/', [\App\Http\Controllers\Frontend\HomeController::class, 'index'])->name('frontend.home.index');
     //Chi tiết sản phẩm
     Route::get('/product-page/{slug}', 'ProductController@show')->name('frontend.product-page.index');

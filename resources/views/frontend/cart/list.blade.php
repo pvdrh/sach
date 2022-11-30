@@ -34,13 +34,13 @@
                                     <td class="details">
                                         <a href="#">{{ $item->name }}</a>
                                     </td>
-                                    <td class="price text-center"><strong>{{ $item->price }}đ</strong><br>
+                                    <td class="price text-center"><strong>{{ number_format($item->price) }} VND</strong><br>
                                         @if($item->options->discount_percent != 0)
-                                            <del class="font-weak"><small>{{ $item->options->origin_price }}đ</small></del>
+                                            <del class="font-weak"><small>{{ number_format($item->options->origin_price) }} VND</small></del>
                                         @endif
                                     </td>
                                     <td class="qty text-center"><input class="input item-qty" type="number" data-id="{{ $item->rowId }}" name="item-qty" value="{{ $item->qty }}"></td>
-                                    <td class="total text-center"><strong class="primary-color">{{ $item->price * $item->qty }}đ</strong></td>
+                                    <td class="total text-center"><strong class="primary-color">{{ number_format($item->price * $item->qty) }} VND</strong></td>
                                     <td class="text-right">
                                         <form action="{{ route('frontend.cart.remove', $item->rowId) }}" method="POST">
                                             {{ csrf_field() }}

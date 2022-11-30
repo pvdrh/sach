@@ -4,7 +4,7 @@
     <div id="breadcrumb">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="#">Trang trủ</a></li>
+                <li><a href="#">Trang chủ</a></li>
                 <li class="active">Sản phẩm</li>
             </ul>
         </div>
