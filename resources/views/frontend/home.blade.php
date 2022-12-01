@@ -1,18 +1,18 @@
 @extends('frontend.layouts.master')
 @section('breadcrumb')
-{{--    <div id="breadcrumb">--}}
-{{--        <div class="container">--}}
-{{--            <ul class="breadcrumb">--}}
-{{--                <li><a href="#">Home</a></li>--}}
-{{--                <li class="active"></li>--}}
-{{--            </ul>--}}
-{{--        </div>--}}
-{{--    </div>--}}
+    {{--    <div id="breadcrumb">--}}
+    {{--        <div class="container">--}}
+    {{--            <ul class="breadcrumb">--}}
+    {{--                <li><a href="#">Home</a></li>--}}
+    {{--                <li class="active"></li>--}}
+    {{--            </ul>--}}
+    {{--        </div>--}}
+    {{--    </div>--}}
 @endsection
 
 @section('content')
     <!-- HOME -->
-{{--    @dd($listCategories)--}}
+    {{--    @dd($listCategories)--}}
     <div id="home">
         <!-- container -->
         <div class="container">
@@ -23,7 +23,8 @@
                     <!-- banner -->
                     <a href="">
                         <div class="banner banner-1">
-                            <img src="https://cdn0.fahasa.com/media/magentothem/banner7/920x420_phienchodocu.png" alt="">
+                            <img src="https://cdn0.fahasa.com/media/magentothem/banner7/920x420_phienchodocu.png"
+                                 alt="" style="width: 1140px; height: 520px; object-fit: cover">
                         </div>
                     </a>
                     <!-- /banner -->
@@ -31,7 +32,8 @@
                     <!-- banner -->
                     <a href="">
                         <div class="banner banner-1">
-                            <img src="https://cdn0.fahasa.com/media/magentothem/banner7/MSAT_mainbanner_920x420.jpg" alt="">
+                            <img src="https://cdn0.fahasa.com/media/magentothem/banner7/MSAT_mainbanner_920x420.jpg"
+                                 alt="" style="width: 1140px; height: 520px; object-fit: cover">
                         </div>
                     </a>
                     <!-- /banner -->
@@ -39,7 +41,17 @@
                     <!-- banner -->
                     <a href="">
                         <div class="banner banner-1">
-                            <img src="https://cdn0.fahasa.com/media/magentothem/banner7/920x420_TruyenThongChuongTrinh.jpg" alt="">
+                            <img style="width: 1140px; height: 520px; object-fit: cover"
+                                 src="https://cdn0.fahasa.com/media/magentothem/banner7/920x420_TruyenThongChuongTrinh.jpg"
+                                 alt="">
+                        </div>
+                    </a>
+
+                    <a href="">
+                        <div class="banner banner-1">
+                            <img style="width: 1140px; height: 520px; object-fit: cover"
+                                 src="https://cdn0.fahasa.com/media/magentothem/banner7/Trang_Manga-Comic_Mainbanner_T10_Slide_840x320.jpg"
+                                 alt="">
                         </div>
                     </a>
                     <!-- /banner -->
@@ -77,7 +89,8 @@
                 <!-- banner -->
                 <div class="col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3">
                     <a class="banner banner-1" href="#">
-                        <img src="https://cdn0.fahasa.com/media/wysiwyg/Thang-11-2020/do-choi-resize-310x210.png" alt="">
+                        <img src="https://cdn0.fahasa.com/media/wysiwyg/Thang-11-2020/do-choi-resize-310x210.png"
+                             alt="">
                     </a>
                 </div>
                 <!-- /banner -->
@@ -120,13 +133,17 @@
                                                 <span class="sale">-{{ $product->discount_percent }}%</span>
                                             @endif
                                         </div>
-                                        <a href="{{ route('frontend.product-page.index', $product->slug) }}" class="main-btn quick-view"><i class="fa fa-search-plus"></i> Xem</a>
+                                        <a href="{{ route('frontend.product-page.index', $product->slug) }}"
+                                           class="main-btn quick-view"><i class="fa fa-search-plus"></i> Xem</a>
                                         <img src="/{{ $product->image }}" alt="">
                                     </div>
                                     <div class="product-body">
                                         <h2 class="product-name"><a href="#">{{ $product->name }}</a></h2>
-                                        <h4 class="product-price" style="color: #F8694A">{{ number_format($product->sale_price) }} VND</h4>
-                                        <p>@if($product->discount_percent != 0) <del class="">{{ number_format($product->origin_price) }} VND</del>@endif</p>
+                                        <h4 class="product-price"
+                                            style="color: #F8694A">{{ number_format($product->sale_price) }} VND</h4>
+                                        <p>@if($product->discount_percent != 0)
+                                                <del class="">{{ number_format($product->origin_price) }} VND</del>
+                                            @endif</p>
                                         <span>Đã bán: {{ $product->sold }}</span>
                                     </div>
                                 </div>
@@ -166,13 +183,17 @@
                                         <span class="sale">-{{ $product->discount_percent }}%</span>
                                     @endif
                                 </div>
-                                <a href="{{ route('frontend.product-page.index', $product->slug) }}" class="main-btn quick-view"><i class="fa fa-search-plus"></i> Xem</a>
+                                <a href="{{ route('frontend.product-page.index', $product->slug) }}"
+                                   class="main-btn quick-view"><i class="fa fa-search-plus"></i> Xem</a>
                                 <img src="/{{ $product->image }}" alt="">
                             </div>
                             <div class="product-body">
                                 <h2 class="product-name"><a href="#">{{ $product->name }}</a></h2>
-                                <h4 class="product-price" style="color: #F8694A">{{ number_format($product->sale_price) }} VND</h4>
-                                <p>@if($product->discount_percent != 0) <del class="">{{ number_format($product->origin_price) }}VND</del>@endif</p>
+                                <h4 class="product-price"
+                                    style="color: #F8694A">{{ number_format($product->sale_price) }} VND</h4>
+                                <p>@if($product->discount_percent != 0)
+                                        <del class="">{{ number_format($product->origin_price) }}VND</del>
+                                    @endif</p>
                                 <span>Đã bán: {{ $product->sold }}</span>
                             </div>
                         </div>

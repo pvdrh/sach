@@ -13,6 +13,11 @@ class User extends Authenticatable
     use Notifiable,
         SoftDeletes;
 
+    const ROLE = [
+        'admin' => 0,
+        'employee' => 1,
+        'customer' => 2,
+    ];
     public function products()
     {
         return $this->hasMany(Product::class);

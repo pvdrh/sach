@@ -26,9 +26,8 @@
                         <h3 class="aside-title">Sắp xếp</h3>
                         <div class="sort-filter">
                             <select class="input" id="order-select">
-                                <option value="0">HOT</option>
-                                <option value="0">Giá cao -> thấp</option>
-                                <option value="0">Giá thấp -> cao</option>
+                                <option value="DESC">Giá cao -> thấp</option>
+                                <option value="ASC">Giá thấp -> cao</option>
                             </select>
                             <a href="#" class="main-btn icon-btn"><i class="fa fa-arrow-down"></i></a>
                         </div>

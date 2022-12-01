@@ -72,15 +72,13 @@
                             @foreach($authors as $author)
                                 <tr>
                                     <td style="text-align: center">{{ $author->id }}</td>
-                                    <td>{{ $author->name }}</td>
+                                    <td> <a href="{{ route('backend.authors.edit', $author->id) }}">{{ $author->name }}</a></td>
                                     <td>{{ count($author->products) }}</td>
                                     <td style="text-align: center">
                                         <form action="{{ route('backend.authors.destroy', $author->id) }}"
                                               method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-                                            <a href="{{ route('backend.authors.edit', $author->id) }}"
-                                               class="btn btn-primary"><i class="fa fa-btn fa-edit"></i> Cập nhật</a>
                                             <button class="btn btn-danger"><i class="fa fa-btn fa-trash"></i> Xóa
                                             </button>
                                         </form>

@@ -52,15 +52,15 @@
                             @foreach($categories as $category)
                                 <tr>
                                     <td style="text-align: center">{{ $category->id }}</td>
-                                    <td>{{ $category->name }}</td>
+                                    <td>
+                                        <a href="{{ route('backend.category.show', $category->id) }}">{{ $category->name }}</a>
+                                    </td>
                                     <td style="text-align: center">{{ count($category->products) }}</td>
                                     <td style="text-align: center">
                                         <form action="{{ route('backend.category.destroy', $category->id) }}"
                                               method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-                                            <a href="{{ route('backend.category.show', $category->id) }}"
-                                               class="btn btn-default"><i class="fa fa-btn fa-edit"></i> Chi tiết</a>
                                             <button class="btn btn-danger"><i class="fa fa-btn fa-trash"></i> Xóa
                                             </button>
                                         </form>

@@ -23,6 +23,7 @@ class UserController extends Controller
     {
         if (Gate::allows('show-users-list')) {
             $query = User::query();
+            $query->where('role', '<>', 2);
             $search = '';
             if ($request->has('q') && strlen($request->input('q')) > 0) {
                 $query->where('email', 'LIKE', "%" . $request->input('q') . "%");

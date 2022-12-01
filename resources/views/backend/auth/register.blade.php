@@ -10,7 +10,7 @@
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Au Register Forms by Colorlib</title>
+    <title>Bookcloud</title>
 
     <!-- Icons font CSS-->
     <link href="/backend/auth/register/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -31,16 +31,19 @@
     <div class="wrapper wrapper--w790">
         <div class="card card-5">
             <div class="card-heading">
-                <h2 class="title">Đăng kí tài khoản</h2>
+                <h2 class="title">Đăng ký tài khoản Bookcloud</h2>
             </div>
             <div class="card-body">
                 <form method="POST" action="{{ route('register.store') }}">
                     @csrf
                     <div class="form-row">
-                        <div class="name">Họ tên</div>
+                        <div class="name">Họ và tên</div>
                         <div class="value">
                             <div class="input-group">
-                                <input class="input--style-5" type="text" name="name">
+                                <input placeholder="Nhập tên" class="input--style-5" type="text" name="name">
+                                @error('name')
+                                <p style="color: red">{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -48,7 +51,10 @@
                         <div class="name">Email</div>
                         <div class="value">
                             <div class="input-group">
-                                <input class="input--style-5" type="email" name="email">
+                                <input placeholder="Nhập email" class="input--style-5" type="email" name="email">
+                                @error('email')
+                                <p style="color: red">{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -57,6 +63,9 @@
                         <div class="value">
                             <div class="input-group">
                                 <input class="input--style-5" type="password" name="password">
+                                @error('password')
+                                <p style="color: red">{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -65,6 +74,9 @@
                         <div class="value">
                             <div class="input-group">
                                 <input class="input--style-5" type="password" name="password_confirmation">
+                                @error('password_confirmation')
+                                <p style="color: red">{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -72,7 +84,10 @@
                         <div class="name">Số điện thoại</div>
                         <div class="value">
                             <div class="input-group">
-                                <input class="input--style-5" type="text" name="phone">
+                                <input class="input--style-5" placeholder="Nhập số điện thoại" type="text" name="phone">
+                                @error('phone')
+                                <p style="color: red">{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -80,12 +95,15 @@
                         <div class="name">Địa chỉ</div>
                         <div class="value">
                             <div class="input-group">
-                                <input class="input--style-5" type="text" name="address">
+                                <input class="input--style-5" type="text" placeholder="Nhập địa chỉ" name="address">
+                                @error('address')
+                                <p style="color: red">{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <button class="btn btn--radius-2 btn--red" type="submit" style="background: #f8694a;">Đăng kí</button>
+                    <div style="text-align: center">
+                        <button class="btn btn--radius-2 btn--red" type="submit" style="background: #f8694a;">Đăng ký</button>
                     </div>
                 </form>
             </div>
