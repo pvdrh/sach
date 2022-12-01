@@ -19,6 +19,7 @@ class CreatePublishingCompaniesTable extends Migration
             $table->string('slug')->nullable();
             $table->integer('products_count')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -16,9 +16,12 @@ class AuthorsTableSeeder extends Seeder
     {
         DB::table('authors')->truncate();
         DB::table('authors')->insert([
-            'name' => 'Tác giả ',
-            'slug' => 'tac-gia-',
-            'products_count' => 10
+            'name' => 'Nguyễn Ngọc Ánh ',
+            'slug' => 'nguyen-ngoc-anh',
+        ]);
+        DB::table('authors')->insert([
+            'name' => 'Nhiều tác giản',
+            'slug' => 'nhieu-tac-gia',
         ]);
     }
 }

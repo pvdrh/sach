@@ -36,8 +36,12 @@
                                 @endif
                             </div>
                             <h2 class="product-name">{{ $product->name }}</h2>
-                            <h3 class="product-price">{{ number_format($product->sale_price) }}
-                                VND @if($product->discount_percent != 0)
+                            <h3 class="product-price">@if($product->discount_percent > 0)
+                                    {{ number_format($product->sale_price) }}
+                                @else
+                                    {{ number_format($product->origin_price) }}
+                                @endif
+                                VND @if($product->discount_percent > 0)
                                     <del class="product-old-price">{{ number_format($product->origin_price) }} VND</del>
                                 @endif</h3>
                             <p style="font-size: 18px; font-family: 'system-ui'">

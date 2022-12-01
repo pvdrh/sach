@@ -38,7 +38,7 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreOrderRequest $request)
@@ -71,7 +71,7 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -87,7 +87,7 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -98,8 +98,8 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -110,7 +110,7 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -120,38 +120,17 @@ class OrderController extends Controller
             $success = $order->delete();
             if ($success) {
                 return response()->json([
-                    'error'=>false,
-                    'message'=>"Xóa nhận thành công!",
+                    'error' => false,
+                    'message' => "Xóa nhận thành công!",
                 ]);
             }
         } catch (\Exception $exception) {
             $message = "Không thành công!";
             return response()->json([
-                'error'=>true,
-                'message'=>$exception->getMessage(),
+                'error' => true,
+                'message' => $exception->getMessage(),
             ]);
         }
-    }
-
-    public function getData()
-    {
-        $orders = Order::where('status', 2)->get();
-        return DataTables::of($orders)
-            ->addColumn('shipping', function ($order) {
-                if ($order->shipping == 'shipping1') return 'Free ship';
-                elseif ($order->shipping == 'shipping2') return 'Giao hàng nhanh';
-            })
-            ->addColumn('money', function ($order) {
-                return $order->money . ',000đ';
-            })
-            ->addColumn('action', function ($order) {
-                return '<a href="http://thanhdev.com:8080/orders/'. $order->id .'/show" class="btn btn-primary">Chi tiêt</a>
-                        <button class="btn btn-danger order-delete" data-id="'. $order->id . '">Xóa</button>
-                        <button class="btn btn-success order-success" data-id="'. $order->id . '">Đã giao</button>';
-            })
-            ->rawColumns(['shipping', 'money', 'action'])
-            ->make(true);
-
     }
 
     public function nonAcceptList()
@@ -176,9 +155,9 @@ class OrderController extends Controller
                 return $order->money . ',000đ';
             })
             ->addColumn('action', function ($order) {
-                return '<a href="http://thanhdev.com:8080/orders/'. $order->id .'/show" class="btn btn-primary">Chi tiêt</a>
-                        <button class="btn btn-success order-accept" data-id="'. $order->id .'">Xác nhận</button>
-                        <button class="btn btn-danger order-delete" data-id="'. $order->id . '">Xóa</button>';
+                return '<a href="http://thanhdev.com:8080/orders/' . $order->id . '/show" class="btn btn-primary">Chi tiêt</a>
+                        <button class="btn btn-success order-accept" data-id="' . $order->id . '">Xác nhận</button>
+                        <button class="btn btn-danger order-delete" data-id="' . $order->id . '">Xóa</button>';
             })
             ->rawColumns(['shipping', 'money', 'action'])
             ->make(true);
@@ -196,7 +175,7 @@ class OrderController extends Controller
                 return $order->money . ',000đ';
             })
             ->addColumn('action', function ($order) {
-                return '<a href="http://thanhdev.com:8080/orders/'. $order->id .'/show" class="btn btn-primary">Chi tiêt</a>';
+                return '<a href="http://thanhdev.com:8080/orders/' . $order->id . '/show" class="btn btn-primary">Chi tiêt</a>';
             })
             ->rawColumns(['shipping', 'money', 'action'])
             ->make(true);
@@ -212,15 +191,15 @@ class OrderController extends Controller
             $success = $order->save();
             if ($success) {
                 return response()->json([
-                    'error'=>false,
-                    'message'=>"Xác nhận thành công!",
+                    'error' => false,
+                    'message' => "Xác nhận thành công!",
                 ]);
             }
         } catch (\Exception $exception) {
             $message = "Không thành công!";
             return response()->json([
-                'error'=>true,
-                'message'=>$exception->getMessage(),
+                'error' => true,
+                'message' => $exception->getMessage(),
             ]);
         }
     }
@@ -233,15 +212,15 @@ class OrderController extends Controller
             $success = $order->save();
             if ($success) {
                 return response()->json([
-                    'error'=>false,
-                    'message'=>"Xác nhận thành công!",
+                    'error' => false,
+                    'message' => "Xác nhận thành công!",
                 ]);
             }
         } catch (\Exception $exception) {
             $message = "Không thành công!";
             return response()->json([
-                'error'=>true,
-                'message'=>$exception->getMessage(),
+                'error' => true,
+                'message' => $exception->getMessage(),
             ]);
         }
     }

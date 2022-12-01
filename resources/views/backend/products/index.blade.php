@@ -26,7 +26,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{ route('backend.dashboard') }}">
+                    <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('backend.dashboard') }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  class="bi bi-house" viewBox="0 0 16 16">
                                 <path
@@ -68,8 +68,9 @@
                                 <th>Tên sản phẩm</th>
                                 <th style="text-align: center">Thể loại</th>
                                 <th style="text-align: center">Ảnh</th>
-                                <th>Giá gốc</th>
+                                <th style="text-align: center">Số lượng</th>
                                 <th>Giá bán</th>
+                                <th>Giá khuyến mại</th>
                                 <th style="text-align: center">Giảm giá(%)</th>
                                 <th>Mô tả</th>
                                 <th>Tác giả</th>
@@ -93,6 +94,7 @@
                                             <img style="width: 160px;height: 200px;object-fit: cover;"
                                                  src="/frontend/img/product-default.jpg"></img>
                                         @endif</td>
+                                    <td style="text-align: center">{{ number_format($product->total) }}</td>
                                     <td>{{ number_format($product->origin_price) }} VND</td>
                                     <td>{{ number_format($product->sale_price) }} VND</td>
                                     <td style="text-align: center">{{ $product->discount_percent }} </td>

@@ -7,7 +7,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{ route('backend.dashboard') }}">
+                    <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('backend.dashboard') }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  class="bi bi-house" viewBox="0 0 16 16">
                                 <path
@@ -43,44 +43,53 @@
                                 <p style="color: red">{{ $message }}</p>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label>Danh mục sản phẩm</label>
-                                <select class="form-control select2" style="width: 100%;" name="category_id">
-                                    <option value="">--- Chọn danh mục ---</option>
-                                    @foreach($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('category_id')
-                                <p style="color: red">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>Tác giả</label>
-                                <select class="form-control select2" style="width: 100%;" name="author_id">
-                                    <option value="">--- Chọn tác giả ---</option>
-                                    @foreach($authors as $author)
-                                        <option value="{{ $author->id }}">{{ $author->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('author_id')
-                                <p style="color: red">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>Nhà xuất bản</label>
-                                <select class="form-control select2" style="width: 100%;" name="publishing_company_id">
-                                    <option value="">--- Chọn NXB---</option>
-                                    @foreach($publishings as $publishing)
-                                        <option value="{{ $publishing->id }}">{{ $publishing->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('publishing_company_id')
-                                <p style="color: red">{{ $message }}</p>
-                                @enderror
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label>Danh mục sản phẩm</label>
+                                        <select class="form-control select2" style="width: 100%;" name="category_id">
+                                            <option value="">--- Chọn danh mục ---</option>
+                                            @foreach($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('category_id')
+                                        <p style="color: red">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label>Tác giả</label>
+                                        <select class="form-control select2" style="width: 100%;" name="author_id">
+                                            <option value="">--- Chọn tác giả ---</option>
+                                            @foreach($authors as $author)
+                                                <option value="{{ $author->id }}">{{ $author->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('author_id')
+                                        <p style="color: red">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label>Nhà xuất bản</label>
+                                        <select class="form-control select2" style="width: 100%;"
+                                                name="publishing_company_id">
+                                            <option value="">--- Chọn NXB---</option>
+                                            @foreach($publishings as $publishing)
+                                                <option value="{{ $publishing->id }}">{{ $publishing->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('publishing_company_id')
+                                        <p style="color: red">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label>Giá bán <span style="color:red;"> *</span></label>
                                         <input value="{{old('origin_price')}}" type="text"
@@ -92,19 +101,30 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
-                                        <label>Giá khuyến mại <span style="color:red;"> *</span></label>
-                                        <input value="{{old('sale_price')}}" type="text"
+                                        <label>Phần trăm giảm giá</label>
+                                        <input value="{{old('discount_percent')}}" min="1" type="number"
                                                class=" form-control input-element2"
-                                               placeholder="Nhập giá khuyến mại"
-                                               name="sale_price">
-                                        @error('sale_price')
+                                               placeholder="Nhập %"
+                                               name="discount_percent">
+                                        @error('discount_percent')
                                         <p style="color: red">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
-
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label>Số lượng <span style="color: red"> *</span></label>
+                                        <input value="{{old('total')}}" type="number" min="1"
+                                               class=" form-control input-element2"
+                                               placeholder="Nhập số lượng"
+                                               name="total">
+                                        @error('total')
+                                        <p style="color: red">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Mô tả sản phẩm</label>
@@ -128,24 +148,23 @@
                                 <p style="color: red">{{ $message }}</p>
                                 @enderror
                             </div>
-{{--                            <div class="form-group">--}}
-{{--                                <label for="exampleInputFile">Hình ảnh liên quan</label>--}}
-{{--                                <div class="input-group">--}}
-{{--                                    <div class="custom-file">--}}
-{{--                                        <input type="file" id="img" name="images[]" accept="image/*" multiple>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                @error('images')--}}
-{{--                                <p style="color: red">{{ $message }}</p>--}}
-{{--                                @enderror--}}
-{{--                            </div>--}}
+                            {{--                            <div class="form-group">--}}
+                            {{--                                <label for="exampleInputFile">Hình ảnh liên quan</label>--}}
+                            {{--                                <div class="input-group">--}}
+                            {{--                                    <div class="custom-file">--}}
+                            {{--                                        <input type="file" id="img" name="images[]" accept="image/*" multiple>--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
+                            {{--                                @error('images')--}}
+                            {{--                                <p style="color: red">{{ $message }}</p>--}}
+                            {{--                                @enderror--}}
+                            {{--                            </div>--}}
                             <div class="form-group">
                                 <label>Trạng thái sản phẩm <span style="color: red"> *</span></label>
                                 <select class="form-control select2" style="width: 100%;" name="status">
                                     <option value="">--- Chọn trạng thái ---</option>
                                     <option value="0">Đang nhập</option>
                                     <option value="1">Mở bán</option>
-                                    <option value="2">Hết hàng</option>
                                 </select>
                                 @error('status')
                                 <p style="color: red">{{ $message }}</p>

@@ -127,11 +127,11 @@ class UserController extends Controller
         if ($user->is_protected == 0 && $id != Auth::user()->id) {
             $user->delete();
 
-            Alert::success('Thành công!', 'Xóa thành công!');
+            Alert::success('Thành công!', 'Khóa thành công!');
             return redirect()->route('backend.user.index');
         }
 
-        Alert::error('Thất bại!', 'Xóa không thành công!');
+        Alert::error('Thất bại!', 'Khóa không thành công!');
         return redirect()->route('backend.user.index');
     }
 

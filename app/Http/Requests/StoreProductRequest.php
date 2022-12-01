@@ -25,12 +25,13 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'name' => 'required|min:1|max:255',
-            'sale_price' => 'min:origin_price',
             'origin_price' => 'required|min:1',
+            'discount_percent' => 'nullable|integer|min:1',
+            'total' => 'required|integer|min:1',
             'content' => 'max:2000',
             'image' => 'image|mimes:jpg,png,jpeg,gif,svg|required|max:10000',
             'images[]' => 'image|mimes:jpg,png,jpeg,gif,svg|max:10000',
-            'status' => 'required'
+            'status' => 'required',
         ];
     }
 
@@ -40,7 +41,8 @@ class StoreProductRequest extends FormRequest
             'required' => ':attribute không được để trống!',
             'min' => ':attribute không được nhỏ hơn :min',
             'max' => ':attribute không được lớn hơn :max',
-            'image' => 'File không hợp lệ'
+            'image' => 'File không hợp lệ',
+            'integer' => ':attribute phải là kiểu số',
         ];
     }
 
@@ -52,10 +54,11 @@ class StoreProductRequest extends FormRequest
             'author_id' => 'Tác giả',
             'publishing_company_id' => 'Nhà xuất bản',
             'origin_price' => 'Giá gốc',
-            'sale_price' => 'Giá khuyễn mãi',
+            'discount_percent' => 'Phần trăm giảm giá',
             'content' => 'Mô tả',
             'status' => 'Trạng thái',
             'image' => 'Ảnh sản phẩm',
+            'total' => 'Số lượng',
         ];
     }
 }

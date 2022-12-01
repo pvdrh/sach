@@ -7,7 +7,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{ route('backend.dashboard') }}">
+                    <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('backend.dashboard') }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  class="bi bi-house" viewBox="0 0 16 16">
                                 <path
@@ -25,20 +25,19 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="form-group">
-                        <div style="padding: 20px 0px 0px 20px; display: flex">
-                            <a style="padding: -5px" class="btn btn-success"
-                               href="{{ route('backend.publishings.create') }}"><i
-                                    class="fa fa-btn fa-plus"></i> Thêm mới</a>
-                            <form style="margin-top: 3px; margin-left: 20px" role="search" method="get"
-                                  action="{{route('backend.publishings.index')}}">
-                                <input placeholder="Nhập tên nhà xuất bản" value="{{$search}}" style="height: 35px" type="text" name="q">
-                                <button style="margin-left: 5px" type="submit" class="btn btn-default">
-                                    <i
-                                        class="fas fa-search"></i>
-                                </button>
-                            </form>
-                        </div>
+                    <div style="padding: 20px 0px 0px 20px; display: flex">
+                        <a class="btn btn-success"
+                           href="{{ route('backend.publishings.create') }}"><i
+                                class="fa fa-btn fa-plus"></i> Thêm mới</a>
+                        <form style="margin-top: 3px; margin-left: 20px" role="search" method="get"
+                              action="{{route('backend.publishings.index')}}">
+                            <input placeholder="Nhập tên nhà xuất bản" value="{{$search}}" style="height: 35px"
+                                   type="text" name="q">
+                            <button style="margin-left: 5px" type="submit" class="btn btn-default">
+                                <i
+                                    class="fas fa-search"></i>
+                            </button>
+                        </form>
                     </div>
 
                     <div class="card-body">
@@ -55,15 +54,16 @@
                             @foreach($publishings as $publishing)
                                 <tr>
                                     <td style="text-align: center">{{ $publishing->id }}</td>
-                                    <td>{{ $publishing->name }}</td>
+                                    <td>
+                                        <a style="text-decoration: none"
+                                           href="{{ route('backend.publishings.edit',  $publishing->id) }}">{{ $publishing->name }}</a>
+                                    </td>
                                     <td>{{ count($publishing->products) }}</td>
                                     <td style="text-align: center">
                                         <form action="{{ route('backend.publishings.destroy', $publishing->id) }}"
                                               method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-                                            <a href="{{ route('backend.publishings.edit',  $publishing->id) }}"
-                                               class="btn btn-primary"><i class="fa fa-btn fa-edit"></i> Cập nhật</a>
                                             <button class="btn btn-danger"><i class="fa fa-btn fa-trash"></i> Xóa
                                             </button>
                                         </form>

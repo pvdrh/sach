@@ -128,8 +128,8 @@
                                 <div class="product product-single">
                                     <div class="product-thumb">
                                         <div class="product-label">
-                                            <span>New</span>
-                                            @if($product->discount_percent)
+                                            {{--                                            <span>New</span>--}}
+                                            @if($product->discount_percent > 0)
                                                 <span class="sale">-{{ $product->discount_percent }}%</span>
                                             @endif
                                         </div>
@@ -138,7 +138,7 @@
                                         <img src="/{{ $product->image }}" alt="">
                                     </div>
                                     <div class="product-body">
-                                        <h2 class="product-name"><a href="#">{{ $product->name }}</a></h2>
+                                        <h2 class="product-name"><a href="{{ route('frontend.product-page.index', $product->slug) }}">{{ $product->name }}</a></h2>
                                         <h4 class="product-price"
                                             style="color: #F8694A">{{ number_format($product->sale_price) }} VND</h4>
                                         <p>@if($product->discount_percent != 0)

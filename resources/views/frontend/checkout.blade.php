@@ -26,25 +26,30 @@
                                 <h3 class="title">Vui lòng điền thông tin</h3>
                             </div>
                             <div class="form-group">
-                                <input class="input" type="text" name="name" placeholder="Tên người nhận">
+                                <input class="input"
+                                       @if(\Illuminate\Support\Facades\Auth::user() && \Illuminate\Support\Facades\Auth::user()->role == \App\Models\User::ROLE['customer']) value="{{\Illuminate\Support\Facades\Auth::user()->name}}"
+                                       @endif type="text" name="name" placeholder="Tên người nhận">
                             </div>
                             @error('name')
                             <p style="color: red">{{ $message }}</p>
                             @enderror
                             <div class="form-group">
-                                <input class="input" type="email" name="email" placeholder="Email">
+                                <input  @if(\Illuminate\Support\Facades\Auth::user() && \Illuminate\Support\Facades\Auth::user()->role == \App\Models\User::ROLE['customer']) value="{{\Illuminate\Support\Facades\Auth::user()->email}}"
+                                       @endif class="input" type="email" name="email" placeholder="Email">
                             </div>
                             @error('email')
                             <p style="color: red">{{ $message }}</p>
                             @enderror
                             <div class="form-group">
-                                <input class="input" max="12" type="text" name="phone" placeholder="Số điện thoại">
+                                <input  @if(\Illuminate\Support\Facades\Auth::user() && \Illuminate\Support\Facades\Auth::user()->role == \App\Models\User::ROLE['customer']) value="{{\Illuminate\Support\Facades\Auth::user()->phone}}"
+                                       @endif class="input" max="12" type="text" name="phone" placeholder="Số điện thoại">
                             </div>
                             @error('phone')
                             <p style="color: red">{{ $message }}</p>
                             @enderror
                             <div class="form-group">
-                                <input class="input" max="255" type="text" name="address" placeholder="Địa chỉ">
+                                <input  @if(\Illuminate\Support\Facades\Auth::user() && \Illuminate\Support\Facades\Auth::user()->role == \App\Models\User::ROLE['customer']) value="{{\Illuminate\Support\Facades\Auth::user()->address}}"
+                                       @endif class="input" max="255" type="text" name="address" placeholder="Địa chỉ">
                             </div>
                             @error('address')
                             <p style="color: red">{{ $message }}</p>
@@ -59,22 +64,22 @@
                             </div>
                             <div class="input-checkbox">
                                 <input type="radio" name="shipping" id="shipping-1" value="shipping1" checked>
-                                <label for="shipping-1">Free Shiping - 0.00đ</label>
+                                <label for="shipping-1">Free Shiping</label>
                                 <div class="caption">
                                     <p>
                                         Hàng sẽ được giao trong thời gian 3 đến 4 ngày
                                     </p>
                                 </div>
                             </div>
-{{--                            <div class="input-checkbox">--}}
-{{--                                <input type="radio" name="shipping" id="shipping-2" value="shipping2">--}}
-{{--                                <label for="shipping-2">Giao hàng nhanh - 30.000đ</label>--}}
-{{--                                <div class="caption">--}}
-{{--                                    <p>--}}
-{{--                                        Hàng sẽ được giao trong 36h kể từ khi đặt hàng--}}
-{{--                                    </p>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
+                            {{--                            <div class="input-checkbox">--}}
+                            {{--                                <input type="radio" name="shipping" id="shipping-2" value="shipping2">--}}
+                            {{--                                <label for="shipping-2">Giao hàng nhanh - 30.000đ</label>--}}
+                            {{--                                <div class="caption">--}}
+                            {{--                                    <p>--}}
+                            {{--                                        Hàng sẽ được giao trong 36h kể từ khi đặt hàng--}}
+                            {{--                                    </p>--}}
+                            {{--                                </div>--}}
+                            {{--                            </div>--}}
                         </div>
 
                         <div class="payments-methods">
@@ -85,10 +90,10 @@
                                 <input type="radio" name="payments" id="payments-1" value="pay1" checked>
                                 <label for="payments-1">Thanh toán khi nhận hàng</label>
                             </div>
-{{--                            <div class="input-checkbox">--}}
-{{--                                <input type="radio" name="payments" id="payments-2" value="pay2">--}}
-{{--                                <label for="payments-2">Chuyển khoản ngân hàng</label>--}}
-{{--                            </div>--}}
+                            {{--                            <div class="input-checkbox">--}}
+                            {{--                                <input type="radio" name="payments" id="payments-2" value="pay2">--}}
+                            {{--                                <label for="payments-2">Chuyển khoản ngân hàng</label>--}}
+                            {{--                            </div>--}}
                         </div>
                     </div>
 
@@ -121,24 +126,27 @@
                                         <td class="details">
                                             <a href="#">{{ $item->name }}</a>
                                         </td>
-                                        <td class="price text-center"><strong>{{ number_format($item->price) }} VND</strong><br>
-                                            @if($item->options->discount_percent != 0)
-                                                <del class="font-weak"><small>{{ number_format($item->options->origin_price) }}
-                                                         VND</small></del>
+                                        <td class="price text-center"><strong>{{ number_format($item->price) }}
+                                                VND</strong><br>
+                                            @if($item->options->discount_percent > 0)
+                                                <del class="font-weak">
+                                                    <small>{{ number_format($item->options->origin_price) }}
+                                                        VND</small></del>
                                             @endif
                                         </td>
                                         <td class="qty text-center">{{ $item->qty }}</td>
                                         <td class="total text-center"><strong
-                                                class="primary-color">{{ number_format($item->price * $item->qty) }} VND</strong></td>
+                                                class="primary-color">{{ number_format($item->price * $item->qty) }}
+                                                VND</strong></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                                 <tfoot>
-{{--                                <tr>--}}
-{{--                                    <th class="empty" colspan="3"></th>--}}
-{{--                                    <th>Phí ship</th>--}}
-{{--                                    <th colspan="2" class="total"> VNĐ</th>--}}
-{{--                                </tr>--}}
+                                {{--                                <tr>--}}
+                                {{--                                    <th class="empty" colspan="3"></th>--}}
+                                {{--                                    <th>Phí ship</th>--}}
+                                {{--                                    <th colspan="2" class="total"> VNĐ</th>--}}
+                                {{--                                </tr>--}}
                                 <tr>
                                     <th class="empty" colspan="3"></th>
                                     <th>Tổng tiền</th>

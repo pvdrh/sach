@@ -74,7 +74,6 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request)
     {
         $origin_price = str_replace(',', '', $request->get('origin_price'));
-        $sale_price = str_replace(',', '', $request->get('sale_price'));
         $product = new Product();
         $product->name = $request->get('name');
         $product->slug = \Illuminate\Support\Str::slug($request->get('name'));
@@ -82,12 +81,11 @@ class ProductController extends Controller
         $product->author_id = $request->get('author_id');
         $product->publishing_company_id = $request->get('publishing_company_id');
         $product->origin_price = (int)$origin_price;
-        $product->sale_price = (int)$sale_price;
-        if (!empty($sale_price)) {
-            $percent = ($sale_price / $origin_price) * 100;
-            $product->discount_percent = 100 - ceil($percent);
+        $product->discount_percent = $request->get('discount_percent') ?: 0;
+        if (!empty($request->get('discount_percent')) && $request->get('discount_percent') > 0) {
+            $product->sale_price = ($origin_price / 100) * (100 - (int)$request->get('discount_percent'));
         } else {
-            $product->discount_percent = 0;
+            $product->sale_price = (int)$origin_price;
         }
         $product->content = $request->get('content');
         if ($request->hasFile('image')) {
@@ -97,6 +95,7 @@ class ProductController extends Controller
         }
         $product->status = $request->get('status');
         $product->pages_count = '0';
+        $product->total = (int)$request->get('total');
         $product->status = $request->get('status');
         $product->user_id = Auth::user()->id;
         $product->save();
@@ -252,30 +251,6 @@ class ProductController extends Controller
     {
         $products = Product::withTrashed()->find($id)->restore();
         return back();
-    }
-
-
-    public function getData()
-    {
-        $products = Product::orderBy('created_at', 'DESC')->get();
-        return DataTables::of($products)
-            ->editColumn('category_id', function ($product) {
-                return $product->category->name;
-            })
-            ->editColumn('image', function ($product) {
-                return '<center><img src="/' . $product->image . '" style="width: 150px"></center>';
-            })
-            ->editColumn('name', function ($product) {
-                return '<a href="http://thanhdev.com:8080/product-page/' . $product->slug . '">' . $product->name . '</a>';
-            })
-            ->addColumn('action', function ($product) {
-                return '<a href="http://thanhdev.com:8080/admin/products/' . $product->id . '/show" class="btn btn-primary">Chi tiêt</a>
-                        <a href="http://thanhdev.com:8080/admin/products/' . $product->id . '/edit" class="btn btn-warning">Sửa</a>
-                        <button class="btn btn-danger btn-delete" data-id="' . $product->id . '">Gỡ</button>';
-            })
-//            ->addIndexColumn()
-            ->rawColumns(['action', 'image', 'category_id', 'name'])
-            ->make(true);
     }
 
     public function export()

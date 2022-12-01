@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Auth\Middleware\Authenticate;
+
 //use Illuminate\Support\Facades\Auth;
 
 /*
@@ -21,17 +22,17 @@ use Illuminate\Auth\Middleware\Authenticate;
 
 Route::group([
     'prefix' => 'admin'
-], function (){
+], function () {
     Route::group([
         'namespace' => 'Backend',
         'middleware' => ['auth', 'auth_admin']
-    ], function (){
+    ], function () {
         // Trang dashboard - trang chủ admin
         Route::get('/dashboard', 'DashboardController@index')->name('backend.dashboard');
         Route::get('/test', 'DashboardController@test');
         Route::get('/incompetent', 'DashboardController@incompetent')->name('backend.incompetent');
         // Quản lý sản phẩm
-        Route::group(['prefix' => 'products'], function(){
+        Route::group(['prefix' => 'products'], function () {
             Route::get('/', 'ProductController@index')->name('backend.product.index');
             Route::get('/get-data', 'ProductController@getData');
             Route::get('/create', [\App\Http\Controllers\Backend\ProductController::class, 'create'])->name('backend.product.create');
@@ -46,16 +47,16 @@ Route::group([
             Route::get('/show/{id?}', 'ProductController@show')->name('backend.product.show');
         });
         //Quản lý người dùng
-        Route::group(['prefix' => 'users'], function(){
+        Route::group(['prefix' => 'users'], function () {
             Route::get('/', 'UserController@index')->name('backend.user.index');
             Route::get('/create', 'UserController@create')->name('backend.user.create');
             Route::get('/show/{id}', 'UserController@show')->name('backend.user.show');
             Route::post('/{id}/update', 'UserController@update')->name('backend.user.update');
-            Route::delete('/{id}/delete', 'UserController@destroy')->name('backend.user.destroy');
+            Route::any('/{id}/delete', 'UserController@destroy')->name('backend.user.destroy');
             Route::post('/store', 'UserController@store')->name('backend.user.store');
         });
         //Quản lý thể loại
-        Route::group(['prefix' => 'categories'], function(){
+        Route::group(['prefix' => 'categories'], function () {
             Route::get('/', 'CategoryController@index')->name('backend.category.index');
             Route::get('/create', 'CategoryController@create')->name('backend.category.create');
             Route::post('/store', 'CategoryController@store')->name('backend.category.store');
@@ -65,7 +66,7 @@ Route::group([
             Route::get('/{id}/show', 'CategoryController@show')->name('backend.category.show');
         });
         //Quản lý tác giả
-        Route::group(['prefix' => 'authors'], function(){
+        Route::group(['prefix' => 'authors'], function () {
             Route::get('/', 'AuthorController@index')->name('backend.authors.index');
             Route::get('/create', 'AuthorController@create')->name('backend.authors.create');
             Route::post('/store', 'AuthorController@store')->name('backend.authors.store');
@@ -74,7 +75,7 @@ Route::group([
             Route::post('/{id}/update', 'AuthorController@update')->name('backend.authors.update');
         });
         //NXB
-        Route::group(['prefix' => 'publishings'], function(){
+        Route::group(['prefix' => 'publishings'], function () {
             Route::get('/', 'PublishingController@index')->name('backend.publishings.index');
             Route::get('/create', 'PublishingController@create')->name('backend.publishings.create');
             Route::post('/store', 'PublishingController@store')->name('backend.publishings.store');
@@ -87,7 +88,7 @@ Route::group([
 
 Route::group([
     'namespace' => 'Frontend',
-], function (){
+], function () {
     //Trang chủ website
     Route::get('/', [\App\Http\Controllers\Frontend\HomeController::class, 'index'])->name('frontend.home.index');
     //Chi tiết sản phẩm
@@ -133,7 +134,7 @@ Route::post('/register', 'Auth\RegisterCotroller@showRegistrationForm')->name('r
 Route::get('/home', 'HomeController@index')->name('home');
 Route::group([
     'namespace' => 'Auth'
-], function (){
+], function () {
     Route::get('/login', 'LoginController@showLoginForm')->name('login.form');
     Route::post('/login', 'LoginController@login')->name('login.store');
     Route::post('/logout', 'LoginController@logout')->name('logout');

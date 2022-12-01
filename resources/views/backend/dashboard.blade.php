@@ -70,7 +70,7 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>{{ $money }},000đ</h3>
+                        <h3>{{ number_format($money) }} VND</h3>
 
                         <p>Doanh thu</p>
                     </div>

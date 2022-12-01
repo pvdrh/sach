@@ -35,7 +35,7 @@
                                         <a href="#">{{ $item->name }}</a>
                                     </td>
                                     <td class="price text-center"><strong>{{ number_format($item->price) }} VND</strong><br>
-                                        @if($item->options->discount_percent != 0)
+                                        @if($item->options->discount_percent > 0)
                                             <del class="font-weak"><small>{{ number_format($item->options->origin_price) }} VND</small></del>
                                         @endif
                                     </td>
