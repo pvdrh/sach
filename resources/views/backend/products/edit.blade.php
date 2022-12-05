@@ -7,7 +7,8 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('backend.dashboard') }}">
+                    <li class="breadcrumb-item"><a style="text-decoration: none"
+                                                   href="{{ route('backend.dashboard') }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  class="bi bi-house" viewBox="0 0 16 16">
                                 <path
@@ -41,70 +42,94 @@
                                 <p style="color: #ff0000">*{{ $message }}</p>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label>Danh mục sản phẩm</label>
-                                <select class="form-control select2" style="width: 100%;" name="category_id">
-                                    <option value="">--Chọn danh mục---</option>
-                                    @foreach($categories as $category)
-                                        @if($category->id == $product->category_id)
-                                            <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
-                                        @endif
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('category_id')
-                                <p style="color: red">*{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>Tác giả</label>
-                                <select class="form-control select2" style="width: 100%;" name="author_id">
-                                    <option value="">--Chọn tác giả---</option>
-                                    @foreach($authors as $author)
-                                        @if($author->id == $product->author_id)
-                                            <option value="{{ $author->id }}" selected>{{ $author->name }}</option>
-                                        @endif
-                                        <option value="{{ $author->id }}">{{ $author->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('author_id')
-                                <p style="color: red">*{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>Nhà xuất bản</label>
-                                <select class="form-control select2" style="width: 100%;" name="publishing_company_id">
-                                    <option value="">--Chọn NXB---</option>
-                                    @foreach($publishings as $publishing)
-                                        @if($publishing->id == $product->publishing_company_id)
-                                            <option value="{{ $publishing->id }}"
-                                                    selected>{{ $publishing->name }}</option>
-                                        @endif
-                                        <option value="{{ $publishing->id }}">{{ $publishing->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('publishing_company_id')
-                                <p style="color: red">*{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <div class="col-5">
-                                <div class="form-group">
-                                    <label>Giá bán <span style="color: red"> *</span></label>
-                                    <input type="text" class="form-control" placeholder="Nhập giá gốc"
-                                           name="origin_price" value="{{ $product->origin_price }}">
-                                    @error('origin_price')
-                                    <p style="color: red">*{{ $message }}</p>
-                                    @enderror
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>Danh mục sản phẩm</label>
+                                        <select class="form-control select2" style="width: 100%;" name="category_id">
+                                            <option value="">--Chọn danh mục---</option>
+                                            @foreach($categories as $category)
+                                                @if($category->id == $product->category_id)
+                                                    <option value="{{ $category->id }}"
+                                                            selected>{{ $category->name }}</option>
+                                                @endif
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('category_id')
+                                        <p style="color: red">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>Tác giả</label>
+                                        <select class="form-control select2" style="width: 100%;" name="author_id">
+                                            <option value="">--Chọn tác giả---</option>
+                                            @foreach($authors as $author)
+                                                @if($author->id == $product->author_id)
+                                                    <option value="{{ $author->id }}"
+                                                            selected>{{ $author->name }}</option>
+                                                @endif
+                                                <option value="{{ $author->id }}">{{ $author->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('author_id')
+                                        <p style="color: red">*{{ $message }}</p>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-5">
+                                <div class="col-6">
                                     <div class="form-group">
-                                        <label>Giá khuyến mại</label>
-                                        <input type="text" class="form-control" placeholder="Nhập giá khuyến mại"
-                                               name="sale_price" value="{{ $product->sale_price }}">
-                                        @error('sale_price')
+                                        <label>Nhà xuất bản</label>
+                                        <select class="form-control select2" style="width: 100%;"
+                                                name="publishing_company_id">
+                                            <option value="">--Chọn NXB---</option>
+                                            @foreach($publishings as $publishing)
+                                                @if($publishing->id == $product->publishing_company_id)
+                                                    <option value="{{ $publishing->id }}"
+                                                            selected>{{ $publishing->name }}</option>
+                                                @endif
+                                                <option value="{{ $publishing->id }}">{{ $publishing->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('publishing_company_id')
                                         <p style="color: red">*{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                {{--                                <div class="col-4">--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <label>Giá bán <span style="color: red"> *</span></label>--}}
+{{--                                        <input type="text" class="form-control" placeholder="Nhập giá gốc"--}}
+{{--                                               name="origin_price" value="{{ $product->origin_price }}">--}}
+{{--                                        @error('origin_price')--}}
+{{--                                        <p style="color: red">*{{ $message }}</p>--}}
+{{--                                        @enderror--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="col-4">--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <label>Phần trăm giảm giá</label>--}}
+{{--                                        <input type="text" class="form-control" placeholder="Nhập %"--}}
+{{--                                               name="discount_percent" value="{{ $product->discount_percent }}">--}}
+{{--                                        @error('discount_percent')--}}
+{{--                                        <p style="color: red">{{ $message }}</p>--}}
+{{--                                        @enderror--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>Số lượng <span style="color: red"> *</span></label>
+                                        <input value="{{ $product->total }}" type="number" min="1"
+                                               class=" form-control input-element2"
+                                               placeholder="Nhập số lượng"
+                                               name="total">
+                                        @error('total')
+                                        <p style="color: red">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
@@ -115,21 +140,21 @@
                                           style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"
                                           name="content">{{ $product->content }}</textarea>
                                 @error('content')
-                                <p style="color: red">*{{ $message }}</p>
+                                <p style="color: red">{{ $message }}</p>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputFile">Hình ảnh sản phẩm</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                                        <label class="custom-file-label" for="exampleInputFile">Chọn tệp</label>
-                                    </div>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text" id="">Upload</span>
-                                    </div>
-                                </div>
-                            </div>
+{{--                            <div class="form-group">--}}
+{{--                                <label for="exampleInputFile">Hình ảnh sản phẩm</label>--}}
+{{--                                <div class="input-group">--}}
+{{--                                    <div class="custom-file">--}}
+{{--                                        <input type="file" class="custom-file-input" id="exampleInputFile">--}}
+{{--                                        <label class="custom-file-label" for="exampleInputFile">Chọn tệp</label>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="input-group-append">--}}
+{{--                                        <span class="input-group-text" id="">Upload</span>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="form-group">
                                 <label>Trạng thái sản phẩm</label>
                                 <select class="form-control select2" style="width: 100%;" name="status">
@@ -139,7 +164,7 @@
                                     <option value="2" @if($product->status == 2) selected @endif>Dừng bán</option>
                                 </select>
                                 @error('status')
-                                <p style="color: red">*{{ $message }}</p>
+                                <p style="color: red">{{ $message }}</p>
                                 @enderror
                             </div>
                         </div>

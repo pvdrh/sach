@@ -20,12 +20,10 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $products_manga = Product::where('category_id', '2')->orderBy('sold', 'DESC')->limit(6)->get();
-        $products_new = Product::orderBy('created_at', 'DESC')->limit(6)->get();
-        $products_hot = Product::orderBy('sold', 'DESC')->limit(6)->get();
-        $products_rb = Product::inRandomOrder()->limit(6)->get();
+        $products_new = Product::where('total', '>', 0)->orderBy('created_at', 'DESC')->limit(6)->get();
+        $products_hot = Product::where('total', '>', 0)->orderBy('sold', 'DESC')->limit(6)->get();
+        $products_rb = Product::where('total', '>', 0)->inRandomOrder()->limit(6)->get();
         return view('frontend.home')->with([
-            'products_manga' => $products_manga,
             'products_new' => $products_new,
             'products_hot' => $products_hot,
             'products_rb' => $products_rb,

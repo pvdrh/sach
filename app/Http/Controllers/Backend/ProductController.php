@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Exports\ExportFile;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Author;
 use App\Models\Category;
 use App\Models\Image;
@@ -167,18 +168,15 @@ class ProductController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreProductRequest $request, $id)
+    public function update(UpdateProductRequest $request, $id)
     {
-
         $product = Product::find($id);
         $product->name = $request->get('name');
         $product->slug = \Illuminate\Support\Str::slug($request->get('name'));
         $product->category_id = $request->get('category_id');
         $product->author_id = $request->get('author_id');
         $product->publishing_company_id = $request->get('publishing_company_id');
-        $product->origin_price = $request->get('origin_price');
-        $product->sale_price = $request->get('sale_price');
-        $product->discount_percent = $request->get('discount_percent');
+        $product->total = $request->get('total');
         $product->content = $request->get('content');
         $product->status = $request->get('status');
         $product->pages_count = '0';

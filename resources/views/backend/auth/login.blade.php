@@ -56,12 +56,6 @@
                     @enderror
                     <span class="focus-input100" data-symbol="&#xf190;"></span>
                 </div>
-
-                {{--                <div class="text-right p-t-8 p-b-31">--}}
-                {{--                    <a href="#">--}}
-                {{--                        Quên mật khẩu?--}}
-                {{--                    </a>--}}
-                {{--                </div>--}}
                 @if(session()->has('fail'))
                     <div class="alert alert-danger">{!! session('fail') !!}</div>
                 @endisset
@@ -71,13 +65,15 @@
                         Đăng nhập
                     </button>
                 </div>
-                <h4 style="text-align: center; margin-top: 20px"> Hoặc</h4>
-                <div style="margin-top: 25px; text-align: center">
-                    <a href="{{route('register.form')}}" class="btn btn--radius-2 btn--red"
-                       style="background: #f8694a; color: white;padding: 15px 30px 15px 30px; font-size: 16px;">
-                        Đăng ký ngay
-                    </a>
-                </div>
+                <div style="text-align: center; margin-top: 15px"><a style="font-family: none" href="{{route('register.form')}}">Bạn chưa có tài khoản?</a></div>
+
+                {{--                <h4 style="text-align: center; margin-top: 10px"> Hoặc</h4>--}}
+{{--                <div style="margin-top: 10px; text-align: center">--}}
+{{--                    <a href="{{route('register.form')}}" class="btn btn--radius-2 btn--red"--}}
+{{--                       style="background: #f8694a; color: white;padding: 15px 30px 15px 30px; font-size: 16px;">--}}
+{{--                        Đăng ký ngay--}}
+{{--                    </a>--}}
+{{--                </div>--}}
 
                 {{--                <div class="txt1 text-center p-t-54 p-b-20">--}}
                 {{--						<span>--}}
