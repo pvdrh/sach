@@ -65,15 +65,17 @@
                         Đăng nhập
                     </button>
                 </div>
-                <div style="text-align: center; margin-top: 15px"><a style="font-family: none" href="{{route('register.form')}}">Bạn chưa có tài khoản?</a></div>
+                <div style="text-align: center; margin-top: 25px"><a style="font-family: none; font-size: 18px"
+                                                                     href="{{route('register.form')}}">Bạn chưa có tài
+                        khoản?</a></div>
 
                 {{--                <h4 style="text-align: center; margin-top: 10px"> Hoặc</h4>--}}
-{{--                <div style="margin-top: 10px; text-align: center">--}}
-{{--                    <a href="{{route('register.form')}}" class="btn btn--radius-2 btn--red"--}}
-{{--                       style="background: #f8694a; color: white;padding: 15px 30px 15px 30px; font-size: 16px;">--}}
-{{--                        Đăng ký ngay--}}
-{{--                    </a>--}}
-{{--                </div>--}}
+                {{--                <div style="margin-top: 10px; text-align: center">--}}
+                {{--                    <a href="{{route('register.form')}}" class="btn btn--radius-2 btn--red"--}}
+                {{--                       style="background: #f8694a; color: white;padding: 15px 30px 15px 30px; font-size: 16px;">--}}
+                {{--                        Đăng ký ngay--}}
+                {{--                    </a>--}}
+                {{--                </div>--}}
 
                 {{--                <div class="txt1 text-center p-t-54 p-b-20">--}}
                 {{--						<span>--}}

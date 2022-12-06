@@ -22,7 +22,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('backend.orders.index');
+        $orders = Order::where('status', 2)->get();
+        return view('backend.orders.index')->with([
+            'orders' => $orders
+        ]);
     }
 
     /**
@@ -136,7 +139,10 @@ class OrderController extends Controller
 
     public function nonAcceptList()
     {
-        return view('backend.orders.nonAccept');
+        $orders = Order::where('status', 1)->get();
+        return view('backend.orders.nonAccept')->with([
+            'orders' => $orders,
+        ]);
     }
 
     public function successList()

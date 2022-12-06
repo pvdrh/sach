@@ -20,7 +20,7 @@ class AuthorsTableSeeder extends Seeder
             'slug' => 'nguyen-ngoc-anh',
         ]);
         DB::table('authors')->insert([
-            'name' => 'Nhiều tác giản',
+            'name' => 'Nhiều tác giả',
             'slug' => 'nhieu-tac-gia',
         ]);
     }

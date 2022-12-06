@@ -118,7 +118,6 @@
                                             <button class="btn btn-danger"><i class="fa fa-btn fa-trash"></i> Xóa
                                             </button>
                                         </form>
-
                                     </td>
                                 </tr>
                             @endforeach
