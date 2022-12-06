@@ -14,7 +14,7 @@ class AddCustomerEmailColumnOrdersTable extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->string('customer_email')->after('user_id');
+            $table->string('customer_email')->after('user_id')->nullable();
 
         });
     }

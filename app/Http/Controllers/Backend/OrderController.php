@@ -59,6 +59,7 @@ class OrderController extends Controller
         foreach (Cart::content() as $item) {
             $order_product->products()->attach($item->id);
             $product = Product::find($item->id);
+            $product->total -= 1;
             $product->sold += $item->qty;
             $product->save();
         }

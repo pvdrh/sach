@@ -25,7 +25,7 @@ class StoreOrderRequest extends FormRequest
     {
         return [
             'name' => 'required|min:1|max:255',
-            'email' => 'required',
+//            'email' => 'required',
             'phone' => 'required',
             'address' => 'required',
         ];
@@ -34,7 +34,7 @@ class StoreOrderRequest extends FormRequest
     public function messages()
     {
         return [
-            'required' => ':attribute không được bỏ trống!',
+            'required' => ':attribute không được để trống!',
             'min' => ':attribute không được nhỏ hơn :min',
             'max' => ':attribute không được lớn hơn :max',
         ];

@@ -64,7 +64,7 @@
                             </div>
 
                             <div class="product-btns">
-                                @if($product->status == 1)
+                                @if($product->total > 0)
                                     <a href="{{ route('frontend.cart.add', $product->id) }}"
                                        class="primary-btn add-to-cart">
                                         <i class="fa fa-shopping-cart"></i>
