@@ -66,8 +66,8 @@
                             <tr>
                                 <th style="text-align: center">ID</th>
                                 <th>Tên sản phẩm</th>
-                                <th style="text-align: center">Thể loại</th>
                                 <th style="text-align: center">Ảnh</th>
+                                <th style="text-align: center">Thể loại</th>
                                 <th style="text-align: center">Số lượng</th>
                                 <th>Giá bán</th>
                                 <th>Giá khuyến mại</th>
