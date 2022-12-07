@@ -42,7 +42,7 @@
                         @endif
                         @if(\Illuminate\Support\Facades\Auth::user())
                             <ul class="custom-menu">
-                                <li><a href="#"><i class="fa fa-user-o"></i> Cài đặt tài khoản</a></li>
+{{--                                <li><a href="#"><i class="fa fa-user-o"></i> Cài đặt tài khoản</a></li>--}}
                                 @if(\Illuminate\Support\Facades\Auth::user())
                                     <li>
                                         <form action="{{ route('logout') }}" method="POST">
