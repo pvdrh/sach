@@ -34,7 +34,7 @@ class PusblishTableSeeder extends Seeder
             'products_count' => 0
         ]);
         DB::table('publishing_companies')->insert([
-            'name' => 'Nhà xuất bản Thông tin và Truyền thông',
+            'name' => 'Nhà xuất bản thông tin và truyền thông',
             'slug' => \Illuminate\Support\Str::slug('Nhà xuất bản Thông tin và Truyền thông'),
             'products_count' => 0
         ]);

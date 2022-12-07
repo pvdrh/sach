@@ -123,7 +123,7 @@ Route::group([
     Route::get('/get-success', 'OrderController@getSuccess');
     Route::get('/get-non-accept', 'OrderController@nonAccept');
     Route::post('/store', 'OrderController@store')->name('order.store');
-    Route::put('/accept/{id}', 'OrderController@accept')->name('order.accept')->middleware('auth_admin');
+    Route::any('/accept/{id}', 'OrderController@accept')->name('order.accept')->middleware('auth_admin');
     Route::delete('/delete/{id}', 'OrderController@destroy')->name('order.destroy')->middleware('auth_admin');
     Route::put('/success/{id}', 'OrderController@success')->name('order.success')->middleware('auth_admin');
     Route::get('/{id}/show', 'OrderController@show')->name('order.show')->middleware('auth_admin');

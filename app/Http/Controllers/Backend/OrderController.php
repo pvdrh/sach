@@ -10,8 +10,7 @@ use App\Models\User;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Yajra\DataTables\DataTables;
-use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -52,17 +51,18 @@ class OrderController extends Controller
         $order->customer_email = $request->email;
         $order->customer_phone = $request->phone;
         $order->customer_address = $request->address;
-        $order->shipping = $request->shipping;
-        $order->pay = $request->payments;
         $order->products_count = Cart::count();
         $order->money = intval(Cart::total());
         $order->status = 1;
         $order->save();
-        $order_product = Order::find($order->id);
         foreach (Cart::content() as $item) {
-            $order_product->products()->attach($item->id);
             $product = Product::find($item->id);
-            $product->total -= 1;
+            DB::table('order_product')->insert([
+                'order_id' => $order->id,
+                'product_id' => $product->id,
+                'total' => $item->qty
+            ]);
+            $product->total -= $item->qty;
             $product->sold += $item->qty;
             $product->save();
         }
@@ -81,10 +81,21 @@ class OrderController extends Controller
     public function show($id)
     {
         $order = Order::find($id);
+        $prod = DB::table('order_product')->where('order_id', $order->id)->get();
+        $products = collect($prod)->pluck('product_id')->toArray();
+        $products = Product::whereIn('id', $products)->get();
+        foreach ($products as $product) {
+            foreach ($prod as $pro) {
+                if ($product->id == $pro->product_id) {
+                    $product['total_order'] = $pro->total;
+                }
+            }
+        }
         $user = User::find($order->user_id);
         return view('backend.orders.detail')->with([
             'order' => $order,
-            'user' => $user
+            'user' => $user,
+            'products' => $products,
         ]);
     }
 
@@ -139,7 +150,7 @@ class OrderController extends Controller
 
     public function nonAcceptList()
     {
-        $orders = Order::where('status', 1)->get();
+        $orders = Order::where('status', 1)->orderBy('created_at', 'DESC')->get();
         return view('backend.orders.nonAccept')->with([
             'orders' => $orders,
         ]);
@@ -147,46 +158,10 @@ class OrderController extends Controller
 
     public function successList()
     {
-        return view('backend.orders.success');
-    }
-
-    public function nonAccept()
-    {
-        $orders = Order::where('status', 1)->get();
-        return DataTables::of($orders)
-            ->addColumn('shipping', function ($order) {
-                if ($order->shipping == 'shipping1') return 'Free ship';
-                elseif ($order->shipping == 'shipping2') return 'Giao hàng nhanh';
-            })
-            ->addColumn('money', function ($order) {
-                return $order->money . ',000đ';
-            })
-            ->addColumn('action', function ($order) {
-                return '<a href="http://thanhdev.com:8080/orders/' . $order->id . '/show" class="btn btn-primary">Chi tiêt</a>
-                        <button class="btn btn-success order-accept" data-id="' . $order->id . '">Xác nhận</button>
-                        <button class="btn btn-danger order-delete" data-id="' . $order->id . '">Xóa</button>';
-            })
-            ->rawColumns(['shipping', 'money', 'action'])
-            ->make(true);
-    }
-
-    public function getSuccess()
-    {
         $orders = Order::where('status', 3)->get();
-        return DataTables::of($orders)
-            ->addColumn('shipping', function ($order) {
-                if ($order->shipping == 'shipping1') return 'Free ship';
-                elseif ($order->shipping == 'shipping2') return 'Giao hàng nhanh';
-            })
-            ->addColumn('money', function ($order) {
-                return $order->money . ',000đ';
-            })
-            ->addColumn('action', function ($order) {
-                return '<a href="http://thanhdev.com:8080/orders/' . $order->id . '/show" class="btn btn-primary">Chi tiêt</a>';
-            })
-            ->rawColumns(['shipping', 'money', 'action'])
-            ->make(true);
-
+        return view('backend.orders.success')->with([
+            'orders' => $orders
+        ]);
     }
 
     public function accept($id)
@@ -196,14 +171,11 @@ class OrderController extends Controller
             $order->status = 2;
             $order->user_id = Auth::user()->id;
             $success = $order->save();
-            if ($success) {
-                return response()->json([
-                    'error' => false,
-                    'message' => "Xác nhận thành công!",
-                ]);
-            }
+            alert()->success('Duyệt đơn thành công!');
+
+            return redirect()->route('order.nonAccept');
         } catch (\Exception $exception) {
-            $message = "Không thành công!";
+            alert()->error('Duyệt thất bại!');
             return response()->json([
                 'error' => true,
                 'message' => $exception->getMessage(),

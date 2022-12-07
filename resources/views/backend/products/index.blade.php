@@ -72,7 +72,6 @@
                                 <th>Giá bán</th>
                                 <th>Giá khuyến mại</th>
                                 <th style="text-align: center">Giảm giá(%)</th>
-                                <th>Mô tả</th>
                                 <th>Tác giả</th>
                                 <th style="text-align: center">Hành động</th>
                             </tr>
@@ -81,10 +80,9 @@
                             @foreach($products as $product)
                                 <tr>
                                     <td style="text-align: center">{{ $product->id }}</td>
-                                    <td>
+                                    <td style="width: 250px;">
                                         <a href="{{ route('backend.product.show', $product->id) }}">{{ $product->name }}</a>
                                     </td>
-                                    <td style="text-align: center">{{ $product->category ? $product->category->name : 'Đang cập nhật' }}</td>
                                     <td style="text-align: center;">
                                         @if ($product->image)
                                             <img
@@ -92,13 +90,14 @@
                                                 src="/{{$product->image}}">
                                         @else
                                             <img style="width: 160px;height: 200px;object-fit: cover;"
-                                                 src="/frontend/img/product-default.jpg"></img>
+                                                 src="/frontend/img/product-default.jpg">
                                         @endif</td>
+                                    <td style="text-align: center">{{ $product->category ? $product->category->name : 'Đang cập nhật' }}</td>
                                     <td style="text-align: center">{{ number_format($product->total) }}</td>
                                     <td>{{ number_format($product->origin_price) }} VND</td>
                                     <td>{{ number_format($product->sale_price) }} VND</td>
                                     <td style="text-align: center">{{ $product->discount_percent }} </td>
-                                    <td>{{ $product->content }} </td>
+{{--                                    <td>{{ $product->content }} </td>--}}
                                     <td>{{ $product->author ? $product->author->name : 'Đang cập nhật' }} </td>
                                     {{--                                    <td>{{ $user->email }}</td>--}}
                                     {{--                                    <td>{{ $user->phone ?: 'Đang cập nhật' }}</td>--}}

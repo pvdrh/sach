@@ -18,29 +18,6 @@
     </div><!-- /.container-fluid -->
 @endsection
 
-@section('script')
-    <script>
-        $(document).ready(function (){
-            $('#ordersSuccessTable').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: '/orders/get-success',
-                columns: [
-                    { data: 'id', name: 'id' },
-                    { data: 'customer_name', name: 'customer_name' },
-                    { data: 'customer_email', name: 'email' },
-                    { data: 'customer_phone', name: 'phone' },
-                    { data: 'customer_address', name: 'address' },
-                    { data: 'products_count', name: 'products_count' },
-                    { data: 'shipping', name: 'shipping' },
-                    { data: 'money', name: 'money' },
-                    { data: 'action' },
-                ]
-            })
-        });
-    </script>
-@endsection
-
 @section('content')
 
     <div class="container-fluid">
@@ -48,7 +25,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <table id="ordersSuccessTable" class="table table-bordered table-striped" style="width: 100%">
+                        <table class="table table-bordered table-striped" style="width: 100%">
                             <thead>
                             <tr>
                                 <th style="text-align: center">ID</th>
@@ -58,10 +35,32 @@
                                 <th>Địa chỉ</th>
                                 <th>Số sản phẩm</th>
                                 <th>Giao hàng</th>
-                                <th>Hóa đơn</th>
                                 <th style="text-align: center">Hành động</th>
                             </tr>
                             </thead>
+                            <tbody>
+                            @foreach($orders as $order)
+                                <tr>
+                                    <td style="text-align: center">{{$order->id}}</td>
+                                    <td>{{$order->customer_name}}</td>
+                                    <td>{{$order->customer_email}}</td>
+                                    <td>{{$order->customer_phone}}</td>
+                                    <td>{{$order->customer_adress}}</td>
+                                    <td>{{$order->products_count}}</td>
+                                    <td>{{$order->shipping}}</td>
+                                    <td style="text-align: center">
+                                        <form action="{{ route('backend.order.destroy', $order->id) }}"
+                                              method="POST">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <a href="#" class="btn btn-info">Chi tiết</a>
+                                            <button class="btn btn-danger"><i class="fa fa-btn fa-trash"></i> Xóa
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
                         </table>
                         <br>
                     </div>

@@ -87,8 +87,6 @@
                                 <th>Số điện thoại</th>
                                 <th>Địa chỉ</th>
                                 <th>Số sản phẩm</th>
-                                <th>Giao hàng</th>
-                                <th>Tổng tiền</th>
                                 <th style="text-align: center">Hành động</th>
                             </tr>
                             </thead>
@@ -99,16 +97,20 @@
                                     <td>{{$order->customer_name}}</td>
                                     <td>{{$order->customer_email}}</td>
                                     <td>{{$order->customer_phone}}</td>
-                                    <td>{{$order->customer_adress}}</td>
+                                    <td>{{$order->customer_address}}</td>
                                     <td>{{$order->products_count}}</td>
-                                    <td>{{$order->shipping}}</td>
-                                    <td>{{number_format($order->pay)}} VND</td>
                                     <td style="text-align: center">
-                                        <form action="{{ route('backend.order.destroy', $order->id) }}"
+                                        <form action="{{ route('order.destroy', $order->id) }}"
                                               method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-                                            <a href="#" class="btn btn-info">Chi tiết</a>
+                                            <a href="{{route('order.show', $order->id)}}" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info" viewBox="0 0 16 16">
+                                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                                </svg> Chi tiết</a>
+                                            <a href="{{route('order.accept', $order->id)}}" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                                                    <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                                                    <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                                                </svg> Duyệt đơn</a>
                                             <button class="btn btn-danger"><i class="fa fa-btn fa-trash"></i> Xóa
                                             </button>
                                         </form>
