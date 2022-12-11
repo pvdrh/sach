@@ -22,7 +22,8 @@ class CartController extends Controller
         Cart::add($product->id, $product->name, 1, $product->sale_price, 0, [
             'image' => $product->image,
             'discount_percent' => $product->discount_percent,
-            'origin_price' => $product->origin_price
+            'origin_price' => $product->origin_price,
+            'total' => $product->total,
         ]);
         return redirect()->route('frontend.cart.index');
     }

@@ -36,11 +36,10 @@
                 <i class="fa fa-cog" aria-hidden="true"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
-{{--                <div class="dropdown-divider"></div>--}}
-{{--                <a href="{{ route('backend.user.show', \Illuminate\Support\Facades\Auth::user()->id) }}" class="dropdown-item">--}}
-{{--                    <i class="fa fa-user" aria-hidden="true"></i> Cài đặt tài khoản--}}
-{{--                </a>--}}
-{{--                <div class="dropdown-divider"></div>--}}
+                <a href="{{ route('backend.user.account', \Illuminate\Support\Facades\Auth::user()->id) }}" class="dropdown-item">
+                    <i class="fa fa-user" aria-hidden="true"></i> Tài khoản
+                </a>
+                <div class="dropdown-divider"></div>
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button class="dropdown-item"><i class="fa fa-sign-out" aria-hidden="true"></i> Đăng xuất</button>

@@ -90,10 +90,6 @@
                                 <input type="radio" name="payments" id="payments-1" value="pay1" checked>
                                 <label for="payments-1">Thanh toán khi nhận hàng</label>
                             </div>
-                            {{--                            <div class="input-checkbox">--}}
-                            {{--                                <input type="radio" name="payments" id="payments-2" value="pay2">--}}
-                            {{--                                <label for="payments-2">Chuyển khoản ngân hàng</label>--}}
-                            {{--                            </div>--}}
                         </div>
                     </div>
 

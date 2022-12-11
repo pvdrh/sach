@@ -65,6 +65,11 @@
                         Đăng nhập
                     </button>
                 </div>
+                <h5 style="text-align: center; margin: 10px">Hoặc</h5>
+                <div style="margin: 10px; text-align: center">
+                    <a href="{{ route('login.google') }}" class="btn btn-primary"><i class="fa fa-google"></i>
+                        Google</a>
+                </div>
                 <div style="text-align: center; margin-top: 25px"><a style="font-family: none; font-size: 18px"
                                                                      href="{{route('register.form')}}">Bạn chưa có tài
                         khoản?</a></div>

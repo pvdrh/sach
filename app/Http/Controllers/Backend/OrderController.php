@@ -52,7 +52,7 @@ class OrderController extends Controller
         $order->customer_phone = $request->phone;
         $order->customer_address = $request->address;
         $order->products_count = Cart::count();
-        $order->money = intval(Cart::total());
+        $order->money = Cart::total();
         $order->status = 1;
         $order->save();
         foreach (Cart::content() as $item) {
@@ -158,7 +158,7 @@ class OrderController extends Controller
 
     public function successList()
     {
-        $orders = Order::where('status', 3)->get();
+        $orders = Order::where('status', 3)->with('products')->get();
         return view('backend.orders.success')->with([
             'orders' => $orders
         ]);

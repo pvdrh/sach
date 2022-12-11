@@ -179,15 +179,18 @@ class ProductController extends Controller
         $product->total = $request->get('total');
         $product->content = $request->get('content');
         $product->status = $request->get('status');
-        $product->pages_count = '0';
-        $product->status = $request->get('status');
         $product->save();
         $publishing = Publishing::find($request->get('publishing_company_id'));
-        $publishing->products_count += 1;
-        $publishing->save();
+        if ($publishing) {
+            $publishing->products_count += 1;
+            $publishing->save();
+        }
         $author = Author::find($request->get('author_id'));
-        $author->products_count += 1;
-        $author->save();
+        if ($author) {
+            $author->products_count += 1;
+            $author->save();
+        }
+
 
         Alert::success('Thành công', 'Cập nhật thành công!');
         return redirect()->route('backend.product.index');

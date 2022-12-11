@@ -35,7 +35,7 @@
                                     <span class="sale">-{{ $product->discount_percent }}%</span>
                                 @endif
                             </div>
-                            <h2 class="product-name">{{ $product->name }}</h2>
+                            <h2 style="font-family: Arial" class="product-name">{{ $product->name }}</h2>
                             <h3 class="product-price">@if($product->discount_percent > 0)
                                     {{ number_format($product->sale_price) }}
                                 @else
@@ -54,14 +54,15 @@
                                     Hết hàng
                                 @endif
                             </p>
+                            <p style="font-size: 18px; font-family: 'system-ui'"><strong>Số
+                                    lượng:</strong> {{ number_format($product->total) }}</p>
                             <p style="font-size: 18px; font-family: 'system-ui'"><strong>Tác
                                     giả:</strong> {{ $product->author ? $product->author->name : 'Đang cập nhật' }}</p>
                             <p style="font-size: 18px; font-family: 'system-ui'"><strong>Nhà xuất
                                     bản:</strong> {{ $product->publishing_company ? $product->publishing_company->name : 'Đang cập nhật' }}
                             </p>
-                            <p style="font-size: 18px; font-family: 'system-ui'">{{ $product->content }}</p>
-                            <div class="product-options">
-                            </div>
+                            {{--                            <div class="product-options">--}}
+                            {{--                            </div>--}}
 
                             <div class="product-btns">
                                 @if($product->total > 0)
@@ -73,6 +74,13 @@
                                 @endif
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="product-options">
+                            <h2>Mô tả sản phẩm</h2>
+                        </div>
+                        <p style="font-size: 18px; font-family: 'system-ui'">{{ $product->content }}</p>
+
                     </div>
                 </div>
                 <!-- /Product Details -->

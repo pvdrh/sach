@@ -51,6 +51,7 @@ Route::group([
             Route::get('/', 'UserController@index')->name('backend.user.index');
             Route::get('/create', 'UserController@create')->name('backend.user.create');
             Route::get('/show/{id}', 'UserController@show')->name('backend.user.show');
+            Route::get('/account/{id}', 'UserController@account')->name('backend.user.account');
             Route::post('/{id}/update', 'UserController@update')->name('backend.user.update');
             Route::any('/{id}/delete', 'UserController@destroy')->name('backend.user.destroy');
             Route::post('/store', 'UserController@store')->name('backend.user.store');
@@ -125,7 +126,7 @@ Route::group([
     Route::post('/store', 'OrderController@store')->name('order.store');
     Route::any('/accept/{id}', 'OrderController@accept')->name('order.accept')->middleware('auth_admin');
     Route::delete('/delete/{id}', 'OrderController@destroy')->name('order.destroy')->middleware('auth_admin');
-    Route::put('/success/{id}', 'OrderController@success')->name('order.success')->middleware('auth_admin');
+    Route::any('/success/{id}', 'OrderController@success')->name('order.success')->middleware('auth_admin');
     Route::get('/{id}/show', 'OrderController@show')->name('order.show')->middleware('auth_admin');
 });
 
@@ -137,6 +138,8 @@ Route::group([
 ], function () {
     Route::get('/login', 'LoginController@showLoginForm')->name('login.form');
     Route::post('/login', 'LoginController@login')->name('login.store');
+    Route::get('/get-google-sign-in-url', 'LoginController@getUrl')->name('login.google');
+    Route::get('/callback', 'LoginController@loginCallback')->name('login.callback');
     Route::post('/logout', 'LoginController@logout')->name('logout');
     Route::get('/register', 'RegisterController@showRegistrationForm')->name('register.form');
     Route::post('/register', 'RegisterController@register')->name('register.store');

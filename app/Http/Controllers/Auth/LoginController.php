@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Laravel\Socialite\Facades\Socialite;
+
 class LoginController extends Controller
 {
     /*
@@ -51,7 +54,7 @@ class LoginController extends Controller
         $email = $request->get('email');
         $password = $request->get('password');
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
-            if(Auth::user()->role == 1 || Auth::user()->role == 0) {
+            if (Auth::user()->role == 1 || Auth::user()->role == 0) {
                 return redirect()->intended('/admin/dashboard');
             } elseif (Auth::user()->role == 2) {
                 return redirect()->intended('/');
@@ -62,9 +65,43 @@ class LoginController extends Controller
 
     }
 
-    public function logout() {
+    public function logout()
+    {
         Auth::logout();
         Cart::destroy();
         return redirect()->route('frontend.home.index');
+    }
+
+    public function getUrl()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function loginCallback()
+    {
+        $getInfo = Socialite::driver('google')->user();
+
+        $user = $this->createUser($getInfo);
+
+        auth()->login($user);
+
+        return redirect()->to('/');
+    }
+
+    function createUser($getInfo)
+    {
+
+        $user = User::where('google_id', $getInfo->id)->first();
+
+        if (!$user) {
+            $user = User::create([
+                'name' => $getInfo->name,
+                'email' => $getInfo->email,
+                'role' => 2,
+                'is_protected' => 0,
+                'google_id' => $getInfo->id
+            ]);
+        }
+        return $user;
     }
 }

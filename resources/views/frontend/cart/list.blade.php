@@ -29,33 +29,37 @@
                                 </thead>
                                 <tbody>
                                 @foreach($items as $item)
-                                <tr>
-                                    <td class="thumb"><img src="/{{ $item->options->image }}" alt="" style="width: 200px"></td>
-                                    <td class="details">
-                                        <a href="#">{{ $item->name }}</a>
-                                    </td>
-                                    <td class="price text-center"><strong>{{ number_format($item->price) }} VND</strong><br>
-                                        @if($item->options->discount_percent > 0)
-                                            <del class="font-weak"><small>{{ number_format($item->options->origin_price) }} VND</small></del>
-                                        @endif
-                                    </td>
-                                    <td class="qty text-center"><input class="input item-qty" type="number" data-id="{{ $item->rowId }}" name="item-qty" value="{{ $item->qty }}"></td>
-                                    <td class="total text-center"><strong class="primary-color">{{ number_format($item->price * $item->qty) }} VND</strong></td>
-                                    <td class="text-right">
-                                        <form action="{{ route('frontend.cart.remove', $item->rowId) }}" method="POST">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
-                                            <button type="submit" class="btn btn-danger"><i class="fa fa-close"></i></button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="thumb"><img src="/{{ $item->options->image }}" alt=""
+                                                               style="width: 200px"></td>
+                                        <td class="details">
+                                            <a href="#">{{ $item->name }}</a>
+                                        </td>
+                                        <td class="price text-center"><strong>{{ number_format($item->price) }}
+                                                VND</strong><br>
+                                            @if($item->options->discount_percent > 0)
+                                                <del class="font-weak">
+                                                    <small>{{ number_format($item->options->origin_price) }} VND</small>
+                                                </del>
+                                            @endif
+                                        </td>
+                                        <td class="qty text-center"><input class="input item-qty" type="number"
+                                                                           data-id="{{ $item->rowId }}" name="item-qty"
+                                                                           value="{{ $item->qty < $item->options->total ?  $item->qty : $item->options->total}}">
+                                        </td>
+                                        <td class="total text-center"><strong
+                                                class="primary-color">{{ number_format($item->price * $item->qty) }}
+                                                VND</strong></td>
+                                    </tr>
                                 @endforeach
                                 </tbody>
                                 <tfoot>
                                 <tr>
                                     <th class="empty" colspan="3"></th>
                                     <th>Tổng tiền</th>
-                                    <th colspan="2" class="total">{{ Gloudemans\Shoppingcart\Facades\Cart::total() }} VNĐ</th>
+                                    <th colspan="2" class="total">{{ Gloudemans\Shoppingcart\Facades\Cart::total() }}
+                                        VNĐ
+                                    </th>
                                 </tr>
                                 </tfoot>
                             </table>

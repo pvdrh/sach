@@ -20,8 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
             $table->integer('role')->nullable();
+            $table->string('google_id')->nullable();
             $table->integer('is_protected');
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

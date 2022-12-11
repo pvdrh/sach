@@ -53,6 +53,10 @@
                                     <td>{{ $order->customer_address }}</td>
                                 </tr>
                                 <tr>
+                                    <th>Tổng tiền</th>
+                                    <td>{{ $order->money }} VND</td>
+                                </tr>
+                                <tr>
                                     <th>Thời gian đặt hàng</th>
                                     <td>{{ date_format($order->created_at, "d/m/Y") }}</td>
                                 </tr>
@@ -66,15 +70,17 @@
                                     <th style="text-align: center">Số lượng</th>
                                     <th>Giá bán</th>
                                     <th>Giá khuyến mại</th>
+                                    <th>Thành tiền</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($products as $product)
                                     <tr>
-                                        <td>{{$product->name}}</td>
-                                        <td style="text-align: center">{{number_format(number_format($product->total_order))}}</td>
+                                        <td>  <a style="text-decoration: none" href="{{ route('backend.product.show', $product->id) }}">{{ $product->name }}</a></td>
+                                        <td style="text-align: center">{{number_format($product->total_order)}}</td>
                                         <td>{{number_format($product->origin_price)}} VND</td>
                                         <td>{{number_format($product->sale_price)}} VND</td>
+                                        <td>{{number_format($product->sale_price * $product->total_order)}} VND</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

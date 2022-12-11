@@ -31,16 +31,11 @@ class DashboardController extends Controller
             $count_orders = Order::count();
             return $count_orders;
         });
-        $orders = Order::all();
-        $money = 0;
-        foreach ($orders as $order) {
-            $money += $order->money;
-        }
+
         return view('backend.dashboard')->with([
             'count_users' => $count_users,
             'count_products' => $count_products,
             'count_orders' => $count_orders,
-            'money' => $money
         ]);
     }
 

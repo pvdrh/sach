@@ -38,8 +38,6 @@
                                 <th>Email</th>
                                 <th>Số điện thoại</th>
                                 <th>Địa chỉ</th>
-                                <th>Số sản phẩm</th>
-                                <th>Giao hàng</th>
                                 <th style="text-align: center">Hành động</th>
                             </tr>
                             </thead>
@@ -50,9 +48,7 @@
                                     <td>{{$order->customer_name}}</td>
                                     <td>{{$order->customer_email}}</td>
                                     <td>{{$order->customer_phone}}</td>
-                                    <td>{{$order->customer_adress}}</td>
-                                    <td>{{$order->products_count}}</td>
-                                    <td>{{$order->shipping}}</td>
+                                    <td>{{$order->customer_address}}</td>
                                     <td style="text-align: center">
                                         <a href="{{route('order.show', $order->id)}}" class="btn btn-primary">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"

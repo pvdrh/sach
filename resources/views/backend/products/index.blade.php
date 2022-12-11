@@ -70,9 +70,8 @@
                                 <th style="text-align: center">Thể loại</th>
                                 <th style="text-align: center">Số lượng</th>
                                 <th>Giá bán</th>
-                                <th>Giá khuyến mại</th>
+                                <th>Giá khuyến mãi</th>
                                 <th style="text-align: center">Giảm giá(%)</th>
-                                <th>Tác giả</th>
                                 <th style="text-align: center">Hành động</th>
                             </tr>
                             </thead>
@@ -81,7 +80,7 @@
                                 <tr>
                                     <td style="text-align: center">{{ $product->id }}</td>
                                     <td style="width: 250px;">
-                                        <a href="{{ route('backend.product.show', $product->id) }}">{{ $product->name }}</a>
+                                        <a style="text-decoration: none" href="{{ route('backend.product.show', $product->id) }}">{{ $product->name }}</a>
                                     </td>
                                     <td style="text-align: center;">
                                         @if ($product->image)
@@ -96,19 +95,7 @@
                                     <td style="text-align: center">{{ number_format($product->total) }}</td>
                                     <td>{{ number_format($product->origin_price) }} VND</td>
                                     <td>{{ number_format($product->sale_price) }} VND</td>
-                                    <td style="text-align: center">{{ $product->discount_percent }} </td>
-{{--                                    <td>{{ $product->content }} </td>--}}
-                                    <td>{{ $product->author ? $product->author->name : 'Đang cập nhật' }} </td>
-                                    {{--                                    <td>{{ $user->email }}</td>--}}
-                                    {{--                                    <td>{{ $user->phone ?: 'Đang cập nhật' }}</td>--}}
-                                    {{--                                    <td>{{ $user->address ?: 'Đang cập nhật'}}</td>--}}
-                                    {{--                                    <td style="text-align: center">--}}
-                                    {{--                                        @if($user->role == 0)--}}
-                                    {{--                                            <b>Quản trị viên</b>--}}
-                                    {{--                                        @elseif($user->role == 1)--}}
-                                    {{--                                            Nhân viên--}}
-                                    {{--                                        @endif--}}
-                                    {{--                                    </td>--}}
+                                    <td style="text-align: center"><span class="badge badge-success">{{ $product->discount_percent }}%</span></td>
                                     <td style="text-align: center">
                                         <form action="{{ route('backend.product.destroy', $product->id) }}"
                                               method="POST">

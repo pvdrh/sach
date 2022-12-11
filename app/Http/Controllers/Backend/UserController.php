@@ -84,6 +84,13 @@ class UserController extends Controller
         ]);
     }
 
+    public function account($id)
+    {
+        $user = User::find($id);
+        return view('backend.users.account')->with([
+            'user' => $user
+        ]);
+    }
     /**
      * Show the form for editing the specified resource.
      *
