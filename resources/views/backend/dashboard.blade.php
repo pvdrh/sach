@@ -61,28 +61,100 @@
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
                     </div>
-                    <a href="{{ route('backend.user.index') }}" class="small-box-footer">Xem thêm <i
+                    <a href="#" class="small-box-footer">Xem thêm <i
                             class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-            <!-- ./col -->
-{{--            <div class="col-lg-3 col-6">--}}
-{{--                <!-- small box -->--}}
-{{--                <div class="small-box bg-danger">--}}
-{{--                    <div class="inner">--}}
-{{--                        <h3>{{ number_format($money) }} VND</h3>--}}
-
-{{--                        <p>Doanh thu</p>--}}
-{{--                    </div>--}}
-{{--                    <div class="icon">--}}
-{{--                        <i class="ion ion-pie-graph"></i>--}}
-{{--                    </div>--}}
-{{--                    <a href="#" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-            <!-- ./col -->
         </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-lg-6 col-6">
+                <div style="padding: 20px;" class="card">
+                    <h4>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor"
+                             class="bi bi-box" viewBox="0 0 16 16">
+                            <path
+                                d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5 8.186 1.113zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+                        </svg>
+                        Sản phẩm sắp hết hàng
+                    </h4>
+                    <div style="height: 300px;overflow-y: auto">
+                        <table class="table table-bordered" style="width: 100%; ">
+                            <thead>
+                            <tr>
+                                <th style="width: 300px">Tên sản phẩm</th>
+                                <th style="text-align: center; width: 85px">Giảm giá</th>
+                                <th>Giá bán</th>
+                                <th style="text-align: center;width: 70px">Còn lại</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($products as $product)
+                                <tr>
+                                    <td style=";overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 300px;">
+                                        <a style="text-decoration: none  "
+                                           href="{{ route('backend.product.show', $product->id) }}">{{ $product->name }}</a>
+                                    </td>
+                                    <td style="text-align: center"><span class="badge badge-success">{{ $product->discount_percent }}%</span>
+                                    </td>
+                                    <td>{{number_format($product->sale_price)}} VND</td>
+                                    <td style="text-align: center">{{ number_format($product->total) }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
-
+            <div class="col-lg-6 col-6">
+                <div style="padding: 20px" class="card">
+                    <h4>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor"
+                             class="bi bi-cart-dash" viewBox="0 0 16 16">
+                            <path d="M6.5 7a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4z"/>
+                            <path
+                                d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                        </svg>
+                        Đơn hàng chờ duyệt
+                    </h4>
+                    <div style="height: 300px;overflow-y: auto">
+                        <table class="table table-bordered" style="width: 100%; height: 280px; overflow-y: auto">
+                            <thead>
+                            <tr>
+                                <th style="width: 160px">Tên người nhận</th>
+                                <th style="width: 110px">SĐT</th>
+                                <th style="width: 210px">Địa chỉ</th>
+                                <th>Tổng tiền</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($orders as $order)
+                                <tr>
+                                    <td style=";overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 160px;">{{$order->customer_name}}</td>
+                                    <td style=";overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 110px;">{{$order->customer_phone}}</td>
+                                    <td style=";overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 210px;">{{$order->customer_address}}</td>
+                                    <td>{{ $order->money }} VND</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

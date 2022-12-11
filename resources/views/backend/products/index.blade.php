@@ -26,7 +26,8 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('backend.dashboard') }}">
+                    <li class="breadcrumb-item"><a style="text-decoration: none"
+                                                   href="{{ route('backend.dashboard') }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  class="bi bi-house" viewBox="0 0 16 16">
                                 <path
@@ -60,18 +61,18 @@
                             </button>
                         </form>
                     </div>
-                    <div class="card-body">
+                    <div style="height: 500px; overflow-y: auto" class="card-body">
                         <table class="table table-bordered table-striped" style="width: 100%">
                             <thead>
                             <tr>
                                 <th style="text-align: center">ID</th>
                                 <th>Tên sản phẩm</th>
                                 <th style="text-align: center">Ảnh</th>
-                                <th style="text-align: center">Thể loại</th>
                                 <th style="text-align: center">Số lượng</th>
                                 <th>Giá bán</th>
                                 <th>Giá khuyến mãi</th>
                                 <th style="text-align: center">Giảm giá(%)</th>
+                                <th style="text-align: center">Trạng thái</th>
                                 <th style="text-align: center">Hành động</th>
                             </tr>
                             </thead>
@@ -80,7 +81,8 @@
                                 <tr>
                                     <td style="text-align: center">{{ $product->id }}</td>
                                     <td style="width: 250px;">
-                                        <a style="text-decoration: none" href="{{ route('backend.product.show', $product->id) }}">{{ $product->name }}</a>
+                                        <a style="text-decoration: none"
+                                           href="{{ route('backend.product.show', $product->id) }}">{{ $product->name }}</a>
                                     </td>
                                     <td style="text-align: center;">
                                         @if ($product->image)
@@ -91,11 +93,18 @@
                                             <img style="width: 160px;height: 200px;object-fit: cover;"
                                                  src="/frontend/img/product-default.jpg">
                                         @endif</td>
-                                    <td style="text-align: center">{{ $product->category ? $product->category->name : 'Đang cập nhật' }}</td>
                                     <td style="text-align: center">{{ number_format($product->total) }}</td>
                                     <td>{{ number_format($product->origin_price) }} VND</td>
                                     <td>{{ number_format($product->sale_price) }} VND</td>
-                                    <td style="text-align: center"><span class="badge badge-success">{{ $product->discount_percent }}%</span></td>
+                                    <td style="text-align: center"><span class="badge badge-success">{{ $product->discount_percent }}%</span>
+                                    </td>
+                                    <td style="text-align: center">
+                                        @if($product->status == 0)
+                                            <span class="badge badge-warning">Đang nhập</span>
+                                        @else
+                                            <span class="badge badge-info">Mở bán</span
+                                        @endif
+                                    </td>
                                     <td style="text-align: center">
                                         <form action="{{ route('backend.product.destroy', $product->id) }}"
                                               method="POST">

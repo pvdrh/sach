@@ -22,24 +22,25 @@
                 <div id="aside" class="col-md-3">
                     <!-- aside widget -->
 
-                    <div class="aside">
-                        <h3 class="aside-title">Sắp xếp</h3>
-                        <div class="sort-filter">
-                            <select class="input" id="order-select">
-                                <option value="DESC">Giá cao -> thấp</option>
-                                <option value="ASC">Giá thấp -> cao</option>
-                            </select>
-                            <a href="#" class="main-btn icon-btn"><i class="fa fa-arrow-down"></i></a>
-                        </div>
-                    </div>
+{{--                    <div class="aside">--}}
+{{--                        <h3 class="aside-title">Sắp xếp</h3>--}}
+{{--                        <div class="sort-filter">--}}
+{{--                            <select name="orderBy" class="input" id="order-select">--}}
+{{--                                <option value="DESC">Giá cao -> thấp</option>--}}
+{{--                                <option value="ASC">Giá thấp -> cao</option>--}}
+{{--                            </select>--}}
+{{--                            <a href="#" class="main-btn icon-btn"><i class="fa fa-arrow-down"></i></a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                     <div class="aside">
                         <h3 class="aside-title">Thể loại</h3>
                         <ul class="list-links">
-                            <li><a href="{{ route('frontend.product.category', 2) }}">Truyện tranh</a></li>
-                            <li><a href="{{ route('frontend.product.category', 1) }}">Trinh thám</a></li>
-                            <li><a href="{{ route('frontend.product.category', 3) }}">Văn học</a></li>
-                            <li><a href="{{ route('frontend.product.category', 4) }}">Tiểu thuyết</a></li>
+                            @foreach($categories as $category)
+                                <li>
+                                    <a href="{{ route('frontend.product.category', $category->id) }}">{{$category->name}}</a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                     <!-- /aside widget -->
@@ -79,9 +80,12 @@
                                                 @endif
                                             </div>
                                             <div class="product-body">
-                                                <h3 class="product-price">{{ $product->sale_price }} @if($product->discount_percent != 0)
+                                                <h3 class="product-price">{{ number_format($product->sale_price) }}
+                                                    VND @if($product->discount_percent != 0)
                                                         <del
-                                                            class="product-old-price">{{ $product->origin_price }}</del>
+                                                            class="product-old-price">{{ number_format($product->origin_price) }}
+                                                            VND
+                                                        </del>
                                                     @endif</h3>
                                                 <div class="product-rating">
                                                     <i class="fa fa-star"></i>
@@ -92,10 +96,6 @@
                                                 </div>
                                                 <h2 class="product-name"><a href="#">{{ $product->name }}</a></h2>
                                                 <span>Đã bán: {{ $product->sold }}</span>
-                                                <div class="product-btns">
-                                                    <button class="main-btn icon-btn"><i class="fa fa-heart"></i>
-                                                    </button>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>

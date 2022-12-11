@@ -162,7 +162,6 @@
                             <div class="form-group">
                                 <label>Trạng thái sản phẩm <span style="color: red"> *</span></label>
                                 <select class="form-control select2" style="width: 100%;" name="status">
-                                    <option value="">--- Chọn trạng thái ---</option>
                                     <option value="0">Đang nhập</option>
                                     <option value="1">Mở bán</option>
                                 </select>

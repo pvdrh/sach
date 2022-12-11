@@ -36,41 +36,35 @@
                             <tr>
                                 <th style="text-align: center">ID</th>
                                 <th>Tên sản phẩm</th>
-                                <th>Ảnh</th>
-                                <th>Thể loại</th>
-                                <th>Giá gốc</th>
+                                <th style="text-align: center">Ảnh</th>
+                                <th style="text-align: center">Thể loại</th>
+                                <th style="text-align: center">Số lượng</th>
                                 <th>Giá bán</th>
-                                <th>Giảm giá(%)</th>
-                                <th>Mô tả</th>
-                                <th style="text-align: center">Hành động</th>
+                                <th>Giá khuyến mãi</th>
+                                <th style="text-align: center">Giảm giá(%)</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($products as $product)
                                 <tr>
                                     <td style="text-align: center">{{ $product->id }}</td>
-                                    <td>{{ $product->name }}</td>
-                                    <td>
-                                        <center><img src="/storage/{{ $product->image }}" alt="" style="width: 150px">
-                                        </center>
+                                    <td style="width: 250px;">
+                                        <a style="text-decoration: none" href="{{ route('backend.product.show', $product->id) }}">{{ $product->name }}</a>
                                     </td>
-                                    <td>{{ $product->category ? $product->category->name : 'Đang cập nhật' }}</td>
-                                    <td>{{ $product->origin_price }}</td>
-                                    <td>{{ $product->sale_price }}</td>
-                                    <td>{{ $product->discount_percent }}</td>
-                                    <td>{!! $product->content !!}</td>
-                                    <td style="text-align: center">
-                                        <form action="{{ route('backend.product.force-delete', $product->id) }}"
-                                              method="POST">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
-                                            <a href="{{ route('backend.product.show', $product->id) }}"
-                                               class="btn btn-primary">Chi tiêt</a>
-                                            <a href="{{ route('backend.product.restore', $product->id) }}"
-                                               class="btn btn-success">khôi phục</a>
-                                            <button class="btn btn-danger">Xóa</button>
-                                        </form>
-                                    </td>
+                                    <td style="text-align: center;">
+                                        @if ($product->image)
+                                            <img
+                                                style="width: 160px;height: 200px;object-fit: cover;"
+                                                src="/{{$product->image}}">
+                                        @else
+                                            <img style="width: 160px;height: 200px;object-fit: cover;"
+                                                 src="/frontend/img/product-default.jpg">
+                                        @endif</td>
+                                    <td style="text-align: center">{{ $product->category ? $product->category->name : 'Đang cập nhật' }}</td>
+                                    <td style="text-align: center">{{ number_format($product->total) }}</td>
+                                    <td>{{ number_format($product->origin_price) }} VND</td>
+                                    <td>{{ number_format($product->sale_price) }} VND</td>
+                                    <td style="text-align: center"><span class="badge badge-success">{{ $product->discount_percent }}%</span></td>
                                 </tr>
                             @endforeach
                             </tfoot>

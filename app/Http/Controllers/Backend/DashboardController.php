@@ -20,7 +20,7 @@ class DashboardController extends Controller
     public function index()
     {
         $count_users = Cache::remember('count_users', 60*60, function () {
-           $count_users = User::count();
+           $count_users = User::where('role', 2)->count();
            return $count_users;
         });
         $count_products = Cache::remember('count_products', 60*60, function () {
@@ -32,10 +32,14 @@ class DashboardController extends Controller
             return $count_orders;
         });
 
+        $products = Product::where('total', '<', 10)->orderBy('total', 'ASC')->get();
+        $orders = Order::where('status', 1)->orderBy('created_at', 'DESC')->get();
         return view('backend.dashboard')->with([
             'count_users' => $count_users,
             'count_products' => $count_products,
             'count_orders' => $count_orders,
+            'products' => $products,
+            'orders' => $orders
         ]);
     }
 

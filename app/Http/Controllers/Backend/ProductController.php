@@ -39,7 +39,8 @@ class ProductController extends Controller
         $products = $query->orderBy('created_at', 'DESC')->paginate(15);
         return view('backend.products.index')->with([
             'products' => $products,
-            'search' => $search
+            'search' => $search,
+
         ]);
     }
 

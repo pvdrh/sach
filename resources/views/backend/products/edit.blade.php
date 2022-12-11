@@ -158,10 +158,8 @@
                             <div class="form-group">
                                 <label>Trạng thái sản phẩm</label>
                                 <select class="form-control select2" style="width: 100%;" name="status">
-                                    <option value="">--Chọn trạng thái---</option>
-                                    <option value="0" @if($product->status == 0) selected @endif>Còn hàng</option>
-                                    <option value="1" @if($product->status == 1) selected @endif>Hết hàng</option>
-                                    <option value="2" @if($product->status == 2) selected @endif>Dừng bán</option>
+                                    <option value="0" @if($product->status == 0) selected @endif>Đang nhập</option>
+                                    <option value="1" @if($product->status == 1) selected @endif>Mở bán</option>
                                 </select>
                                 @error('status')
                                 <p style="color: red">{{ $message }}</p>
