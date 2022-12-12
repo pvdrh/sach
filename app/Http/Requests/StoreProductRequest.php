@@ -28,7 +28,7 @@ class StoreProductRequest extends FormRequest
             'origin_price' => 'required|min:1',
             'discount_percent' => 'nullable|integer|min:1',
             'total' => 'required|integer|min:1',
-            'content' => 'max:4000',
+            'content' => 'max:5000',
             'image' => 'image|mimes:jpg,png,jpeg,gif,svg|required|max:10000',
             'images[]' => 'image|mimes:jpg,png,jpeg,gif,svg|max:10000',
             'status' => 'required|boolean',

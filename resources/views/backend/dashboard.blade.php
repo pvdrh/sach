@@ -79,14 +79,14 @@
                         </svg>
                         Sản phẩm sắp hết hàng
                     </h4>
-                    <div style="height: 300px;overflow-y: auto">
-                        <table class="table table-bordered" style="width: 100%; ">
-                            <thead>
+                    <div class="table-wrapper-scroll my-custom-scrollbar" style="height: 52vh;overflow-y: auto">
+                        <table class="table table-bordered table_staff_list" style="width: 100%;">
+                            <thead class="thead-light" style="background-color: #fff;">
                             <tr>
-                                <th style="width: 300px">Tên sản phẩm</th>
-                                <th style="text-align: center; width: 85px">Giảm giá</th>
-                                <th>Giá bán</th>
-                                <th style="text-align: center;width: 70px">Còn lại</th>
+                                <th style="">Tên sản phẩm</th>
+                                <th style="text-align: center;">Giảm giá</th>
+                                <th style="position: sticky">Giá bán</th>
+                                <th style="text-align: center;">Còn lại</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -95,7 +95,7 @@
                                     <td style=";overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  max-width: 300px;">
+  max-width: 280px;">
                                         <a style="text-decoration: none  "
                                            href="{{ route('backend.product.show', $product->id) }}">{{ $product->name }}</a>
                                     </td>
@@ -122,9 +122,9 @@
                         </svg>
                         Đơn hàng chờ duyệt
                     </h4>
-                    <div style="height: 300px;overflow-y: auto">
-                        <table class="table table-bordered" style="width: 100%; height: 280px; overflow-y: auto">
-                            <thead>
+                    <div class="table-wrapper-scroll my-custom-scrollbar" style="height: 52vh;overflow-y: auto">
+                        <table class="table table-bordered table_staff_list" style="width: 100%;  overflow-y: auto">
+                            <thead class="thead-light">
                             <tr>
                                 <th style="width: 160px">Tên người nhận</th>
                                 <th style="width: 110px">SĐT</th>
@@ -157,4 +157,21 @@
             </div>
         </div>
     </div>
+    <style>
+        .table-wrapper-scroll thead th {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .my-custom-scrollbar {
+            position: relative;
+            overflow: auto;
+            height: calc(100vh - 340px);
+        }
+
+        .table-wrapper-scroll {
+            display: block;
+        }
+    </style>
 @endsection

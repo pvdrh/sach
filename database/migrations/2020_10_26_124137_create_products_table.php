@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->integer('origin_price')->nullable();
             $table->integer('sale_price')->nullable();
             $table->integer('discount_percent')->nullable();
-            $table->string('content', 2000)->nullable()->charset('utf8mb4');
+            $table->string('content', 5000)->nullable()->charset('utf8mb4');
             $table->integer('author_id')->nullable();
             $table->integer('publishing_company_id')->nullable();
             $table->integer('pages_count');

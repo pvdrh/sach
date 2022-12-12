@@ -34,22 +34,25 @@
                             <p style="color: red">{{ $message }}</p>
                             @enderror
                             <div class="form-group">
-                                <input  @if(\Illuminate\Support\Facades\Auth::user() && \Illuminate\Support\Facades\Auth::user()->role == \App\Models\User::ROLE['customer']) value="{{\Illuminate\Support\Facades\Auth::user()->email}}"
-                                       @endif class="input" type="email" name="email" placeholder="Email">
+                                <input
+                                    @if(\Illuminate\Support\Facades\Auth::user() && \Illuminate\Support\Facades\Auth::user()->role == \App\Models\User::ROLE['customer']) value="{{\Illuminate\Support\Facades\Auth::user()->email}}"
+                                    @endif class="input" type="email" name="email" placeholder="Email">
                             </div>
                             @error('email')
                             <p style="color: red">{{ $message }}</p>
                             @enderror
                             <div class="form-group">
-                                <input  @if(\Illuminate\Support\Facades\Auth::user() && \Illuminate\Support\Facades\Auth::user()->role == \App\Models\User::ROLE['customer']) value="{{\Illuminate\Support\Facades\Auth::user()->phone}}"
-                                       @endif class="input" max="12" type="text" name="phone" placeholder="Số điện thoại">
+                                <input
+                                    @if(\Illuminate\Support\Facades\Auth::user() && \Illuminate\Support\Facades\Auth::user()->role == \App\Models\User::ROLE['customer']) value="{{\Illuminate\Support\Facades\Auth::user()->phone}}"
+                                    @endif class="input" max="12" type="text" name="phone" placeholder="Số điện thoại">
                             </div>
                             @error('phone')
                             <p style="color: red">{{ $message }}</p>
                             @enderror
                             <div class="form-group">
-                                <input  @if(\Illuminate\Support\Facades\Auth::user() && \Illuminate\Support\Facades\Auth::user()->role == \App\Models\User::ROLE['customer']) value="{{\Illuminate\Support\Facades\Auth::user()->address}}"
-                                       @endif class="input" max="255" type="text" name="address" placeholder="Địa chỉ">
+                                <input
+                                    @if(\Illuminate\Support\Facades\Auth::user() && \Illuminate\Support\Facades\Auth::user()->role == \App\Models\User::ROLE['customer']) value="{{\Illuminate\Support\Facades\Auth::user()->address}}"
+                                    @endif class="input" max="255" type="text" name="address" placeholder="Địa chỉ">
                             </div>
                             @error('address')
                             <p style="color: red">{{ $message }}</p>
@@ -63,7 +66,7 @@
                                 <h4 class="title">Phương thức giao hàng</h4>
                             </div>
                             <div class="input-checkbox">
-                                <input type="radio" name="shipping" id="shipping-1" value="shipping1" checked>
+                                <input type="radio" name="shipping_method" id="shipping-1" value="0" checked>
                                 <label for="shipping-1">Free Shiping</label>
                                 <div class="caption">
                                     <p>
@@ -71,15 +74,15 @@
                                     </p>
                                 </div>
                             </div>
-                            {{--                            <div class="input-checkbox">--}}
-                            {{--                                <input type="radio" name="shipping" id="shipping-2" value="shipping2">--}}
-                            {{--                                <label for="shipping-2">Giao hàng nhanh - 30.000đ</label>--}}
-                            {{--                                <div class="caption">--}}
-                            {{--                                    <p>--}}
-                            {{--                                        Hàng sẽ được giao trong 36h kể từ khi đặt hàng--}}
-                            {{--                                    </p>--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
+                            <div class="input-checkbox">
+                                <input type="radio" name="shipping_method" id="shipping-2" value="1">
+                                <label for="shipping-2">Giao hàng nhanh - 30.000 VND</label>
+                                <div class="caption">
+                                    <p>
+                                        Hàng sẽ được giao trong 36h kể từ khi đặt hàng
+                                    </p>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="payments-methods">

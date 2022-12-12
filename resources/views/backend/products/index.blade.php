@@ -61,7 +61,7 @@
                             </button>
                         </form>
                     </div>
-                    <div style="height: 500px; overflow-y: auto" class="card-body">
+                    <div class="card-body">
                         <table class="table table-bordered table-striped" style="width: 100%">
                             <thead>
                             <tr>

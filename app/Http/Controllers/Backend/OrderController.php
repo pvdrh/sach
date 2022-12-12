@@ -51,6 +51,7 @@ class OrderController extends Controller
         $order->customer_email = $request->email;
         $order->customer_phone = $request->phone;
         $order->customer_address = $request->address;
+        $order->shipping_method = (int)$request->shipping_method;
         $order->products_count = Cart::count();
         $order->money = Cart::total();
         $order->status = 1;
