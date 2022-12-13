@@ -187,21 +187,11 @@ class OrderController extends Controller
     public function success($id)
     {
         $order = Order::find($id);
-        try {
-            $order->status = 3;
-            $success = $order->save();
-            if ($success) {
-                return response()->json([
-                    'error' => false,
-                    'message' => "Xác nhận thành công!",
-                ]);
-            }
-        } catch (\Exception $exception) {
-            $message = "Không thành công!";
-            return response()->json([
-                'error' => true,
-                'message' => $exception->getMessage(),
-            ]);
-        }
+        $order->status = 3;
+        $order->save();
+
+        alert()->success('Giao hàng thành công!');
+        return redirect()->route('backend.orders.index');
+
     }
 }

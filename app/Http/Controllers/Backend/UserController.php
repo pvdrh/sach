@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePasswordRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
@@ -91,6 +92,7 @@ class UserController extends Controller
             'user' => $user
         ]);
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -139,6 +141,22 @@ class UserController extends Controller
         }
 
         Alert::error('Thất bại!', 'Khóa không thành công!');
+        return redirect()->route('backend.user.index');
+    }
+
+    public function change(Request $request)
+    {
+        return view('backend.users.changePassword');
+    }
+
+    public function saveNewPass(StorePasswordRequest $request)
+    {
+        $id = Auth::user()->id;
+        $user = User::find($id);
+        $user->password = Hash::make($request->input('newPass'));
+
+        $user->save();
+
         return redirect()->route('backend.user.index');
     }
 

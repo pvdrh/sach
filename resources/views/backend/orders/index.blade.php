@@ -38,6 +38,7 @@
                                 <th>Số điện thoại</th>
                                 <th>Địa chỉ</th>
                                 <th style="text-align: center">Số sản phẩm</th>
+                                <th style="text-align: center">Giao hàng</th>
                                 <th style="text-align: center">Hành động</th>
                             </tr>
                             </thead>
@@ -50,6 +51,11 @@
                                     <td>{{$order->customer_phone}}</td>
                                     <td>{{$order->customer_address}}</td>
                                     <td style="text-align: center">{{$order->products_count}}</td>
+                                    @if ($order->products_count == 0)
+                                        <td style="text-align: center"><span class="badge badge-secondary">Free shipping</span></td>
+                                    @else
+                                        <td style="text-align: center"><span class="badge badge-info">Giao nhanh</span></td>
+                                    @endif
                                     <td style="text-align: center">
 {{--                                        <form action="{{ route('order.destroy', $order->id) }}"--}}
 {{--                                              method="POST">--}}
