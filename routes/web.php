@@ -53,7 +53,9 @@ Route::group([
             Route::get('/show/{id}', 'UserController@show')->name('backend.user.show');
             Route::get('/account/{id}', 'UserController@account')->name('backend.user.account');
             Route::get('/change-password/', 'UserController@change')->name('backend.user.password');
+            Route::get('/reset-password/{id}', 'UserController@reset')->name('backend.user.reset');
             Route::post('/save-password/', 'UserController@saveNewPass')->name('backend.user.save');
+            Route::post('/save-new-password/{id}', 'UserController@saveResetPass')->name('backend.user.savePass');
             Route::post('/{id}/update', 'UserController@update')->name('backend.user.update');
             Route::any('/{id}/delete', 'UserController@destroy')->name('backend.user.destroy');
             Route::post('/store', 'UserController@store')->name('backend.user.store');

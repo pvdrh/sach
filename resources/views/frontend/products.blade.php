@@ -94,7 +94,7 @@
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star-o empty"></i>
                                                 </div>
-                                                <h2 class="product-name"><a href="#">{{ $product->name }}</a></h2>
+                                                <h2 class="product-name"><a href="{{ route('frontend.product-page.index', $product->slug) }}">{{ $product->name }}</a></h2>
                                                 <span>Đã bán: {{ $product->sold }}</span>
                                             </div>
                                         </div>

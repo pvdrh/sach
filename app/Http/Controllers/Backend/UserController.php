@@ -157,7 +157,27 @@ class UserController extends Controller
 
         $user->save();
 
+        Alert::success('Thành công!', 'Đổi mật khẩu thành công!');
         return redirect()->route('backend.user.index');
+    }
+
+    public function saveResetPass(StorePasswordRequest $request, $id)
+    {
+        if (\auth()->user()->role == 0) {
+            $user = User::find($id);
+            $user->password = Hash::make($request->input('newPass'));
+
+            $user->save();
+
+            Alert::success('Thành công!', 'Đổi mật khẩu thành công!');
+            return redirect()->route('backend.user.index');
+        }
+        return redirect()->route('backend.user.index');
+    }
+
+    public function reset($id)
+    {
+        return view('backend.users.changePasswordUser')->with(['id' => $id]);
     }
 
 }

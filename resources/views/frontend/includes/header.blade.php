@@ -28,7 +28,7 @@
             <div class="pull-right">
                 <ul class="header-btns">
                     <!-- Account -->
-                    <li class="header-account dropdown default-dropdown header-drop">
+                    <li style="width: 210px" class="header-account dropdown default-dropdown header-drop">
                         <div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
                             <div class="header-btns-icon">
                                 <i class="fa fa-user-o"></i>

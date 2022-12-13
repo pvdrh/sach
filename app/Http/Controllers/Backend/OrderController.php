@@ -171,7 +171,7 @@ class OrderController extends Controller
         try {
             $order->status = 2;
             $order->user_id = Auth::user()->id;
-            $success = $order->save();
+            $order->save();
             alert()->success('Duyệt đơn thành công!');
 
             return redirect()->route('order.nonAccept');

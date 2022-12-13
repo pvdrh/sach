@@ -79,7 +79,7 @@
                         <div class="product-options">
                             <h2>Mô tả sản phẩm</h2>
                         </div>
-                        <p style="font-size: 18px; font-family: 'system-ui'">{{ $product->content }}</p>
+                        <p style="font-size: 18px; font-family: 'system-ui'">{!! $product->content !!} </p>
 
                     </div>
                 </div>

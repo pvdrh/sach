@@ -57,6 +57,10 @@
                                     <td>{{ $order->money }} VND</td>
                                 </tr>
                                 <tr>
+                                    <th>Phí giao hàng</th>
+                                    <td>{{ $order->shipping_method == 0 ? 'Miễn phí' : '30,000 VND' }}</td>
+                                </tr>
+                                <tr>
                                     <th>Thời gian đặt hàng</th>
                                     <td>{{ date_format($order->created_at, "d/m/Y") }}</td>
                                 </tr>
@@ -76,7 +80,9 @@
                                 <tbody>
                                 @foreach($products as $product)
                                     <tr>
-                                        <td>  <a style="text-decoration: none" href="{{ route('backend.product.show', $product->id) }}">{{ $product->name }}</a></td>
+                                        <td><a style="text-decoration: none"
+                                               href="{{ route('backend.product.show', $product->id) }}">{{ $product->name }}</a>
+                                        </td>
                                         <td style="text-align: center">{{number_format($product->total_order)}}</td>
                                         <td>{{number_format($product->origin_price)}} VND</td>
                                         <td>{{number_format($product->sale_price)}} VND</td>

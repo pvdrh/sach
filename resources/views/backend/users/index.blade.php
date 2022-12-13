@@ -8,7 +8,8 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('backend.dashboard') }}">
+                    <li class="breadcrumb-item"><a style="text-decoration: none"
+                                                   href="{{ route('backend.dashboard') }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  class="bi bi-house" viewBox="0 0 16 16">
                                 <path
@@ -83,24 +84,26 @@
                                             </svg>
                                             <ul class="dropdown-menu">
                                                 <li style="padding-left: 10px">
-                                                    <a style="text-decoration: none; color: black" href="{{ route('backend.user.show', $user->id) }}"
+                                                    <a style="text-decoration: none; color: black"
+                                                       href="{{ route('backend.user.show', $user->id) }}"
                                                     ><i class="fa fa-btn fa-edit"></i> Cập
                                                         nhật</a>
+                                                </li>
+                                                <hr>
+                                                <li style="padding-left: 10px">
+                                                    <a href="{{route('backend.user.reset', $user->id)}}">
+                                                        <i class="fa fa-btn fa-key"></i> Đặt lại mật khẩu
+                                                    </a>
                                                 </li>
                                                 @if ($user->is_protected == 0)
                                                     <hr>
                                                     <li style="padding-left: 10px">
-                                                        <a style="text-decoration: none; color: black" href="{{ route('backend.user.show', $user->id) }}"
+                                                        <a style="text-decoration: none; color: black"
+                                                           href="{{ route('backend.user.show', $user->id) }}"
                                                         ><i class="fa fa-btn fa-lock"></i> Khóa</a>
                                                     </li>
                                                 @endif
-                                                <hr>
-                                                <li style="padding-left: 10px">
-                                                    <a data-toggle="modal" data-target="#exampleModal"
-                                                       type="submit">
-                                                        <i class="fa fa-btn fa-key"></i> Đặt lại mật khẩu
-                                                    </a>
-                                                </li>
+
 
                                                 {{--                                                <li><button class="dropdown-item" type="button">Something else here</button></li>--}}
                                             </ul>
@@ -118,57 +121,5 @@
                 <!-- /.card -->
             </div>
         </div>
-    </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-         aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 style="font-weight: bold;font-size: 18px" class="modal-title">Đặt lại mật
-                        khẩu cho </h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <form role="form" method="post"
-                      >
-                    @csrf
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="new_password">Mật khẩu mới:<span
-                                    style="color: red">*</span></label>
-                            <input name="password" id="password" class="form-control" required
-                                   type="password"
-                            @error('new_password')
-                            <span style="color: red; font-size: 14px">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="confirm_password">Xác nhận mật khẩu<span
-                                    style="color: red">*</span></label>
-                            <input id="confirm_password" type="password" required
-                                   name="confirm_password"
-                                   class="form-control">
-                            <span id="message" style="color:red"> </span> <br><br>
-                            @error('confirm_password')
-                            <span style="color: red; font-size: 14px">{{ $message }}</span>
-                            @enderror
-                            <span style="margin-top: 7px;color: red; font-size: 12px"
-                                  id="CheckPasswordMatch"></span>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <a type="button"
-                           style="text-decoration: none; color: white; font-size: 16px; background: #E53935; padding: 7px 12px 7px 12px;"
-                           data-dismiss="modal">Đóng
-                        </a>
-                        <button id="btn-sub" type="submit"
-                                style="text-decoration: none; color: white; font-size: 16px; background: #43A047; padding: 6px 10px 6px 10px;">
-                            Cập nhật
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
     </div>
 @endsection

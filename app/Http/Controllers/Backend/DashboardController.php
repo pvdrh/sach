@@ -19,15 +19,15 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $count_users = Cache::remember('count_users', 60*60, function () {
-           $count_users = User::where('role', 2)->count();
-           return $count_users;
+        $count_users = Cache::remember('count_users', 60 * 60, function () {
+            $count_users = User::where('role', 2)->count();
+            return $count_users;
         });
-        $count_products = Cache::remember('count_products', 60*60, function () {
-           $count_products = Product::count();
-           return $count_products;
+        $count_products = Cache::remember('count_products', 60 * 60, function () {
+            $count_products = Product::count();
+            return $count_products;
         });
-        $count_orders = Cache::remember('count_orders', 60*60, function () {
+        $count_orders = Cache::remember('count_orders', 60 * 60, function () {
             $count_orders = Order::count();
             return $count_orders;
         });
@@ -56,7 +56,7 @@ class DashboardController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -67,7 +67,7 @@ class DashboardController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -78,7 +78,7 @@ class DashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -89,8 +89,8 @@ class DashboardController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -101,7 +101,7 @@ class DashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -123,7 +123,8 @@ class DashboardController extends Controller
 //        dd($url);
     }
 
-    public function incompetent() {
+    public function incompetent()
+    {
         return view('backend.includes.incompetent');
     }
 }
