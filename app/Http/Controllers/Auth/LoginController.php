@@ -91,7 +91,7 @@ class LoginController extends Controller
     function createUser($getInfo)
     {
 
-        $user = User::where('google_id', $getInfo->id)->first();
+        $user = User::where('email', $getInfo->email)->first();
 
         if (!$user) {
             $user = User::create([
