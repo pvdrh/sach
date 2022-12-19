@@ -123,6 +123,12 @@ class DashboardController extends Controller
 //        dd($url);
     }
 
+    public function customer()
+    {
+        $user = User::where('role', 2)->paginate(15);
+        return view('backend.users.customer')->with(['users' => $user]);
+    }
+
     public function incompetent()
     {
         return view('backend.includes.incompetent');

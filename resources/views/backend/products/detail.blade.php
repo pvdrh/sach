@@ -47,7 +47,7 @@
                                         </tr>
                                         <tr>
                                             <th>Mô tả:</th>
-                                            <td>{{ $product->content }}</td>
+                                            <td>{!! $product->content !!}</td>
                                         </tr>
                                         <tr>
                                             <th>Tác giả:</th>
@@ -99,7 +99,8 @@
                             <div class="col-3">
                             </div>
                             <div class="col-3">
-                                <a href="{{route('backend.product.edit', $product->id)}}" style="color: white" class="btn btn-primary">Cập nhật</a>
+                                <a href="{{route('backend.product.edit', $product->id)}}" style="color: white"
+                                   class="btn btn-primary">Cập nhật</a>
                             </div>
                         </div>
                     </div>
