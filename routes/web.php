@@ -29,7 +29,7 @@ Route::group([
     ], function () {
         // Trang dashboard - trang chủ admin
         Route::get('/dashboard', 'DashboardController@index')->name('backend.dashboard');
-        Route::get('/customer', 'DashboardController@customer')->name('backend.customer');
+        Route::get('/customers', 'DashboardController@customer')->name('backend.customer');
         Route::get('/test', 'DashboardController@test');
         Route::get('/incompetent', 'DashboardController@incompetent')->name('backend.incompetent');
         // Quản lý sản phẩm
@@ -149,3 +149,4 @@ Route::group([
     Route::get('/register', 'RegisterController@showRegistrationForm')->name('register.form');
     Route::post('/register', 'RegisterController@register')->name('register.store');
 });
+
