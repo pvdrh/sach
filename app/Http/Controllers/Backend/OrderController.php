@@ -61,6 +61,7 @@ class OrderController extends Controller
             DB::table('order_product')->insert([
                 'order_id' => $order->id,
                 'product_id' => $product->id,
+                'price' => $product->sale_price,
                 'total' => $item->qty
             ]);
             $product->total -= $item->qty;

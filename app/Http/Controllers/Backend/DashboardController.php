@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
@@ -34,12 +35,19 @@ class DashboardController extends Controller
 
         $products = Product::where('total', '<', 10)->orderBy('total', 'ASC')->get();
         $orders = Order::where('status', 1)->orderBy('created_at', 'DESC')->get();
+        $order = DB::table('order_product')->get();
+        $total = 0;
+        foreach ($order as $ord) {
+            $total += $ord->total * $ord->price;
+        }
+
         return view('backend.dashboard')->with([
             'count_users' => $count_users,
             'count_products' => $count_products,
             'count_orders' => $count_orders,
             'products' => $products,
-            'orders' => $orders
+            'orders' => $orders,
+            'total' => $total
         ]);
     }
 
