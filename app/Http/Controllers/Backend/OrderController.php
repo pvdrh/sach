@@ -192,7 +192,7 @@ class OrderController extends Controller
         $order->save();
 
         alert()->success('Giao hàng thành công!');
-        return redirect()->route('backend.orders.index');
+        return redirect()->route('order.successList');
 
     }
 }

@@ -205,27 +205,10 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $user = Auth::user();
         $product = Product::find($id);
-        if ($user->can('delete', $product)) {
-            try {
-                $success = $product->delete();
-                if ($success) {
-                    return response()->json([
-                        'error' => false,
-                        'message' => "Gỡ sản phẩm thành công!",
-                    ]);
-                }
-            } catch (\Exception $exception) {
-                $message = "Không thành công!";
-                return response()->json([
-                    'error' => true,
-                    'message' => $exception->getMessage(),
-                ]);
-            }
-        } else {
-            return view('backend.includes.incompetent');
-        }
+        $product->delete();
+
+        return redirect()->route('backend.product.only-trashed');
     }
 
     public function hardDelete($id)
