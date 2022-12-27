@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -140,5 +141,28 @@ class DashboardController extends Controller
     public function incompetent()
     {
         return view('backend.includes.incompetent');
+    }
+
+    public function statistics()
+    {
+//        $now = Carbon::now('Asia/Ho_Chi_Minh');
+//        $yesterday = Carbon::yesterday('Asia/Ho_Chi_Minh');
+
+        $startDate = Carbon::now('Asia/Ho_Chi_Minh')->subDay(30);
+        $endDate = Carbon::now('Asia/Ho_Chi_Minh');
+        $monthOrderItem = DB::table('order_product')->whereBetween('created_at', [$startDate, $endDate])->get();
+        $monthOrder= Order::whereBetween('created_at', [$startDate, $endDate])->get();
+        $monthMoney = 0;
+        $monthProduct = 0;
+        foreach ($monthOrderItem as $order) {
+            $monthProduct += $order->total;
+            $monthMoney += $order->total * $order->price;
+        }
+
+        return view('backend.statistics.index')->with([
+            'monthOrder' => $monthOrder,
+            'monthMoney' => $monthMoney,
+            'monthProduct' => $monthProduct
+        ]);
     }
 }

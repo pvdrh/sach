@@ -19,6 +19,7 @@ class CreateOrderProductTable extends Migration
             $table->integer('total');
             $table->integer('product_id');
             $table->integer('price');
+            $table->timestamps();
         });
     }
 

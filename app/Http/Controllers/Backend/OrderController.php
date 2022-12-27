@@ -7,6 +7,7 @@ use App\Http\Requests\StoreOrderRequest;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
+use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -62,7 +63,8 @@ class OrderController extends Controller
                 'order_id' => $order->id,
                 'product_id' => $product->id,
                 'price' => $product->sale_price,
-                'total' => $item->qty
+                'total' => $item->qty,
+                'created_at' => Carbon::now('Asia/Ho_Chi_Minh')
             ]);
             $product->total -= $item->qty;
             $product->sold += $item->qty;

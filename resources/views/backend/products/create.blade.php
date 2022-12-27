@@ -136,7 +136,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputFile">Hình ảnh sản phẩm</label>
+                                <label for="exampleInputFile">Hình ảnh sản phẩm<span style="color: red"> *</span></label>
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" id="img" name="image" accept="image/*">

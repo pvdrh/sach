@@ -89,6 +89,10 @@ Route::group([
             Route::get('/edit/{id}', 'PublishingController@edit')->name('backend.publishings.edit');
             Route::post('/{id}/update', 'PublishingController@update')->name('backend.publishings.update');
         });
+        //Thống kê
+        Route::group(['prefix' => 'statistics'], function () {
+            Route::get('/', 'DashboardController@statistics')->name('backend.statistics');
+        });
     });
 });
 
