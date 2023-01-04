@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Thống kê 30 ngày qua</h1>
+                <h1 class="m-0 text-dark">Thống kê {{request()->is('admin/statistics/30-days-ago') ? '30' : '7'}} ngày qua</h1>
             </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -127,7 +127,7 @@
                             <path
                                 d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                         </svg>
-                        Đơn hàng 30 ngày qua
+                        Đơn hàng {{request()->is('admin/statistics/30-days-ago') ? '30' : '7'}} ngày qua
                     </h4>
                     <div class="table-wrapper-scroll my-custom-scrollbar" style="height: 52vh;overflow-y: auto">
                         <table class="table table-bordered table_staff_list" style="width: 100%;  overflow-y: auto">

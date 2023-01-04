@@ -91,7 +91,8 @@ Route::group([
         });
         //Thống kê
         Route::group(['prefix' => 'statistics'], function () {
-            Route::get('/', 'DashboardController@statistics')->name('backend.statistics');
+            Route::get('/30-days-ago', 'DashboardController@statistics30')->name('backend.statistics.month');
+            Route::get('/7-days-ago', 'DashboardController@statistics7')->name('backend.statistics.week');
         });
     });
 });

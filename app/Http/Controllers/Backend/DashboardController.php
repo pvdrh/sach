@@ -143,12 +143,29 @@ class DashboardController extends Controller
         return view('backend.includes.incompetent');
     }
 
-    public function statistics()
+    public function statistics30()
     {
-//        $now = Carbon::now('Asia/Ho_Chi_Minh');
-//        $yesterday = Carbon::yesterday('Asia/Ho_Chi_Minh');
-
         $startDate = Carbon::now('Asia/Ho_Chi_Minh')->subDay(30);
+        $endDate = Carbon::now('Asia/Ho_Chi_Minh');
+        $monthOrderItem = DB::table('order_product')->whereBetween('created_at', [$startDate, $endDate])->get();
+        $monthOrder= Order::whereBetween('created_at', [$startDate, $endDate])->get();
+        $monthMoney = 0;
+        $monthProduct = 0;
+        foreach ($monthOrderItem as $order) {
+            $monthProduct += $order->total;
+            $monthMoney += $order->total * $order->price;
+        }
+
+        return view('backend.statistics.index')->with([
+            'monthOrder' => $monthOrder,
+            'monthMoney' => $monthMoney,
+            'monthProduct' => $monthProduct
+        ]);
+    }
+
+    public function statistics7()
+    {
+        $startDate = Carbon::now('Asia/Ho_Chi_Minh')->subDay(7);
         $endDate = Carbon::now('Asia/Ho_Chi_Minh');
         $monthOrderItem = DB::table('order_product')->whereBetween('created_at', [$startDate, $endDate])->get();
         $monthOrder= Order::whereBetween('created_at', [$startDate, $endDate])->get();
